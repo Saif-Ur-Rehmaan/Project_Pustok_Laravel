@@ -1533,7 +1533,7 @@
             "require-dev": {
                 "cebe/markdown": "^1.0",
                 "commonmark/cmark": "0.31.1",
-                "commonmark/commonmark.js": "0.31.1",
+                "commonmark/commonmark.js')}}": "0.31.1",
                 "composer/package-versions-deprecated": "^1.8",
                 "embed/embed": "^4.4",
                 "erusev/parsedown": "^1.0",
