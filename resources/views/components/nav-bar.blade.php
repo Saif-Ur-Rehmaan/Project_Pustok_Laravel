@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
                     <a href="index" class="site-brand">
-                        <img src="{{URL('image/logo.png')}}" alt="">
+                        <img src="{{ URL('image/logo.png') }}" alt="">
                     </a>
                 </div>
                 <div class="col-lg-3">
@@ -14,7 +14,7 @@
                         </div>
                         <div class="text">
                             <p>Free Support 24/7</p>
-                            <p class="font-weight-bold number">+01-202-555-0181</p>
+                            <p class="font-weight-bold number">+92-123-456-7891</p>
                         </div>
                     </div>
                 </div>
@@ -22,72 +22,24 @@
                     <div class="main-navigation flex-lg-right">
                         <ul class="main-menu menu-right ">
                             <li class="menu-item has-children">
-                                <a href="javascript:void(0)">Home <i
-                                        class="fas fa-chevron-down dropdown-arrow"></i></a>
-                                <ul class="sub-menu">
-                                    <li> <a href="index">Home One</a></li>
-                                    <li> <a href="index-2">Home Two</a></li>
-                                    <li> <a href="index-3">Home Three</a></li>
-                                    <li> <a href="index-4">Home Four</a></li>
-                                    <li> <a href="index-5">Home Five</a></li>
-                                </ul>
+                                <a href="/">Home </a>
                             </li>
-                            <!-- Shop -->
-                            <li class="menu-item has-children mega-menu">
-                                <a href="javascript:void(0)">shop <i
-                                        class="fas fa-chevron-down dropdown-arrow"></i></a>
-                                <ul class="sub-menu four-column">
-                                    <li class="cus-col-25">
-                                        <h3 class="menu-title"><a href="javascript:void(0)">Shop Grid </a></h3>
-                                        <ul class="mega-single-block">
-                                            <li><a href="shop-grid">Fullwidth</a></li>
-                                            <li><a href="shop-grid-left-sidebar">left Sidebar</a></li>
-                                            <li><a href="shop-grid-right-sidebar">Right Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cus-col-25">
-                                        <h3 class="menu-title"> <a href="javascript:void(0)">Shop List</a></h3>
-                                        <ul class="mega-single-block">
-                                            <li><a href="shop-list">Fullwidth</a></li>
-                                            <li><a href="shop-list-left-sidebar">left Sidebar</a></li>
-                                            <li><a href="shop-list-right-sidebar">Right Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cus-col-25">
-                                        <h3 class="menu-title"> <a href="javascript:void(0)">Product Details
-                                                1</a></h3>
-                                        <ul class="mega-single-block">
-                                            <li><a href="product-details">Product Details Page</a></li>
-                                            <li><a href="product-details-affiliate">Product Details
-                                                    Affiliate</a></li>
-                                            <li><a href="product-details-group">Product Details Group</a>
-                                            </li>
-                                            <li><a href="product-details-variable">Product Details
-                                                    Variables</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cus-col-25">
-                                        <h3 class="menu-title"><a href="javascript:void(0)">Product Details
-                                                2</a></h3>
-                                        <ul class="mega-single-block">
-                                            <li><a href="product-details-left-thumbnail">left Thumbnail</a>
-                                            </li>
-                                            <li><a href="product-details-right-thumbnail">Right
-                                                    Thumbnail</a></li>
-                                            <li><a href="product-details-left-gallery">Left Gallery</a>
-                                            </li>
-                                            <li><a href="product-details-right-gallery">Right Gallery</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+
+                            <li class="menu-item has-children">
+                                <a href="{{ URL('/shop-grid') }}">Shop </a>
                             </li>
+
+                            <li class="menu-item has-children">
+                                <a href="{{ URL('/blogs') }}">Blogs </a>
+                            </li>
+
                             <!-- Pages -->
                             <li class="menu-item has-children">
                                 <a href="javascript:void(0)">Pages <i
                                         class="fas fa-chevron-down dropdown-arrow"></i></a>
                                 <ul class="sub-menu">
                                     <li><a href="cart">Cart</a></li>
+                                    <li><a href="search">Search</a></li>
                                     <li><a href="checkout">Checkout</a></li>
                                     <li><a href="compare">Compare</a></li>
                                     <li><a href="wishlist">Wishlist</a></li>
@@ -98,42 +50,9 @@
                                     <li><a href="contact-2">contact 02</a></li>
                                 </ul>
                             </li>
-                            <!-- Blog -->
-                            <li class="menu-item has-children mega-menu">
-                                <a href="javascript:void(0)">Blog <i
-                                        class="fas fa-chevron-down dropdown-arrow"></i></a>
-                                <ul class="sub-menu three-column">
-                                    <li class="cus-col-33">
-                                        <h3 class="menu-title"><a href="javascript:void(0)">Blog Grid</a></h3>
-                                        <ul class="mega-single-block">
-                                            <li><a href="blog">Full Widh (Default)</a></li>
-                                            <li><a href="blog-left-sidebar">left Sidebar</a></li>
-                                            <li><a href="blog-right-sidebar">Right Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cus-col-33">
-                                        <h3 class="menu-title"><a href="javascript:void(0)">Blog List </a></h3>
-                                        <ul class="mega-single-block">
-                                            <!-- <li><a href="blog-list">Full Widh (Default)</a></li> -->
-                                            <li><a href="blog-list-left-sidebar">left Sidebar</a></li>
-                                            <li><a href="blog-list-right-sidebar">Right Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cus-col-33">
-                                        <h3 class="menu-title"><a href="javascript:void(0)">Blog Details</a>
-                                        </h3>
-                                        <ul class="mega-single-block">
-                                            <li><a href="blog-details">Image Format (Default)</a></li>
-                                            <li><a href="blog-details-gallery">Gallery Format</a></li>
-                                            <li><a href="blog-details-audio">Audio Format</a></li>
-                                            <li><a href="blog-details-video">Video Format</a></li>
-                                            <li><a href="blog-details-left-sidebar">left Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <a href="contact">Contact</a>
+
+                            <li class="menu-item has-children">
+                                <a href="{{ URL('/contact') }}">Contact </a>
                             </li>
                         </ul>
                     </div>
@@ -147,8 +66,7 @@
                 <div class="col-lg-3">
                     <nav class="category-nav   ">
                         <div>
-                            <a href="javascript:void(0)" class="category-trigger"><i
-                                    class="fa fa-bars"></i>Browse
+                            <a href="javascript:void(0)" class="category-trigger"><i class="fa fa-bars"></i>Browse
                                 categories</a>
                             <ul class="category-menu">
                                 <li class="cat-item has-children">
@@ -285,7 +203,8 @@
                                     <div class=" single-cart-block ">
                                         <div class="cart-product">
                                             <a href="product-details" class="image">
-                                                <img src="{{URL('image/products/cart-product-1.jpg')}}" alt="">
+                                                <img src="{{ URL('image/products/cart-product-1.jpg') }}"
+                                                    alt="">
                                             </a>
                                             <div class="content">
                                                 <h3 class="title"><a href="product-details">Kodak PIXPRO
@@ -313,20 +232,21 @@
         </div>
     </div>
 </div>
+
+
 <div class="site-mobile-menu">
     <header class="mobile-header d-block d-lg-none pt--10 pb-md--10">
         <div class="container">
             <div class="row align-items-sm-end align-items-center">
                 <div class="col-md-4 col-7">
                     <a href="index" class="site-brand">
-                        <img src="{{URL('image/logo.png')}}" alt="">
+                        <img src="{{ URL('image/logo.png') }}" alt="">
                     </a>
                 </div>
                 <div class="col-md-5 order-3 order-md-2">
                     <nav class="category-nav   ">
                         <div>
-                            <a href="javascript:void(0)" class="category-trigger"><i
-                                    class="fa fa-bars"></i>Browse
+                            <a href="javascript:void(0)" class="category-trigger"><i class="fa fa-bars"></i>Browse
                                 categories</a>
                             <ul class="category-menu">
                                 <li class="cat-item has-children">
@@ -467,90 +387,17 @@
             <div class="mobile-navigation">
                 <!-- mobile menu navigation start -->
                 <nav class="off-canvas-nav">
-                    <ul class="mobile-menu main-mobile-menu">
+                    <ul class="mobile-menu main-mobile-menu text-center">
                         <li class="menu-item-has-children">
-                            <a href="index#">Home</a>
-                            <ul class="sub-menu">
-                                <li> <a href="index">Home One</a></li>
-                                <li> <a href="index-2">Home Two</a></li>
-                                <li> <a href="index-3">Home Three</a></li>
-                                <li> <a href="index-4">Home Four</a></li>
-                                <li> <a href="index-5">Home Five</a></li>
-                            </ul>
+                            <a href="/">Home</a>
+
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="index#">Blog</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="index#">Blog Grid</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog">Full Widh (Default)</a></li>
-                                        <li><a href="blog-left-sidebar">left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="index#">Blog List</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-list">Full Widh (Default)</a></li>
-                                        <li><a href="blog-list-left-sidebar">left Sidebar</a></li>
-                                        <li><a href="blog-list-right-sidebar">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="index#">Blog Details</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-details">Image Format (Default)</a></li>
-                                        <li><a href="blog-details-gallery">Gallery Format</a></li>
-                                        <li><a href="blog-details-audio">Audio Format</a></li>
-                                        <li><a href="blog-details-video">Video Format</a></li>
-                                        <li><a href="blog-details-left-sidebar">left Sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <a href="{{ URL('/blogs') }}">Blogs</a>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="index#">Shop</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="index#">Shop Grid</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-grid">Fullwidth</a></li>
-                                        <li><a href="shop-grid-left-sidebar">left Sidebar</a></li>
-                                        <li><a href="shop-grid-right-sidebar">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="index#">Shop List</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-list">Fullwidth</a></li>
-                                        <li><a href="shop-list-left-sidebar">left Sidebar</a></li>
-                                        <li><a href="shop-list-right-sidebar">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="index#">Product Details 1</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="product-details">Product Details Page</a></li>
-                                        <li><a href="product-details-affiliate">Product Details
-                                                Affiliate</a></li>
-                                        <li><a href="product-details-group">Product Details Group</a></li>
-                                        <li><a href="product-details-variable">Product Details
-                                                Variables</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="index#">Product Details 2</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="product-details-left-thumbnail">left Thumbnail</a>
-                                        </li>
-                                        <li><a href="product-details-right-thumbnail">Right Thumbnail</a>
-                                        </li>
-                                        <li><a href="product-details-left-gallery">Left Gallery</a></li>
-                                        <li><a href="product-details-right-gallery">Right Gallery</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <a href="{{ URL('/shop-grid') }}">Shop</a>
+
                         </li>
                         <li class="menu-item-has-children">
                             <a href="index#">Pages</a>
@@ -566,7 +413,7 @@
                                 <li><a href="contact-2">contact 02</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact">Contact</a></li>
+                        <li><a href="{{ URL('/contact') }}">Contact</a></li>
                     </ul>
                 </nav>
                 <!-- mobile menu navigation end -->
@@ -617,81 +464,38 @@
     </aside>
     <!--Off Canvas Navigation End-->
 </div>
+
+
 <div class="sticky-init fixed-header common-sticky">
     <div class="container d-none d-lg-block">
         <div class="row align-items-center">
             <div class="col-lg-4">
                 <a href="index" class="site-brand">
-                    <img src="{{URL('image/logo.png')}}" alt="">
+                    <img src="{{ URL('image/logo.png') }}" alt="">
                 </a>
             </div>
             <div class="col-lg-8">
                 <div class="main-navigation flex-lg-right">
                     <ul class="main-menu menu-right ">
                         <li class="menu-item has-children">
-                            <a href="javascript:void(0)">Home <i
-                                    class="fas fa-chevron-down dropdown-arrow"></i></a>
-                            <ul class="sub-menu">
-                                <li> <a href="index">Home One</a></li>
-                                <li> <a href="index-2">Home Two</a></li>
-                                <li> <a href="index-3">Home Three</a></li>
-                                <li> <a href="index-4">Home Four</a></li>
-                                <li> <a href="index-5">Home Five</a></li>
-                            </ul>
+                            <a href="/">Home </a>
                         </li>
-                        <!-- Shop -->
-                        <li class="menu-item has-children mega-menu">
-                            <a href="javascript:void(0)">shop <i
-                                    class="fas fa-chevron-down dropdown-arrow"></i></a>
-                            <ul class="sub-menu four-column">
-                                <li class="cus-col-25">
-                                    <h3 class="menu-title"><a href="javascript:void(0)">Shop Grid </a></h3>
-                                    <ul class="mega-single-block">
-                                        <li><a href="shop-grid">Fullwidth</a></li>
-                                        <li><a href="shop-grid-left-sidebar">left Sidebar</a></li>
-                                        <li><a href="shop-grid-right-sidebar">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cus-col-25">
-                                    <h3 class="menu-title"> <a href="javascript:void(0)">Shop List</a></h3>
-                                    <ul class="mega-single-block">
-                                        <li><a href="shop-list">Fullwidth</a></li>
-                                        <li><a href="shop-list-left-sidebar">left Sidebar</a></li>
-                                        <li><a href="shop-list-right-sidebar">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cus-col-25">
-                                    <h3 class="menu-title"> <a href="javascript:void(0)">Product Details 1</a>
-                                    </h3>
-                                    <ul class="mega-single-block">
-                                        <li><a href="product-details">Product Details Page</a></li>
-                                        <li><a href="product-details-affiliate">Product Details
-                                                Affiliate</a></li>
-                                        <li><a href="product-details-group">Product Details Group</a></li>
-                                        <li><a href="product-details-variable">Product Details
-                                                Variables</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cus-col-25">
-                                    <h3 class="menu-title"><a href="javascript:void(0)">Product Details 2</a>
-                                    </h3>
-                                    <ul class="mega-single-block">
-                                        <li><a href="product-details-left-thumbnail">left Thumbnail</a>
-                                        </li>
-                                        <li><a href="product-details-right-thumbnail">Right Thumbnail</a>
-                                        </li>
-                                        <li><a href="product-details-left-gallery">Left Gallery</a></li>
-                                        <li><a href="product-details-right-gallery">Right Gallery</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+
+                        <li class="menu-item has-children">
+                            <a href="{{ URL('/shop-grid') }}">Shop </a>
                         </li>
+
+                        <li class="menu-item has-children">
+                            <a href="{{ URL('/blogs') }}">Blogs </a>
+                        </li>
+
                         <!-- Pages -->
                         <li class="menu-item has-children">
                             <a href="javascript:void(0)">Pages <i
                                     class="fas fa-chevron-down dropdown-arrow"></i></a>
                             <ul class="sub-menu">
                                 <li><a href="cart">Cart</a></li>
+                                <li><a href="search">Search</a></li>
                                 <li><a href="checkout">Checkout</a></li>
                                 <li><a href="compare">Compare</a></li>
                                 <li><a href="wishlist">Wishlist</a></li>
@@ -702,41 +506,9 @@
                                 <li><a href="contact-2">contact 02</a></li>
                             </ul>
                         </li>
-                        <!-- Blog -->
-                        <li class="menu-item has-children mega-menu">
-                            <a href="javascript:void(0)">Blog <i
-                                    class="fas fa-chevron-down dropdown-arrow"></i></a>
-                            <ul class="sub-menu three-column">
-                                <li class="cus-col-33">
-                                    <h3 class="menu-title"><a href="javascript:void(0)">Blog Grid</a></h3>
-                                    <ul class="mega-single-block">
-                                        <li><a href="blog">Full Widh (Default)</a></li>
-                                        <li><a href="blog-left-sidebar">left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cus-col-33">
-                                    <h3 class="menu-title"><a href="javascript:void(0)">Blog List </a></h3>
-                                    <ul class="mega-single-block">
-                                        <!-- <li><a href="blog-list">Full Widh (Default)</a></li> -->
-                                        <li><a href="blog-list-left-sidebar">left Sidebar</a></li>
-                                        <li><a href="blog-list-right-sidebar">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cus-col-33">
-                                    <h3 class="menu-title"><a href="javascript:void(0)">Blog Details</a></h3>
-                                    <ul class="mega-single-block">
-                                        <li><a href="blog-details">Image Format (Default)</a></li>
-                                        <li><a href="blog-details-gallery">Gallery Format</a></li>
-                                        <li><a href="blog-details-audio">Audio Format</a></li>
-                                        <li><a href="blog-details-video">Video Format</a></li>
-                                        <li><a href="blog-details-left-sidebar">left Sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item">
-                            <a href="contact">Contact</a>
+
+                        <li class="menu-item has-children">
+                            <a href="{{ URL('/contact') }}">Contact </a>
                         </li>
                     </ul>
                 </div>

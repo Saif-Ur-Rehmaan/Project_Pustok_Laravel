@@ -30,6 +30,6 @@ Route::view('/login-register', 'login-register');
 
 Route::prefix("/blogs")->group(function () {
    Route::view('/','Blogs.blogs') ;
-   Route::view('/blog-details','Blog.blog-details') ; 
+   Route::view('/blog-details','Blogs.blog-details') ; 
 });
 

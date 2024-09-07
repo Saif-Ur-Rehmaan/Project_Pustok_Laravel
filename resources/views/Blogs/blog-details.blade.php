@@ -4,7 +4,7 @@
         <div class="container">
             <div class="blog-post post-details mb--50">
                 <div class="blog-image">
-                    <img src="image/others/blog-img-big-1.jpg" alt="">
+                    <img src="{{URL('image/others/blog-img-big-1.jpg')}}" alt="">
                 </div>
                 <div class="blog-content mt--30">
                     <header>
@@ -81,9 +81,9 @@
                             nulla maximus maximus. Nunc pulvinar sollicitudin molestie.</p>
                     </article>
                     <footer class="blog-meta">
-                        <div> <a href="blog-details.html#">3 comments </a> / TAGS: <a href="blog-details.html#">fashion</a>,
-                            <a href="blog-details.html#">t-shirt</a>,
-                            <a href="blog-details.html#">white</a>
+                        <div> <a href="/blogs/blog-details#">3 comments </a> / TAGS: <a href="/blogs/blog-details#">fashion</a>,
+                            <a href="/blogs/blog-details#">t-shirt</a>,
+                            <a href="/blogs/blog-details#">white</a>
                         </div>
                     </footer>
                 </div>
@@ -91,48 +91,48 @@
             <div class="share-block mb--50">
                 <h3>Share Now</h3>
                 <div class="social-links  justify-content-center  mt--10">
-                    <a href="blog-details.html#" class="single-social social-rounded"><i class="fab fa-facebook-f"></i></a>
-                    <a href="blog-details.html#" class="single-social social-rounded"><i class="fab fa-twitter"></i></a>
-                    <a href="blog-details.html#" class="single-social social-rounded"><i class="fab fa-pinterest-p"></i></a>
-                    <a href="blog-details.html#" class="single-social social-rounded"><i
+                    <a href="/blogs/blog-details#" class="single-social social-rounded"><i class="fab fa-facebook-f"></i></a>
+                    <a href="/blogs/blog-details#" class="single-social social-rounded"><i class="fab fa-twitter"></i></a>
+                    <a href="/blogs/blog-details#" class="single-social social-rounded"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="/blogs/blog-details#" class="single-social social-rounded"><i
                             class="fab fa-google-plus-g"></i></a>
-                    <a href="blog-details.html#" class="single-social social-rounded"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="/blogs/blog-details#" class="single-social social-rounded"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="comment-block-wrapper mb--50">
                 <h3>3 Comments</h3>
                 <div class="single-comment">
                     <div class="comment-avatar">
-                        <img src="image/icon/author-logo.png" alt="">
+                        <img src="{{URL('image/icon/author-logo.png')}}" alt="">
                     </div>
                     <div class="comment-text">
-                        <h5 class="author"> <a href="blog-details.html#"> Author</a></h5>
+                        <h5 class="author"> <a href="/blogs/blog-details#"> Author</a></h5>
                         <span class="time">October 8, 2014 at 12:38 pm</span>
                         <p>Ame No Parade</p>
                     </div>
-                    <a href="blog-details.html#" class="btn btn-outlined--primary btn-rounded reply-btn">Reply</a>
+                    <a href="/blogs/blog-details#" class="btn btn-outlined--primary btn-rounded reply-btn">Reply</a>
                 </div>
                 <div class="single-comment">
                     <div class="comment-avatar">
-                        <img src="image/icon/author-logo.png" alt="">
+                        <img src="{{URL('image/icon/author-logo.png')}}" alt="">
                     </div>
                     <div class="comment-text">
-                        <h5 class="author"> <a href="blog-details.html#">Jack</a></h5>
+                        <h5 class="author"> <a href="/blogs/blog-details#">Jack</a></h5>
                         <span class="time">January 19, 2018 at 3:00 am</span>
                         <p>just a nice post</p>
                     </div>
-                    <a href="blog-details.html#" class="btn btn-outlined--primary btn-rounded reply-btn">Reply</a>
+                    <a href="/blogs/blog-details#" class="btn btn-outlined--primary btn-rounded reply-btn">Reply</a>
                 </div>
                 <div class="single-comment">
                     <div class="comment-avatar">
-                        <img src="image/icon/author-logo.png" alt="">
+                        <img src="{{URL('image/icon/author-logo.png')}}" alt="">
                     </div>
                     <div class="comment-text">
-                        <h5 class="author"> <a href="blog-details.html#">Dexter</a></h5>
+                        <h5 class="author"> <a href="/blogs/blog-details#">Dexter</a></h5>
                         <span class="time">august 31, 2021 at 3:30 am</span>
                         <p>Awesome Post </p>
                     </div>
-                    <a href="blog-details.html#" class="btn btn-outlined--primary btn-rounded reply-btn">Reply</a>
+                    <a href="/blogs/blog-details#" class="btn btn-outlined--primary btn-rounded reply-btn">Reply</a>
                 </div>
             </div>
             <div class="replay-form-wrapper">
@@ -166,7 +166,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="submit-btn">
-                                <a href="blog-details.html#" class="btn btn-black">Post Comment</a>
+                                <a href="/blogs/blog-details#" class="btn btn-black">Post Comment</a>
                             </div>
                         </div>
                     </div>

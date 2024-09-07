@@ -2746,7 +2746,7 @@
                                             Aug
                                         </span>
                                     </div>
-                                    <h3 class="title"><a href="blog-details">How to Water and Care for Mounted</a>
+                                    <h3 class="title"><a href="/blogs/blog-details">How to Water and Care for Mounted</a>
                                     </h3>
                                 </div>
                                 <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="index#">Hastech</a></p>
@@ -2755,7 +2755,7 @@
                                     <p>Virtual reality and 3-D technology are already well-established in the
                                         entertainment...</p>
                                 </article>
-                                <a href="blog-details" class="card-link">Read More <i
+                                <a href="/blogs/blog-details" class="card-link">Read More <i
                                         class="fas fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
@@ -2775,7 +2775,7 @@
                                             Jan
                                         </span>
                                     </div>
-                                    <h3 class="title"><a href="blog-details">Why You Never See BLOG TITLE That </a>
+                                    <h3 class="title"><a href="/blogs/blog-details">Why You Never See BLOG TITLE That </a>
                                     </h3>
                                 </div>
                                 <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="index#">Hastech</a></p>
@@ -2784,7 +2784,7 @@
                                     <p>Virtual reality and 3-D technology are already well-established in the
                                         entertainment...</p>
                                 </article>
-                                <a href="blog-details" class="card-link">Read More <i
+                                <a href="/blogs/blog-details" class="card-link">Read More <i
                                         class="fas fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
@@ -2804,7 +2804,7 @@
                                             Aug
                                         </span>
                                     </div>
-                                    <h3 class="title"><a href="blog-details">What Everyone Must Know About </a>
+                                    <h3 class="title"><a href="/blogs/blog-details">What Everyone Must Know About </a>
                                     </h3>
                                 </div>
                                 <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="index#">Hastech</a></p>
@@ -2813,7 +2813,7 @@
                                     <p>Virtual reality and 3-D technology are already well-established in the
                                         entertainment...</p>
                                 </article>
-                                <a href="blog-details" class="card-link">Read More <i
+                                <a href="/blogs/blog-details" class="card-link">Read More <i
                                         class="fas fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
