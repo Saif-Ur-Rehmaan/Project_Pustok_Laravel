@@ -1,0 +1,98 @@
+
+Users {
+	id integer pk increments unique
+	RoleId integer *> User_Roles.id
+	RewardPoints decimal(200,2)
+	DisplayName varchar(100)
+	FirstName varchar(100)
+	LastName varchar(100)
+	Email varchar(255) unique
+	Password text
+	newsletterSubscribe enum("yes","no") def("no")
+}
+
+User_Roles {
+	id integer pk increments unique
+	Name varchar unique
+}
+
+User_Addresses {
+	id integer pk increments unique
+	UserId integer *> Users.id
+	Name varchar(100)
+	City integer
+	Address varchar(255)
+	ContactNumber varchar(255)
+}
+
+User_Orders {
+	id integer pk increments unique
+	UserId integer *> Users.id
+	ProductId integer *> Books.id
+	OrderReciptId int >* Order_Recipts.id
+	PaymentId int
+	OrderStatus varchar
+	Quantity decimal(10,3)
+	PricePerProduct decimal(10,3)
+	ShippingFee decimal(10,3)
+	FirstName varchar(100)
+	LastName varchar(100)
+	Address text
+	CountryName varchar(255)
+	CityName varchar(255)
+	StateName varchar(255)
+	OrderNote text
+}
+
+Books {
+	id integer pk increments unique
+	CategoryId integer *> Book_Categories.id
+	BookTitle varchar(100)
+	Image text
+	Tags json
+	ExTax integer
+	Brand integer
+	ProductCode varchar(100)
+	Availability int
+	PriceInUSD integer
+	DiscountPercent tinyint(99)
+	ProductDescription text
+	Manufacturer varchar(100)
+	Color varchar(100)
+}
+
+Book_Categories {
+	id integer pk increments unique
+	Name varchar(100) unique
+}
+
+Book_SubCategory {
+	id integer pk increments unique
+	CategoryId integer *> Book_Categories.id
+	name varchar def(255)
+}
+
+Order_Recipts {
+	id integer pk increments unique
+	Title integer
+	File blob
+}
+
+Blogs {
+	id integer pk increments unique
+	UserId integer > Users.id
+	Image integer
+	Content text
+	Description integer
+	Tags json
+	CreatedAt datetime
+	UpdatedAt datetime
+}
+
+Blog_Comments {
+	id integer pk increments unique
+	UserId integer *> Users.id
+	BlogId integer *> Blogs.id
+	Comment text
+}
+
