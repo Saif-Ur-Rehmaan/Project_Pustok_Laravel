@@ -98,5 +98,5 @@
     <!-- Cart Page End -->
 @endsection
 @section("Scripts")
-<script src="https://maps.googleapis.com/maps/api/js?key={{$APIKEY}}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{$APIKEY}}"></script>
 @endsection
