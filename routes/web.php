@@ -18,7 +18,14 @@ Route::view('/index', 'Index');
 Route::view('/product-details', 'product-details');
 Route::view('/cart', 'cart');
 Route::view('/compare', 'compare');
-Route::view('/contact', 'contact');
+
+Route::get('/contact',function (){
+
+   $APIKEY=config('services.api.GOOGLE_MAP_API_KEY');
+
+   return view('contact',compact('APIKEY'));
+});
+
 Route::view('/checkout', 'checkout');
 Route::view('/wishlist', 'wishlist');
 Route::view('/faq', 'faq');

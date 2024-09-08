@@ -30,5 +30,8 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'api'=>[
+        "GOOGLE_MAP_API_KEY"=>env("GOOGLE_MAP_API_KEY")
+    ]
 
 ];
