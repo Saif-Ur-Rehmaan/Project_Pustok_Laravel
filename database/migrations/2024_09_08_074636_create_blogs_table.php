@@ -22,7 +22,7 @@ return new class extends Migration
 
 
             $table->text('image');
-            $table->text('Content')->comment("here blog html css will be stored");
+            $table->text('content')->comment("here blog html css will be stored");
             $table->text('description');
             $table->json('tags');
 
