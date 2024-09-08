@@ -13,6 +13,7 @@ class UserAddress extends Model
         'user_id',
         'title',
         'city',
+        'address',
         'contactNumber',
     ];
 

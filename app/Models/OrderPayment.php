@@ -9,13 +9,10 @@ class OrderPayment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'order_id',
-        'payment_method',
-        'amount',
-        'currency',
-        'payment_status',
-        'transaction_id',
-        'payment_details',
-        'paid_at',
+      
+    ];
+    protected $casts = [
+        'payment_details' => 'array', // Cast the JSON field to an array
+        'paid_at' => 'datetime',
     ];
 }

@@ -10,6 +10,7 @@ class OrderRecipt extends Model
     use HasFactory;
     protected $fillable=[
         'title',
-        'order_id'
+        'order_id',
+        'File'
     ];
 }
