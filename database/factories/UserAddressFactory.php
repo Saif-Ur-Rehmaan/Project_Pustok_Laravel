@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\UserAddress;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class UserAddressFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id'=>$this->faker->numberBetween(1,10),
+            'user_id'=>UserAddress::count()==0?1:UserAddress::count(),
             'title'=>$this->faker->title(),
             'city'=>$this->faker->city(),
             'contactNumber'=>$this->faker->phoneNumber(),

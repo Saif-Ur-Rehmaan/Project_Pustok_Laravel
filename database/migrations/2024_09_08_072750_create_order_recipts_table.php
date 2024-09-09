@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_receipts', function (Blueprint $table) {
+        Schema::create('order_recipts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->unsignedBigInteger('order_id');
@@ -26,7 +26,7 @@ return new class extends Migration
         });
 
         // Adding the MEDIUMBLOB column using raw SQL
-        DB::statement('ALTER TABLE order_receipts ADD COLUMN `File` MEDIUMBLOB');
+        DB::statement('ALTER TABLE order_recipts ADD COLUMN `File` MEDIUMBLOB');
     
     }
 
@@ -35,11 +35,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('order_receipts', function (Blueprint $table) {
+        Schema::table('order_recipts', function (Blueprint $table) {
             // Dropping the MEDIUMBLOB column using raw SQL
-            DB::statement('ALTER TABLE order_receipts DROP COLUMN `File`');
+            DB::statement('ALTER TABLE order_recipts DROP COLUMN `File`');
         });
 
-        Schema::dropIfExists('order_receipts');
+        Schema::dropIfExists('order_recipts');
     }
 };

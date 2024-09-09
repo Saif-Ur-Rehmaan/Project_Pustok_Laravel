@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\OrderPayment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderPayment>
  */
-class OrderPaymentfactoryFactory extends Factory
+class OrderPaymentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,7 @@ class OrderPaymentfactoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => $this->faker->numberBetween(1, 10), // Adjust according to your actual range of order IDs
+            'order_id' =>OrderPayment::count()?OrderPayment::count():1, // Adjust according to your actual range of order IDs
             'payment_method' => $this->faker->randomElement(['Credit Card', 'PayPal', 'Bank Transfer', 'Cash']),
             'amount' => $this->faker->randomFloat(2, 5, 500), // Random amount between 5 and 500
             'currency' => $this->faker->randomElement(['USD', 'EUR', 'GBP']), // Random currency

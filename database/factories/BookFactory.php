@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,11 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id' => $this->faker->numberBetween(1, 10),
+            'category_id' =>Book::count()?Book::count():1,
             'title' => $this->faker->sentence(3), // Generates a random book title with 3 words
             'brand' => $this->faker->company(), // Generates a random company name
             'image' => $this->faker->imageUrl(200, 200, 'books', true, 'Faker'), // Generates a random book image URL
-            'tags' => $this->faker->words(3), // Generates an array of 3 random words as tags
+            'tags' => json_encode($this->faker->words(3)), // Generates an array of 3 random words as tags
             'extax' => 10.00, // Fixed extax value
             'priceInUSD' => $this->faker->randomFloat(2, 5, 100), // Generates a random price between 5 and 100 with 2 decimal places
             'discountPercent' => $this->faker->numberBetween(0, 50), // Generates a random discount percentage between 0 and 50

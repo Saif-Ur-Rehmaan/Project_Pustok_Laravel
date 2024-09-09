@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string("manufacturer")->nullable();
             $table->string("color")->nullable();
             $table->string("productCode")->nullable();
-            $table->string("availablity")->default("Available");
+            $table->string("availability")->default("Available");
 
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Blog;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,11 @@ class BlogFactory extends Factory
     public function definition(): array
     {
         return [
-            'Writer_User_Id' => $this->faker->numberBetween(1, 10), // Assuming you have 50 users
+            'Writer_User_Id' =>Blog::count()?Blog::count():1, // Assuming you have 50 users
             'image' => $this->faker->imageUrl(640, 480, 'abstract', true, 'Faker'), // Generates a fake image URL
             'content' => $this->faker->paragraphs(8, true), // Generates 3 paragraphs of content
             'description' => $this->faker->text(200), // Generates a random description up to 200 characters
-            'tags' => implode(',', $this->faker->words(5)), // Generates a comma-separated list of 5 tags
+            'tags' =>json_encode($this->faker->words(5)), // Generates a comma-separated list of 5 tags
         ];
     }
 }

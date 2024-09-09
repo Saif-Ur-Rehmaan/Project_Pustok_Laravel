@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\OrderRecipt;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class OrderReciptFactory extends Factory
     public function definition(): array
     {
         return [
-            'File'=>$this->faker->file(storage_path('app/public/OrderRecipts'),storage_path('app/public/temp'))
+            'title'=>$this->faker->title(),
+            'order_id'=>OrderRecipt::count()?OrderRecipt::count():1,
+            'File'=>$this->faker->filePath()
         ];
     }
 }

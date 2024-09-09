@@ -21,6 +21,6 @@ class Book extends Model
         'manufacturer',
         'color',
         'productCode',
-        'availablity',
+        'availability',
     ];
 }
