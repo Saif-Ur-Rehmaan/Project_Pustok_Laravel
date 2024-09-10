@@ -17,8 +17,9 @@ class BlogFactory extends Factory
      */
     public function definition(): array
     {
+        static $increment = 1; 
         return [
-            'Writer_User_Id' =>Blog::count()?Blog::count():1, // Assuming you have 50 users
+            'Writer_User_Id' =>$increment++, // Assuming you have 50 users
             'image' => $this->faker->imageUrl(640, 480, 'abstract', true, 'Faker'), // Generates a fake image URL
             'content' => $this->faker->paragraphs(8, true), // Generates 3 paragraphs of content
             'description' => $this->faker->text(200), // Generates a random description up to 200 characters

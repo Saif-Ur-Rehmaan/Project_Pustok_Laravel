@@ -17,8 +17,9 @@ class UserAddressFactory extends Factory
      */
     public function definition(): array
     {
+        static $increment = 1; 
         return [
-            'user_id'=>UserAddress::count()==0?1:UserAddress::count(),
+            'user_id'=>$increment++,
             'title'=>$this->faker->title(),
             'city'=>$this->faker->city(),
             'contactNumber'=>$this->faker->phoneNumber(),

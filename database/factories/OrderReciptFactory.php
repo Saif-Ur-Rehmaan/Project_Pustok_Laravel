@@ -17,9 +17,10 @@ class OrderReciptFactory extends Factory
      */
     public function definition(): array
     {
+        static $increment = 1; 
         return [
             'title'=>$this->faker->title(),
-            'order_id'=>OrderRecipt::count()?OrderRecipt::count():1,
+            'order_id'=>$increment++,
             'File'=>$this->faker->filePath()
         ];
     }

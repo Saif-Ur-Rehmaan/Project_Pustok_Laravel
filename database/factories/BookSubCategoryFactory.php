@@ -17,8 +17,9 @@ class BookSubCategoryFactory extends Factory
      */
     public function definition(): array
     {
+        static $increment = 1; 
         return [
-            'category_id'=> BookSubCategory::count()?BookSubCategory::count():1,// random can miss  any nujmber
+            'category_id'=> $increment++,
             'name'=>$this->faker->title()
         ];
     }

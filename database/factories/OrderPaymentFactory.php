@@ -17,8 +17,9 @@ class OrderPaymentFactory extends Factory
      */
     public function definition(): array
     {
+        static $increment = 1; 
         return [
-            'order_id' =>OrderPayment::count()?OrderPayment::count():1, // Adjust according to your actual range of order IDs
+            'order_id' =>$increment++ ,
             'payment_method' => $this->faker->randomElement(['Credit Card', 'PayPal', 'Bank Transfer', 'Cash']),
             'amount' => $this->faker->randomFloat(2, 5, 500), // Random amount between 5 and 500
             'currency' => $this->faker->randomElement(['USD', 'EUR', 'GBP']), // Random currency

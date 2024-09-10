@@ -19,6 +19,7 @@ return new class extends Migration
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
+
             $table->unsignedBigInteger("book_id")->nullable()->comment("every order must be completed before deleting thats why this column is restricts the deleting action of book");
             $table->foreign("book_id")
             ->references('id')
@@ -26,7 +27,7 @@ return new class extends Migration
             ->onDelete('restrict');
             
         
-            $table->string("orderStatus");
+            $table->enum("orderStatus",['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'])->default("Pending");
             $table->integer("quantity");
             $table->decimal("pricePerProduct",8,2,true);
             $table->decimal("shippingFee",8,2,true);

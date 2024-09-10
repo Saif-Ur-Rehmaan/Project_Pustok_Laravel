@@ -17,7 +17,8 @@ class UserOrderFactory extends Factory
      */
     public function definition(): array
     {
-        $recNo=UserOrder::count()?UserOrder::count():1;
+        static $increment = 1; 
+        $recNo=$increment++;
         return [
             'user_id' => $recNo, 
             'book_id' => $recNo, 

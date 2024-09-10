@@ -17,8 +17,9 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
+        static $increment = 1; 
         return [
-            'category_id' =>Book::count()?Book::count():1,
+            'category_id' =>$increment++,
             'title' => $this->faker->sentence(3), // Generates a random book title with 3 words
             'brand' => $this->faker->company(), // Generates a random company name
             'image' => $this->faker->imageUrl(200, 200, 'books', true, 'Faker'), // Generates a random book image URL

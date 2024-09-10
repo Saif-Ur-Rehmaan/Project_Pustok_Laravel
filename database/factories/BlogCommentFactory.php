@@ -17,10 +17,10 @@ class BlogCommentFactory extends Factory
      */
     public function definition(): array
     {
-        $rNo=BlogComment::count();
+        static $increment = 1; 
         return [
-            'user_id'=>$rNo?$rNo:1,
-            'blog_id'=>$rNo?$rNo:1,
+            'user_id'=>$increment,
+            'blog_id'=>$increment++,
             'comment'=>$this->faker->text(),
         ];
     }
