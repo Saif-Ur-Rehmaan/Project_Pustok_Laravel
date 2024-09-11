@@ -13,7 +13,7 @@ class NavBar extends Component
      */
     public function __construct()
     {
-        //
+        
     }
 
     /**

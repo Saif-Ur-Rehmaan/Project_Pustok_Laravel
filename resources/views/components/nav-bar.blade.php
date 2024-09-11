@@ -32,6 +32,7 @@
                             <li class="menu-item has-children">
                                 <a href="{{ URL('/blogs') }}">Blogs </a>
                             </li>
+                           
 
                             <!-- Pages -->
                             <li class="menu-item has-children">
@@ -53,6 +54,10 @@
 
                             <li class="menu-item has-children">
                                 <a href="{{ URL('/contact') }}">Contact </a>
+                            </li>
+                             <li class="menu-item has-children">
+                                
+                                <a  href="{{ URL('/logout') }}" class="text-danger fw-bolder">LogOut</a> <br>
                             </li>
                         </ul>
                     </div>
@@ -183,8 +188,13 @@
                     <div class="main-navigation flex-lg-right">
                         <div class="cart-widget">
                             <div class="login-block">
-                                <a href="login-register" class="font-weight-bold">Login</a> <br>
-                                <span>or</span><a href="login-register">Register</a>
+                                @if (Auth::guest())
+                                    <a href="login-register" class="font-weight-bold">Login</a> <br>
+                                    <span>or</span><a href="login-register">Register</a>
+                                    @else
+                                    <img src="{{ Storage::url(Auth::user()->image) }}" width="40" height="40" class="rounded-circle" alt="">
+                                   <a href="/my-account" class="fw-bold fs-6 text-success text-decoration-underline">My Account</a>
+                                 @endif
                             </div>
                             <div class="cart-block">
                                 <div class="cart-total">
@@ -397,7 +407,6 @@
                         </li>
                         <li class="menu-item-has-children">
                             <a href="{{ URL('/shop-grid') }}">Shop</a>
-
                         </li>
                         <li class="menu-item-has-children">
                             <a href="index#">Pages</a>
@@ -414,6 +423,9 @@
                             </ul>
                         </li>
                         <li><a href="{{ URL('/contact') }}">Contact</a></li>
+                        <li class="menu-item-has-children">
+                            <a href="{{ URL('/logout') }}" class="text-danger">Logout</a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- mobile menu navigation end -->
@@ -436,13 +448,7 @@
                         </ul>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="index#">My Account <i class="fas fa-angle-down"></i></a>
-                        <ul class="sub-menu">
-                            <li><a href="index">My Account</a></li>
-                            <li><a href="index">Order History</a></li>
-                            <li><a href="index">Transactions</a></li>
-                            <li><a href="index">Downloads</a></li>
-                        </ul>
+                        <a href="/my-account">My Account <i class="fas fa-angle-down"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -491,8 +497,7 @@
 
                         <!-- Pages -->
                         <li class="menu-item has-children">
-                            <a href="javascript:void(0)">Pages <i
-                                    class="fas fa-chevron-down dropdown-arrow"></i></a>
+                            <a href="javascript:void(0)">Pages <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                             <ul class="sub-menu">
                                 <li><a href="cart">Cart</a></li>
                                 <li><a href="search">Search</a></li>

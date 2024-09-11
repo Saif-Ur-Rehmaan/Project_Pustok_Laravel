@@ -30,9 +30,9 @@ Route::get('/contact', function () {
 Route::view('/checkout', 'checkout');
 Route::view('/wishlist', 'wishlist');
 Route::view('/faq', 'faq');
-Route::view('/order-completed', 'order-completed');
+
 Route::view('/shop-grid', 'shop-grid');
-Route::view('/my-account', 'my-account');
+
 Route::view('/search', 'search');
 
 Route::prefix("/blogs")->group(function () {
@@ -44,10 +44,20 @@ Route::prefix("/blogs")->group(function () {
 
 // user  Authentication
 Route::controller(UserController::class)->group(function () {
-   // login or register page
-   Route::view('/login-register', 'login-register');
-   // register
-   Route::post('/register','RegisterUser')->name('users.register');
-   // login
-   Route::post('/login','LoginUser')->name('users.login');
+   // only guest allowed
+   Route::middleware('guest')->group(function (){
+      // login or register page
+      Route::view('/login-register', 'login-register');
+      // register
+      Route::post('/register','RegisterUser')->name('users.register');
+      // login
+      Route::post('/login','LoginUser')->name('users.login');
+   });
+   Route::middleware('auth')->group(function () {
+      Route::view('/my-account', 'my-account');
+      Route::view('/order-completed', 'order-completed');
+      
+
+      Route::get('/logout','logoutUser');
+   });
 });

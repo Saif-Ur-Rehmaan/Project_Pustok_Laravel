@@ -62,4 +62,10 @@ class UserController extends Controller
             return redirect('/login-register')->with('fail', 'An Error Occur While Registering Please try again later');
         }
     }
+    function logoutUser(Request $req) {
+        
+        Auth::logout();
+        $req->session()->regenerate();//prevent from Fixation attack
+        return redirect('/');
+    }
 }
