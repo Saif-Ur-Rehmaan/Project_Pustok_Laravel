@@ -42,7 +42,7 @@ Route::prefix("/blogs")->group(function () {
 
 
 
-
+// user  Authentication
 Route::controller(UserController::class)->group(function () {
    // login or register page
    Route::view('/login-register', 'login-register');

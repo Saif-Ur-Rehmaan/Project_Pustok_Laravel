@@ -23,6 +23,11 @@
               {{session('success')}}
             </div>
         @endsession
+        @session('fail')
+            <div class="alert alert-danger" role="alert">
+              {{session('fail')}}
+            </div>
+        @endsession
         @yield('Content')
         <x-ProductModal></x-ProductModal>
     </div>
