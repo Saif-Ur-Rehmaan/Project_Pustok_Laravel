@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +20,11 @@ Route::view('/product-details', 'product-details');
 Route::view('/cart', 'cart');
 Route::view('/compare', 'compare');
 
-Route::get('/contact',function (){
+Route::get('/contact', function () {
 
-   $APIKEY=config('services.api.GOOGLE_MAP_API_KEY');
+   $APIKEY = config('services.api.GOOGLE_MAP_API_KEY');
 
-   return view('contact',compact('APIKEY'));
+   return view('contact', compact('APIKEY'));
 });
 
 Route::view('/checkout', 'checkout');
@@ -33,10 +34,20 @@ Route::view('/order-completed', 'order-completed');
 Route::view('/shop-grid', 'shop-grid');
 Route::view('/my-account', 'my-account');
 Route::view('/search', 'search');
-Route::view('/login-register', 'login-register');
 
 Route::prefix("/blogs")->group(function () {
-   Route::view('/','Blogs.blogs') ;
-   Route::view('/blog-details','Blogs.blog-details') ; 
+   Route::view('/', 'Blogs.blogs');
+   Route::view('/blog-details', 'Blogs.blog-details');
 });
 
+
+
+
+Route::controller(UserController::class)->group(function () {
+   // login or register page
+   Route::view('/login-register', 'login-register');
+   // register
+   Route::post('/register','RegisterUser')->name('users.register');
+   // login
+   Route::post('/login','LoginUser')->name('users.login');
+});
