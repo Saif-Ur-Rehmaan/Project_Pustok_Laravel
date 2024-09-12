@@ -87,8 +87,8 @@
                                     <span class="fas fa-star "></span>
                                 </div>
                                 <div class="review-widget">
-                                    <a href="index">(1 Reviews)</a> <span>|</span>
-                                    <a href="index">Write a review</a>
+                                    <a href="{{URL('/index')}}">(1 Reviews)</a> <span>|</span>
+                                    <a href="{{URL('/index')}}">Write a review</a>
                                 </div>
                             </div>
                             <article class="product-details-article">
@@ -105,13 +105,13 @@
                                     <input type="number" class="form-control text-center" value="1">
                                 </div>
                                 <div class="add-cart-btn">
-                                    <a href="index" class="btn btn-outlined--primary"><span
+                                    <a href="{{URL('/index')}}" class="btn btn-outlined--primary"><span
                                             class="plus-icon">+</span>Add to Cart</a>
                                 </div>
                             </div>
                             <div class="compare-wishlist-row">
-                                <a href="index" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
-                                <a href="index" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
+                                <a href="{{URL('/index')}}" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
+                                <a href="{{URL('/index')}}" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
                             </div>
                         </div>
                     </div>

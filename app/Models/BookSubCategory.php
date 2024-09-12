@@ -12,4 +12,12 @@ class BookSubCategory extends Model
         'category_id',
         'name'
     ];
+    public function category()
+    {
+        return $this->belongsTo(BookCategory::class, 'category_id');
+    }
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'subcategory_id');
+    }
 }

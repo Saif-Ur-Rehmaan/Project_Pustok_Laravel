@@ -19,10 +19,11 @@ class BookFactory extends Factory
     {
         static $increment = 1; 
         return [
-            'category_id' =>$increment++,
+            'author_id' =>$increment,
+            'subcategory_id' =>$increment,
             'title' => $this->faker->sentence(3), // Generates a random book title with 3 words
             'brand' => $this->faker->company(), // Generates a random company name
-            'image' => $this->faker->imageUrl(200, 200, 'books', true, 'Faker'), // Generates a random book image URL
+            'image' => "image/products/product-".$increment++.".jpg", // Generates a random book image URL
             'tags' => json_encode($this->faker->words(3)), // Generates an array of 3 random words as tags
             'extax' => 10.00, // Fixed extax value
             'priceInUSD' => $this->faker->randomFloat(2, 5, 100), // Generates a random price between 5 and 100 with 2 decimal places

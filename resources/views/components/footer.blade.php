@@ -21,11 +21,11 @@
                         <h3>Information</h3>
                     </div>
                     <ul class="footer-list normal-list">
-                        <li><a href="index">Prices drop</a></li>
-                        <li><a href="index">New products</a></li>
-                        <li><a href="index">Best sales</a></li>
-                        <li><a href="index">Contact us</a></li>
-                        <li><a href="index">Sitemap</a></li>
+                        <li><a href="{{URL('/index')}}">Prices drop</a></li>
+                        <li><a href="{{URL('/index')}}">New products</a></li>
+                        <li><a href="{{URL('/index')}}">Best sales</a></li>
+                        <li><a href="{{URL('/index')}}">Contact us</a></li>
+                        <li><a href="{{URL('/index')}}">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -35,11 +35,11 @@
                         <h3>Extras</h3>
                     </div>
                     <ul class="footer-list normal-list">
-                        <li><a href="index">Delivery</a></li>
-                        <li><a href="index">About Us</a></li>
-                        <li><a href="index">Stores</a></li>
-                        <li><a href="index">Contact us</a></li>
-                        <li><a href="index">Sitemap</a></li>
+                        <li><a href="{{URL('/index')}}">Delivery</a></li>
+                        <li><a href="{{URL('/index')}}">About Us</a></li>
+                        <li><a href="{{URL('/index')}}">Stores</a></li>
+                        <li><a href="{{URL('/index')}}">Contact us</a></li>
+                        <li><a href="{{URL('/index')}}">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -56,12 +56,12 @@
                 <div class="social-block">
                     <h3 class="title">STAY CONNECTED</h3>
                     <ul class="social-list list-inline">
-                        <li class="single-social facebook"><a href="index"><i class="ion ion-social-facebook"></i></a>
+                        <li class="single-social facebook"><a href="{{URL('/index')}}"><i class="ion ion-social-facebook"></i></a>
                         </li>
-                        <li class="single-social twitter"><a href="index"><i class="ion ion-social-twitter"></i></a></li>
-                        <li class="single-social google"><a href="index"><i
+                        <li class="single-social twitter"><a href="{{URL('/index')}}"><i class="ion ion-social-twitter"></i></a></li>
+                        <li class="single-social google"><a href="{{URL('/index')}}"><i
                                     class="ion ion-social-googleplus-outline"></i></a></li>
-                        <li class="single-social youtube"><a href="index"><i class="ion ion-social-youtube"></i></a></li>
+                        <li class="single-social youtube"><a href="{{URL('/index')}}"><i class="ion ion-social-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>

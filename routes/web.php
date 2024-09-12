@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'Index');
-Route::view('/index', 'Index');
+Route::view('index', 'Index');
 Route::view('/product-details', 'product-details');
 Route::view('/cart', 'cart');
 Route::view('/compare', 'compare');
@@ -30,16 +31,20 @@ Route::get('/contact', function () {
 Route::view('/checkout', 'checkout');
 Route::view('/wishlist', 'wishlist');
 Route::view('/faq', 'faq');
-
-Route::view('/shop-grid', 'shop-grid');
-
 Route::view('/search', 'search');
+
+
 
 Route::prefix("/blogs")->group(function () {
    Route::view('/', 'Blogs.blogs');
    Route::view('/blog-details', 'Blogs.blog-details');
 });
 
+// App Controller
+Route::controller(AppController::class)->group(function (){
+   Route::view('/shop-grid/{id?}', 'shop-grid')->name('shop'); 
+
+});
 
 
 // user  Authentication

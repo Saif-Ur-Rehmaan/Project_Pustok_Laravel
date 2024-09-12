@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
-                    <a href="index" class="site-brand">
+                    <a href="{{URL('/index')}}" class="site-brand">
                         <img src="{{ URL('image/logo.png') }}" alt="">
                     </a>
                 </div>
@@ -32,7 +32,7 @@
                             <li class="menu-item has-children">
                                 <a href="{{ URL('/blogs') }}">Blogs </a>
                             </li>
-                           
+
 
                             <!-- Pages -->
                             <li class="menu-item has-children">
@@ -55,10 +55,12 @@
                             <li class="menu-item has-children">
                                 <a href="{{ URL('/contact') }}">Contact </a>
                             </li>
-                             <li class="menu-item has-children">
-                                
-                                <a  href="{{ URL('/logout') }}" class="text-danger fw-bolder">LogOut</a> <br>
-                            </li>
+                            @if (Auth::check())
+                                <li class="menu-item has-children">
+
+                                    <a href="{{ URL('/logout') }}" class="text-danger fw-bolder">LogOut</a> <br>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -74,106 +76,19 @@
                             <a href="javascript:void(0)" class="category-trigger"><i class="fa fa-bars"></i>Browse
                                 categories</a>
                             <ul class="category-menu">
-                                <li class="cat-item has-children">
-                                    <a href="index#">Arts & Photography</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index#">Bags & Cases</a></li>
-                                        <li><a href="index#">Binoculars & Scopes</a></li>
-                                        <li><a href="index#">Digital Cameras</a></li>
-                                        <li><a href="index#">Film Photography</a></li>
-                                        <li><a href="index#">Lighting & Studio</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children mega-menu"><a href="index#">Biographies</a>
-                                    <ul class="sub-menu">
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="index#">Bags & Cases</a></li>
-                                                <li><a href="index#">Binoculars & Scopes</a></li>
-                                                <li><a href="index#">Digital Cameras</a></li>
-                                                <li><a href="index#">Film Photography</a></li>
-                                                <li><a href="index#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="index#">Bags & Cases</a></li>
-                                                <li><a href="index#">Binoculars & Scopes</a></li>
-                                                <li><a href="index#">Digital Cameras</a></li>
-                                                <li><a href="index#">Film Photography</a></li>
-                                                <li><a href="index#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="index#">Bags & Cases</a></li>
-                                                <li><a href="index#">Binoculars & Scopes</a></li>
-                                                <li><a href="index#">Digital Cameras</a></li>
-                                                <li><a href="index#">Film Photography</a></li>
-                                                <li><a href="index#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="index#">Bags & Cases</a></li>
-                                                <li><a href="index#">Binoculars & Scopes</a></li>
-                                                <li><a href="index#">Digital Cameras</a></li>
-                                                <li><a href="index#">Film Photography</a></li>
-                                                <li><a href="index#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="index#">Business & Money</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="index#">Calendars</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="index#">Children's Books</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="index#">Comics</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item"><a href="index#">Perfomance Filters</a></li>
-                                <li class="cat-item has-children"><a href="index#">Cookbooks</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item "><a href="index#">Accessories</a></li>
-                                <li class="cat-item "><a href="index#">Education</a></li>
-                                <li class="cat-item hidden-menu-item"><a href="index#">Indoor Living</a></li>
-                                <li class="cat-item"><a href="index#" class="js-expand-hidden-menu">More
-                                        Categories</a></li>
+                                @foreach ($Categories as $Category)
+                                    <li class="cat-item has-children">
+                                        <a>{{ $Category->name }}</a>
+                                        <ul class="sub-menu">
+                                            @foreach ($Category->subcategories as $SubCat)
+                                                <li><a
+                                                        href="{{ route('shop', Crypt::encrypt($SubCat->id)) }}">{{ $SubCat->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </nav>
@@ -191,10 +106,12 @@
                                 @if (Auth::guest())
                                     <a href="login-register" class="font-weight-bold">Login</a> <br>
                                     <span>or</span><a href="login-register">Register</a>
-                                    @else
-                                    <img src="{{ Storage::url(Auth::user()->image) }}" width="40" height="40" class="rounded-circle" alt="">
-                                   <a href="/my-account" class="fw-bold fs-6 text-success text-decoration-underline">My Account</a>
-                                 @endif
+                                @else
+                                    <img src="{{ Storage::url(Auth::user()->image) }}" width="40" height="40"
+                                        class="rounded-circle" alt="">
+                                    <a href="/my-account" class="fw-bold fs-6 text-success text-decoration-underline">My
+                                        Account</a>
+                                @endif
                             </div>
                             <div class="cart-block">
                                 <div class="cart-total">
@@ -249,7 +166,7 @@
         <div class="container">
             <div class="row align-items-sm-end align-items-center">
                 <div class="col-md-4 col-7">
-                    <a href="index" class="site-brand">
+                    <a href="{{URL('/index')}}" class="site-brand">
                         <img src="{{ URL('image/logo.png') }}" alt="">
                     </a>
                 </div>
@@ -259,106 +176,18 @@
                             <a href="javascript:void(0)" class="category-trigger"><i class="fa fa-bars"></i>Browse
                                 categories</a>
                             <ul class="category-menu">
-                                <li class="cat-item has-children">
-                                    <a href="index#">Arts & Photography</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index#">Bags & Cases</a></li>
-                                        <li><a href="index#">Binoculars & Scopes</a></li>
-                                        <li><a href="index#">Digital Cameras</a></li>
-                                        <li><a href="index#">Film Photography</a></li>
-                                        <li><a href="index#">Lighting & Studio</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children mega-menu"><a href="index#">Biographies</a>
-                                    <ul class="sub-menu">
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="index#">Bags & Cases</a></li>
-                                                <li><a href="index#">Binoculars & Scopes</a></li>
-                                                <li><a href="index#">Digital Cameras</a></li>
-                                                <li><a href="index#">Film Photography</a></li>
-                                                <li><a href="index#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="index#">Bags & Cases</a></li>
-                                                <li><a href="index#">Binoculars & Scopes</a></li>
-                                                <li><a href="index#">Digital Cameras</a></li>
-                                                <li><a href="index#">Film Photography</a></li>
-                                                <li><a href="index#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="index#">Bags & Cases</a></li>
-                                                <li><a href="index#">Binoculars & Scopes</a></li>
-                                                <li><a href="index#">Digital Cameras</a></li>
-                                                <li><a href="index#">Film Photography</a></li>
-                                                <li><a href="index#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="index#">Bags & Cases</a></li>
-                                                <li><a href="index#">Binoculars & Scopes</a></li>
-                                                <li><a href="index#">Digital Cameras</a></li>
-                                                <li><a href="index#">Film Photography</a></li>
-                                                <li><a href="index#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="index#">Business & Money</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="index#">Calendars</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="index#">Children's Books</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="index#">Comics</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item"><a href="index#">Perfomance Filters</a></li>
-                                <li class="cat-item has-children"><a href="index#">Cookbooks</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index">Brake Tools</a></li>
-                                        <li><a href="index">Driveshafts</a></li>
-                                        <li><a href="index">Emergency Brake</a></li>
-                                        <li><a href="index">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item "><a href="index#">Accessories</a></li>
-                                <li class="cat-item "><a href="index#">Education</a></li>
-                                <li class="cat-item hidden-menu-item"><a href="index#">Indoor Living</a></li>
-                                <li class="cat-item"><a href="index#" class="js-expand-hidden-menu">More
-                                        Categories</a></li>
+                                @foreach ($Categories as $Category)
+                                    <li class="cat-item has-children">
+                                        <a>{{ $Category->name }}</a>
+                                        <ul class="sub-menu">
+                                            @foreach ($Category->subcategories as $SubCat)
+                                                <li><a
+                                                        href="{{ route('shop', Crypt::encrypt($SubCat->id)) }}">{{ $SubCat->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </nav>
@@ -409,7 +238,7 @@
                             <a href="{{ URL('/shop-grid') }}">Shop</a>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="index#">Pages</a>
+                            <a>Pages</a>
                             <ul class="sub-menu">
                                 <li><a href="cart">Cart</a></li>
                                 <li><a href="checkout">Checkout</a></li>
@@ -423,9 +252,11 @@
                             </ul>
                         </li>
                         <li><a href="{{ URL('/contact') }}">Contact</a></li>
-                        <li class="menu-item-has-children">
-                            <a href="{{ URL('/logout') }}" class="text-danger">Logout</a>
-                        </li>
+                        @if (Auth::check())
+                            <li class="menu-item-has-children">
+                                <a href="{{ URL('/logout') }}" class="text-danger">Logout</a>
+                            </li>
+                        @endif
                     </ul>
                 </nav>
                 <!-- mobile menu navigation end -->
@@ -434,14 +265,14 @@
             <nav class="off-canvas-nav">
                 <ul class="mobile-menu menu-block-2">
                     <li class="menu-item-has-children">
-                        <a href="index#">Currency - USD $ <i class="fas fa-angle-down"></i></a>
+                        <a>Currency - USD $ <i class="fas fa-angle-down"></i></a>
                         <ul class="sub-menu">
                             <li> <a href="cart">USD $</a></li>
                             <li> <a href="checkout">EUR €</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="index#">Lang - Eng<i class="fas fa-angle-down"></i></a>
+                        <a>Lang - Eng<i class="fas fa-angle-down"></i></a>
                         <ul class="sub-menu">
                             <li>Eng</li>
                             <li>Ban</li>
@@ -454,16 +285,16 @@
             </nav>
             <div class="off-canvas-bottom">
                 <div class="contact-list mb--10">
-                    <a href="index" class="sin-contact"><i class="fas fa-mobile-alt"></i>(12345) 78790220</a>
-                    <a href="index" class="sin-contact"><i class="fas fa-envelope"></i>examle@handart.com</a>
+                    <a href="{{URL('/index')}}" class="sin-contact"><i class="fas fa-mobile-alt"></i>(12345) 78790220</a>
+                    <a href="{{URL('/index')}}" class="sin-contact"><i class="fas fa-envelope"></i>examle@handart.com</a>
                 </div>
                 <div class="off-canvas-social">
-                    <a href="index#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="index#" class="single-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="index#" class="single-icon"><i class="fas fa-rss"></i></a>
-                    <a href="index#" class="single-icon"><i class="fab fa-youtube"></i></a>
-                    <a href="index#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="index#" class="single-icon"><i class="fab fa-instagram"></i></a>
+                    <a class="single-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a class="single-icon"><i class="fab fa-twitter"></i></a>
+                    <a class="single-icon"><i class="fas fa-rss"></i></a>
+                    <a class="single-icon"><i class="fab fa-youtube"></i></a>
+                    <a class="single-icon"><i class="fab fa-google-plus-g"></i></a>
+                    <a class="single-icon"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -476,7 +307,7 @@
     <div class="container d-none d-lg-block">
         <div class="row align-items-center">
             <div class="col-lg-4">
-                <a href="index" class="site-brand">
+                <a href="{{URL('/index')}}" class="site-brand">
                     <img src="{{ URL('image/logo.png') }}" alt="">
                 </a>
             </div>

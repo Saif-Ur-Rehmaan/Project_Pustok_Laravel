@@ -14,10 +14,16 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             
-            $table->unsignedBigInteger("category_id");
-            $table->foreign("category_id")
+            $table->unsignedBigInteger("author_id");
+            $table->foreign("author_id")
             ->references("id")
-            ->on("book_categories")
+            ->on("users")
+            ->onDelete("cascade");
+
+            $table->unsignedBigInteger("subcategory_id");
+            $table->foreign("subcategory_id")
+            ->references("id")
+            ->on("book_sub_categories")
             ->onDelete("cascade");
             
             $table->string("title");
@@ -26,7 +32,7 @@ return new class extends Migration
             $table->json("tags")->nullable();
             $table->decimal('extax',8,2,true)->nullable();
             $table->decimal('priceInUSD',8,2,true)->nullable();
-            $table->tinyInteger('discountPercent')->default(0);
+            $table->tinyInteger('discountPercent')->default(0)->max(100);
             $table->text("productDescription")->nullable();
             $table->string("manufacturer")->nullable();
             $table->string("color")->nullable();

@@ -54,7 +54,7 @@ class UserController extends Controller
         try {
             if (Auth::attempt(['email' => $VD['LoginEmail'], 'password' => $VD['LoginPassword']])) {
                 $req->session()->regenerate(); //prevent from fixation attacks
-                return redirect()->intended('/')->with('success', 'User Registered Successfully .Now you have to Login');
+                return redirect()->intended('/')->with('success', 'User Login Successfully');
             } else {
                 return redirect('/login-register')->with('fail', 'Invalid credentials. Please try again.');
             }

@@ -20,7 +20,7 @@ class BookSubCategoryFactory extends Factory
         static $increment = 1; 
         return [
             'category_id'=> $increment++,
-            'name'=>$this->faker->title()
+            'name'=>$this->faker->word()
         ];
     }
 }

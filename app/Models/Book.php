@@ -9,7 +9,8 @@ class Book extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'category_id',
+        'author_id',
+        'subcategory_id',
         'title',
         'brand',
         'image',
@@ -23,4 +24,14 @@ class Book extends Model
         'productCode',
         'availability',
     ];
+
+       // Define the relationship with the SubCategory model
+       public function subCategory()
+       {
+           return $this->belongsTo(BookSubCategory::class, 'subcategory_id');
+       }
+       public function author()
+       {
+           return $this->belongsTo(User::class, 'author_id');
+       }
 }

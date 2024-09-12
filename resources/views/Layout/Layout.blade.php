@@ -11,7 +11,14 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ URL('css/main.css') }}" />
     <link rel="shortcut icon" type="image/x-icon" href="{{ URL('image/favicon.ico') }}">
     @yield('Css')
-
+    <style>
+        .ClickAble{
+            cursor: pointer;
+        }
+        .ClickAble:active{
+            cursor: default;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +26,7 @@
 
         <x-NavBar></x-NavBar>
         @session('success')
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success"  role="alert">
               {{session('success')}}
             </div>
         @endsession

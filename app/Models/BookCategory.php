@@ -11,4 +11,8 @@ class BookCategory extends Model
     protected $fillable=[
         'name'
     ];
+    public function subcategories()
+    {
+        return $this->hasMany(BookSubCategory::class, 'category_id');
+    }
 }

@@ -36,7 +36,12 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+       
         'email_verified_at' => 'datetime',
-        'password' => 'hashed'  
+        'password' => 'hashed'
     ];
+    public function author()
+    {
+        return $this->hasMany(Book::class, 'author_id');
+    }
 }

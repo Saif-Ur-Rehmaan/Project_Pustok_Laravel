@@ -118,12 +118,12 @@
             <div class="container">
                 <div class="row space-db--30">
                     <div class="col-lg-6 col-md-6 mb--30">
-                        <a href="index" class="promo-image promo-overlay">
+                        <a href="{{URL('/index')}}" class="promo-image promo-overlay">
                             <img src="{{URL('image/bg-images/promo-banner-with-text.jpg')}}" alt="">
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 mb--30">
-                        <a href="index" class="promo-image promo-overlay">
+                        <a href="{{URL('/index')}}" class="promo-image promo-overlay">
                             <img src="{{URL('image/bg-images/promo-banner-with-text-2.jpg')}}" alt="">
                         </a>
                     </div>
@@ -178,7 +178,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 jpple
                                             </a>
                                             <h3><a href="product-details">Rpple iPad with Retina Display
@@ -219,7 +219,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Bpple
                                             </a>
                                             <h3><a href="product-details">Koss KPH7 Lightweight Portable
@@ -260,7 +260,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Cpple
                                             </a>
                                             <h3><a href="product-details">Beats EP Wired On-Ear Headphone-Black</a>
@@ -301,7 +301,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Dpple
                                             </a>
                                             <h3><a href="product-details">Beats Solo2 Solo 2 Wired On-Ear
@@ -342,7 +342,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Lpple
                                             </a>
                                             <h3><a href="product-details">Beats Solo3 Wireless On-Ear Headphones
@@ -383,7 +383,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Fpple
                                             </a>
                                             <h3><a href="product-details">3 Ways To Have (A) More Appealing
@@ -424,7 +424,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Epple
                                             </a>
                                             <h3><a href="product-details">In 10 Minutes, I'll Give You The Truth
@@ -465,7 +465,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Fpple
                                             </a>
                                             <h3><a href="product-details">5 Ways To Get Through To Your BOOK</a>
@@ -506,7 +506,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Gpple
                                             </a>
                                             <h3><a href="product-details">What Can You Do To Save Your BOOK</a>
@@ -588,7 +588,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Gpple
                                             </a>
                                             <h3><a href="product-details">Find Out More About BOOK By Social
@@ -629,7 +629,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Vpple
                                             </a>
                                             <h3><a href="product-details">Read This Controversial BOOK By
@@ -686,7 +686,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 jpple
                                             </a>
                                                 <h3><a href="product-details">Bpple iPad with Retina Display
@@ -727,7 +727,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Bpple
                                             </a>
                                             <h3><a href="product-details">Koss KPH7 Lightweight Portable
@@ -768,7 +768,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Cpple
                                             </a>
                                             <h3><a href="product-details">Beats EP Wired On-Ear
@@ -809,7 +809,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Dpple
                                             </a>
                                             <h3><a href="product-details">Beats Solo2 Solo 2 Wired On-Ear
@@ -850,7 +850,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Lpple
                                             </a>
                                             <h3><a href="product-details">Beats Solo3 Wireless On-Ear
@@ -891,7 +891,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Fpple
                                             </a>
                                             <h3><a href="product-details">3 Ways To Have (A) More Appealing
@@ -932,7 +932,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Epple
                                             </a>
                                             <h3><a href="product-details">In 10 Minutes, I'll Give You The
@@ -973,7 +973,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Fpple
                                             </a>
                                             <h3><a href="product-details">5 Ways To Get Through To Your
@@ -1014,7 +1014,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Gpple
                                             </a>
                                             <h3><a href="product-details">What Can You Do To Save Your BOOK</a>
@@ -1055,7 +1055,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Hpple
                                             </a>
                                             <h3><a href="product-details">From Destruction By Social Media?</a>
@@ -1096,7 +1096,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Gpple
                                             </a>
                                             <h3><a href="product-details">Find Out More About BOOK By Social
@@ -1137,7 +1137,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Apple
                                             </a>
                                             <h3><a href="product-details">Read This Controversial BOOK By
@@ -1194,7 +1194,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 jpple
                                                 </a>
                                                 <h3><a href="product-details">Zpple fPad with Retina Display
@@ -1235,7 +1235,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Bpple
                                             </a>
                                             <h3><a href="product-details">Koss KPH7 Lightweight Portable
@@ -1276,7 +1276,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Cpple
                                             </a>
                                             <h3><a href="product-details">Beats EP Wired On-Ear
@@ -1317,7 +1317,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Dpple
                                             </a>
                                             <h3><a href="product-details">Beats Solo2 Solo 2 Wired On-Ear
@@ -1358,7 +1358,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Lpple
                                             </a>
                                             <h3><a href="product-details">Beats Solo3 Wireless On-Ear
@@ -1399,7 +1399,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Fpple
                                             </a>
                                             <h3><a href="product-details">3 Ways To Have (A) More Appealing
@@ -1440,7 +1440,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Epple
                                             </a>
                                             <h3><a href="product-details">In 10 Minutes, I'll Give You The
@@ -1481,7 +1481,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Fpple
                                             </a>
                                             <h3><a href="product-details">5 Ways To Get Through To Your
@@ -1522,7 +1522,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Gpple
                                             </a>
                                             <h3><a href="product-details">What Can You Do To Save Your BOOK</a>
@@ -1563,7 +1563,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Hpple
                                             </a>
                                             <h3><a href="product-details">From Destruction By Social Media?</a>
@@ -1604,7 +1604,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Gpple
                                             </a>
                                             <h3><a href="product-details">Find Out More About BOOK By Social
@@ -1645,7 +1645,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="index" class="author">
+                                            <a href="{{URL('/index')}}" class="author">
                                                 Apple
                                             </a>
                                             <h3><a href="product-details">Read This Controversial BOOK By
@@ -1713,7 +1713,7 @@
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="product-header">
-                                <a href="index" class="author">
+                                <a href="{{URL('/index')}}" class="author">
                                     Ypple
                                 </a>
                                 <h3><a href="product-details">Do You Really Need It? This Will Help You
@@ -2447,7 +2447,7 @@
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="product-header">
-                                <a href="index" class="author">
+                                <a href="{{URL('/index')}}" class="author">
                                     Jpple
                                 </a>
                                 <h3><a href="product-details">Turn Your BOOK Into High Machine</a>
@@ -2488,7 +2488,7 @@
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="product-header">
-                                <a href="index" class="author">
+                                <a href="{{URL('/index')}}" class="author">
                                     Wpple
                                 </a>
                                 <h3><a href="product-details">Create Better BOOK With The Help Of Your</a></h3>
@@ -2528,7 +2528,7 @@
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="product-header">
-                                <a href="index" class="author">
+                                <a href="{{URL('/index')}}" class="author">
                                     Epple
                                 </a>
                                 <h3><a href="product-details">What You Can Learn From Bill Gates</a>
@@ -2569,7 +2569,7 @@
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="product-header">
-                                <a href="index" class="author">
+                                <a href="{{URL('/index')}}" class="author">
                                     Hpple
                                 </a>
                                 <h3><a href="product-details">a Half Very Simple Things You To Save</a></h3>
