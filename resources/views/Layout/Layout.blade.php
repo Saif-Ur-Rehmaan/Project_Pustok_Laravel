@@ -18,10 +18,25 @@
         .ClickAble:active{
             cursor: default;
         }
+            /* Fullscreen Loader CSS */
+            #fullscreenLoader {
+            position: absolute  ; /* Stay in place */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(255, 255, 255, 0.9); /* White background with slight opacity */
+            z-index: 1050; /* High z-index to overlay all elements */
+            display: flex; /* Flexbox to center content */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+ 
+        }
     </style>
 </head>
 
 <body>
+ 
     <div class="site-wrapper" id="top">
 
         <x-NavBar></x-NavBar>

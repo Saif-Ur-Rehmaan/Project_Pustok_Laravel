@@ -121,7 +121,11 @@
             </div>
         </div>
         {{-- Book List --}}
-        <div class="shop-product-wrap grid with-pagination row space-db--30 shop-border">
+        <div class="shop-product-wrap grid position-relative with-pagination row space-db--30 shop-border">
+            <div wire:loading>
+                <x-Loader ></x-Loader>
+
+            </div>
 
             @forelse ($Data['Books'] as $Book)
                 <!--Card-->
@@ -138,7 +142,7 @@
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    
+
                                     <img src="{{ URL($Book->image) }}" alt="">
                                     <div class="hover-contents">
                                         <a href="product-details" class="hover-image">
@@ -164,8 +168,8 @@
                                 <div class="price-block">
                                     @if ($Book->discountPercent != 0)
                                         <!-- After Discount Price in USD -->
-                                        <span
-                                            class="price"> ${{ number_format($Book->priceInUSD * (1 - $Book->discountPercent / 100), 2) }}</span>
+                                        <span class="price">
+                                            ${{ number_format($Book->priceInUSD * (1 - $Book->discountPercent / 100), 2) }}</span>
                                         <!-- Before Discount Price in USD -->
                                         <del class="price-old">${{ $Book->priceInUSD }}</del>
                                         <!-- Discount Percentage -->
@@ -256,7 +260,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
     <div class="col-lg-3  mt--40 mt-lg--0">
         <div class="inner-page-sidebar">
@@ -266,6 +270,14 @@
                 <ul class="sidebar-menu--shop">
 
 
+                    <li>
+                        <a  wire:click="SetSubCategoryTo('')"  class="ClickAble  d-flex d-inline-block justify-content-between  w-100 ">
+                            <span class="  text-truncate">
+                                All
+                            </span>
+                        </a>
+                        
+                    </li>
                     @forelse ($Data['Categories']; as $Category)
                         <li>
                             <a class="ClickAble  d-flex d-inline-block justify-content-between  w-100 ">
@@ -274,9 +286,13 @@
                                 </span>
                                 &lpar;{{ count($Category->subcategories) }}&rpar;</a>
                             <ul class="inner-cat-items DropDown d-none">
+                            
                                 @forelse ($Category->subcategories as $SubCat)
-                                    <li><a class="ClickAble">{{ $SubCat->name }}
-                                            &lpar;{{ count($SubCat->books) }}&rpar;</a></li>
+                                    <li>
+                                        <a  wire:click="SetSubCategoryTo('{{$SubCat->name}}')"  class="ClickAble {{$ASubCategory==$SubCat->name?"text-success fw-bolder":""}}">{{ $SubCat->name }}
+                                            &lpar;{{ count($SubCat->books) }}&rpar;
+                                        </a>
+                                    </li>
                                 @empty
                                     <li>
                                         <a class="ClickAble">No Sub Categories Available</a>
