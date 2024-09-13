@@ -263,22 +263,7 @@ jQuery(document).ready(function($) {
 
         }
         stickyHeader()
-        /*-------------------------------------
-        	--> Range Slider
-        ---------------------------------------*/
-        $(function() {
-            $(".sb-range-slider").slider({
-                range: true,
-                min: 0,
-                max: 753,
-                values: [80, 320],
-                slide: function(event, ui) {
-                    $("#amount").val("£" + ui.values[0] + " - £" + ui.values[1]);
-                }
-            });
-            $("#amount").val("£" + $(".sb-range-slider").slider("values", 0) +
-                " - £" + $(".sb-range-slider").slider("values", 1));
-        });
+    
 
         /*-------------------------------------
         	--> Product View Mode
@@ -487,4 +472,30 @@ jQuery(document).ready(function($) {
 		initMap();
 	}
 
+
+  
+        /*-------------------------------------
+            --> Range Slider
+        ---------------------------------------*/
+        $(function() {
+            $(".sb-range-slider").slider({
+                range: true,
+                min: 0,
+                max: 3000,
+                values: [
+                    parseInt($("#amountMin").val() || 0),
+                    parseInt($("#amountMax").val() || 3000)
+                ],
+                slide: function(event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    $("#amountMin").val(ui.values[0]);
+                    $("#amountMax").val(ui.values[1]);  
+               
+                }
+            });
+            $("#amount").val("£" + $(".sb-range-slider").slider("values", 0) +
+                " - £" + $(".sb-range-slider").slider("values", 1));
+        });
+  
+ 
 });

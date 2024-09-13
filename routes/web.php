@@ -42,7 +42,7 @@ Route::prefix("/blogs")->group(function () {
 
 // App Controller
 Route::controller(AppController::class)->group(function (){
-   Route::view('/shop-grid/{id?}', 'shop-grid')->name('shop'); 
+   Route::view('/shop-grid/{id?}', 'shop-grid')->name('shop');  
 
 });
 

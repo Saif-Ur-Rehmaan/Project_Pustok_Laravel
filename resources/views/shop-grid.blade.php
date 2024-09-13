@@ -4,8 +4,9 @@
     <x-Breadcrumb :items="['Home', 'Shop']" />
     <main class="inner-page-sec-padding-bottom">
         <div class="container">
+
             @livewire('ShopLiveWireComponent')
-           
+
         </div>
     </main>
 @endsection
@@ -26,4 +27,5 @@
 
         }
     </script>
+  
 @endsection

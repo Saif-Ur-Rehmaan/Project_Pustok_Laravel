@@ -123,7 +123,7 @@
         {{-- Book List --}}
         <div class="shop-product-wrap grid position-relative with-pagination row space-db--30 shop-border">
             <div wire:loading>
-                <x-Loader ></x-Loader>
+                <x-Loader></x-Loader>
 
             </div>
 
@@ -271,25 +271,28 @@
 
 
                     <li>
-                        <a  wire:click="SetSubCategoryTo('')"  class="ClickAble  d-flex d-inline-block justify-content-between  w-100 ">
+                        <a wire:click="SetSubCategoryTo('')"
+                            class="ClickAble  d-flex d-inline-block justify-content-between  w-100 {{ $ASubCategory == '' ? 'text-success fw-bolder' : '' }}">
                             <span class="  text-truncate">
                                 All
                             </span>
                         </a>
-                        
+
                     </li>
                     @forelse ($Data['Categories']; as $Category)
                         <li>
-                            <a class="ClickAble  d-flex d-inline-block justify-content-between  w-100 ">
+                            <a
+                                class="ClickAble  d-flex d-inline-block justify-content-between  w-100  {{ $Category->subcategories->contains('name', $ASubCategory) ? 'text-success fw-bolder' : '' }}">
                                 <span class="  text-truncate">
                                     {{ $Category->name }}
                                 </span>
                                 &lpar;{{ count($Category->subcategories) }}&rpar;</a>
+
                             <ul class="inner-cat-items DropDown d-none">
-                            
                                 @forelse ($Category->subcategories as $SubCat)
                                     <li>
-                                        <a  wire:click="SetSubCategoryTo('{{$SubCat->name}}')"  class="ClickAble {{$ASubCategory==$SubCat->name?"text-success fw-bolder":""}}">{{ $SubCat->name }}
+                                        <a wire:click="SetSubCategoryTo('{{ $SubCat->name }}')"
+                                            class="ClickAble {{ $ASubCategory == $SubCat->name ? 'text-success fw-bolder' : '' }}">{{ $SubCat->name }}
                                             &lpar;{{ count($SubCat->books) }}&rpar;
                                         </a>
                                     </li>
@@ -314,25 +317,67 @@
             <!-- Price -->
             <div class="single-block">
                 <h3 class="sidebar-title">Fillter By Price</h3>
-                <div class="range-slider pt--30">
-                    <div class="sb-range-slider"></div>
+                <div class="range-slider pt--30 text-center">
+
+
+                    {{-- 
+                     wire:model not working correctly here bcz the element '<input type="text" wire:model.live="APriceMin" id="amountMin">' and  '<input type="text" wire:model="APriceMax" id="amountMax" hidden readonly="">' is not intracted directly by user
+                    <style>
+                        .ui-slider-range.ui-corner-all.ui-widget-header {
+                            display: none
+                        }
+                    </style>
+                    <div  
+                        class="sb-range-slider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+                        style="left: 0%;"  ></span>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+                        style="left: 100%;" ></span>
+                    </div>
                     <div class="slider-price">
                         <p>
-                            <input type="text" id="amount" readonly="">
+                            <input type="text" id="amount"  readonly=""> <br>
+                            <input type="text" wire:model.live="APriceMin" id="amountMin"   >
+                            <input type="text" wire:model="APriceMax" id="amountMax" hidden readonly="">
+                          
                         </p>
+                    </div> --}}
+
+                    <div class="row flex-row justify-content-center gap-2 mb-2">
+                        <div class="col-auto d-inline p-0 m-0">Min Price $</div>
+                        <div class="col-auto p-0"><input type="number" placeholder="{{ $APriceMin }}"
+                                wire:model.live.debounce.500ms="APriceMin" class="w-100" id="amountMin"></div>
                     </div>
+                    <div class="row flex-row justify-content-center gap-2">
+                        <div class="col-auto d-inline p-0 m-0">Max Price $</div>
+                        <div class="col-auto p-0"><input type="number" placeholder="{{ $APriceMax }}"
+                                wire:model.live.debounce.500ms="APriceMax" class="w-100" id="amountMax"></div>
+                    </div>
+
                 </div>
             </div>
-            <!-- Size -->
+            <!-- Manufacturer -->
             <div class="single-block">
                 <h3 class="sidebar-title">Select By Manufacturer</h3>
                 <ul class="sidebar-menu--shop menu-type-2">
+                    <li>
+                        <a wire:click="SetManufacturerTo('')"
+                            class="ClickAble  d-flex d-inline-block justify-content-between  w-100 {{ $AManufacturer == '' ? 'text-success fw-bolder' : '' }}">
+                            <span class="  text-truncate">
+                                All
+                            </span>
+                        </a>
+                    </li>
                     @forelse ($Data['Manufacturers'] as $Manufacturer)
-                        <li><a class=" d-flex d-inline-block justify-content-between  w-100 ClickAble">
+                        <li>
+                            <a wire:click="SetManufacturerTo('{{ $Manufacturer->ManufacturerName }}')"
+                                class=" d-flex d-inline-block justify-content-between  w-100 ClickAble {{ $AManufacturer == $Manufacturer->ManufacturerName ? 'text-success fw-bolder' : '' }}">
                                 <span class="  text-truncate">
                                     {{ $Manufacturer->ManufacturerName }}
                                 </span>
-                                <span>&lpar;{{ $Manufacturer->NoOfBooks }}&rpar;</span></a></li>
+                                <span>&lpar;{{ $Manufacturer->NoOfBooks }}&rpar;</span>
+                            </a>
+                        </li>
                     @empty
                         <li><a href="shop-grid-left-sidebar">No Manufacturer Available </a></li>
                     @endforelse
@@ -343,12 +388,25 @@
             <div class="single-block">
                 <h3 class="sidebar-title">Select By Color</h3>
                 <ul class="sidebar-menu--shop menu-type-2">
+                    <li>
+                        <a wire:click="SetColorTo('')"
+                            class="ClickAble  d-flex d-inline-block justify-content-between  w-100 {{ $AColor == '' ? 'text-success fw-bolder' : '' }}">
+                            <span class="  text-truncate">
+                                All
+                            </span>
+                        </a>
+
+                    </li>
                     @forelse ($Data['Colors'] as $Color)
-                        <li><a class=" d-flex d-inline-block justify-content-between  w-100 ClickAble">
+                        <li>
+                            <a wire:click="SetColorTo('{{ $Color->ColorName }}')"
+                                class=" d-flex d-inline-block justify-content-between  w-100 ClickAble  {{ $AColor == $Color->ColorName ? 'text-success fw-bolder' : '' }}">
                                 <span class="  text-truncate">
                                     {{ $Color->ColorName }}
                                 </span>
-                                <span>&lpar;{{ $Color->NoOfBooks }}&rpar;</span></a></li>
+                                <span>&lpar;{{ $Color->NoOfBooks }}&rpar;</span>
+                            </a>
+                        </li>
                     @empty
                         <li><a href="shop-grid-left-sidebar">No Colors Available </a></li>
                     @endforelse

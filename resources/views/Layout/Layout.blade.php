@@ -12,44 +12,54 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ URL('image/favicon.ico') }}">
     @yield('Css')
     <style>
-        .ClickAble{
+        .ClickAble {
             cursor: pointer;
         }
-        .ClickAble:active{
+
+        .ClickAble:active {
             cursor: default;
         }
-            /* Fullscreen Loader CSS */
-            #fullscreenLoader {
-            position: absolute  ; /* Stay in place */
+
+        /* Fullscreen Loader CSS */
+        #fullscreenLoader {
+            position: absolute;
+            /* Stay in place */
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            background-color: rgba(255, 255, 255, 0.9); /* White background with slight opacity */
-            z-index: 1050; /* High z-index to overlay all elements */
-            display: flex; /* Flexbox to center content */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
- 
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            background-color: rgba(255, 255, 255, 0.9);
+            /* White background with slight opacity */
+            z-index: 1050;
+            /* High z-index to overlay all elements */
+            display: flex;
+            /* Flexbox to center content */
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+
         }
     </style>
 </head>
 
 <body>
- 
+
     <div class="site-wrapper" id="top">
 
         <x-NavBar></x-NavBar>
         @session('success')
-            <div class="alert alert-success"  role="alert">
-              {{session('success')}}
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
             </div>
         @endsession
         @session('fail')
             <div class="alert alert-danger" role="alert">
-              {{session('fail')}}
+                {{ session('fail') }}
             </div>
-        @endsession 
+        @endsession
         @yield('Content')
         <x-ProductModal></x-ProductModal>
     </div>
@@ -66,6 +76,7 @@
     <script src="{{ URL('js/plugins.js') }}"></script>
     <script src="{{ URL('js/ajax-mail.js') }}"></script>
     <script src="{{ URL('js/custom.js') }}"></script>
+
     @yield('Scripts')
 </body>
 
