@@ -350,7 +350,7 @@
                     </div>
                     <div class="row flex-row justify-content-center gap-2">
                         <div class="col-auto d-inline p-0 m-0">Max Price $</div>
-                        <div class="col-auto p-0"><input type="number" placeholder="{{ $APriceMax }}"
+                        <div class="col-auto p-0"><input type="number"  placeholder="{{ $APriceMax }}"
                                 wire:model.live.debounce.500ms="APriceMax" class="w-100" id="amountMax"></div>
                     </div>
 

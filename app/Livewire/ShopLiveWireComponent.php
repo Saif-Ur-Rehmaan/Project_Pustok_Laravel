@@ -61,7 +61,7 @@ class ShopLiveWireComponent extends Component
             ->get();
     }
 
-
+    
     //setters
     public function SetSubCategoryTo(string $CategoryName)
     {
