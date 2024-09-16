@@ -20,49 +20,49 @@
                 </div>
                 <div class="col-xl-4 col-md-4 col-sm-6  mt--10 mt-sm--0">
                     <span class="toolbar-status">
-                        Showing 1 to 9 of 14 (2 Pages)
+                        Showing {{ $BookPagination['Showing'] }} to {{ $BookPagination['To'] }} of
+                        {{ $BookPagination['Of'] }} ({{ $BookPagination['Pages'] }} Pages)
+
                     </span>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-6  mt--10 mt-md--0">
                     <div class="sorting-selection">
                         <span>Show:</span>
-                        <select class="form-control nice-select sort-select">
-                            <option value="" selected="selected">3</option>
-                            <option value="">9</option>
-                            <option value="">5</option>
-                            <option value="">10</option>
-                            <option value="">12</option>
+                        <select wire:model.live='BookPagination.NoOfBooksTOShowInOnePage' class="">
+                            <option value="3"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 3 ? 'selected' : '' }}>3</option>
+                            <option value="5"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 5 ? 'selected' : '' }}>5</option>
+                            <option value="9"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 9 ? 'selected' : '' }}>9</option>
+                            <option value="10"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 10 ? 'selected' : '' }}>10</option>
+                            <option value="12"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 12 ? 'selected' : '' }}>12</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 mt--10 mt-md--0 ">
                     <div class="sorting-selection">
-                        <span>Sort By:</span>
-                        <select class="form-control nice-select sort-select mr-0">
-                            <option value="" selected="selected">Default Sorting</option>
-                            <option value="">Sort
-                                By:Name (A - Z)</option>
-                            <option value="">Sort
-                                By:Name (Z - A)</option>
-                            <option value="">Sort
-                                By:Price (Low &gt; High)</option>
-                            <option value="">Sort
-                                By:Price (High &gt; Low)</option>
-                            <option value="">Sort
-                                By:Rating (Highest)</option>
-                            <option value="">Sort
-                                By:Rating (Lowest)</option>
-                            <option value="">Sort
-                                By:Model (A - Z)</option>
-                            <option value="">Sort
-                                By:Model (Z - A)</option>
+                        <span class="d-inline-block text-truncate text-nowrap">Sort By:</span>
+                        <select wire:model.live='SortBy' class="">
+                            <option value=''>Default Sorting</option>
+                            <option value='Sort By:Name (A - Z)'>Sort By:Name (A - Z)</option>
+                            <option value='Sort By:Name (Z - A)'>Sort By:Name (Z - A)</option>
+                            <option value='Sort By:Price (Low > High)'>Sort By:Price (Low > High)</option>
+                            <option value='Sort By:Price (High > Low)'>Sort By:Price (High > Low)</option>
+                            
                         </select>
                     </div>
                 </div>
+                
             </div>
         </div>
+
+        {{-- d-none --}}
         <div class="shop-toolbar d-none">
             <div class="row align-items-center">
+                {{-- view Mode --}}
                 <div class="col-lg-2 col-md-2 col-sm-6">
                     <!-- Product View Mode -->
                     <div class="product-view-mode">
@@ -77,27 +77,38 @@
                                 class="fas fa-list"></i></a>
                     </div>
                 </div>
+                {{-- Showing ... --}}
                 <div class="col-xl-5 col-md-4 col-sm-6  mt--10 mt-sm--0">
                     <span class="toolbar-status">
-                        Showing 1 to 9 of 14 (2 Pages)
+                        Showing {{ $BookPagination['Showing'] }} to {{ $BookPagination['To'] }} of
+                        {{ $BookPagination['Of'] }} (2 Pages)
                     </span>
                 </div>
+                {{-- Show --}}
                 <div class="col-lg-2 col-md-2 col-sm-6  mt--10 mt-md--0">
                     <div class="sorting-selection">
                         <span>Show:</span>
-                        <select class="form-control nice-select sort-select">
-                            <option value="" selected="selected">3</option>
-                            <option value="">9</option>
-                            <option value="">5</option>
-                            <option value="">10</option>
-                            <option value="">12</option>
+                        <select wire:model='BookPagination.NoOfBooksTOShowInOnePage'
+                            class="form-control nice-select sort-select">
+                            <option value="3"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 3 ? 'selected' : '' }}>3</option>
+                            <option value="5"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 5 ? 'selected' : '' }}>5</option>
+                            <option value="9"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 9 ? 'selected' : '' }}>9</option>
+                            <option value="10"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 10 ? 'selected' : '' }}>10</option>
+                            <option value="12"
+                                {{ $BookPagination['NoOfBooksTOShowInOnePage'] == 12 ? 'selected' : '' }}>12</option>
                         </select>
+
                     </div>
                 </div>
+                {{-- Sort By --}}
                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 mt--10 mt-md--0 ">
                     <div class="sorting-selection">
                         <span>Sort By:</span>
-                        <select class="form-control nice-select sort-select mr-0">
+                        <select class="SelectDD" class="form-control nice-select sort-select mr-0">
                             <option value="" selected="selected">Default Sorting</option>
                             <option value="">Sort
                                 By:Name (A - Z)</option>
@@ -119,6 +130,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         {{-- Book List --}}
         <div class="shop-product-wrap grid position-relative with-pagination row space-db--30 shop-border">
@@ -127,13 +139,13 @@
 
             </div>
 
-            @forelse ($Data['Books'] as $Book)
+            @forelse ($Books as $Book)
                 <!--Card-->
                 <div class="col-lg-4 col-sm-6">
                     <div class="product-card">
                         <div class="product-grid-content">
                             <div class="product-header">
-                                <a href="shop-grid-left-sidebar" class="author">
+                                <a class="author">
 
                                     {{ $Book->author->displayName }}
 
@@ -187,7 +199,7 @@
                             </div>
                             <div class="product-card--body">
                                 <div class="product-header">
-                                    <a href="shop-grid-left-sidebar" class="author">
+                                    <a class="author">
                                         {{ $Book->author->displayName }}
                                     </a>
                                     <h3><a href="product-details" tabindex="0">{{ $Book->title }}</a></h3>
@@ -218,12 +230,12 @@
                                     <span class="fas fa-star "></span>
                                 </div>
                                 <div class="btn-block">
-                                    <a href="shop-grid-left-sidebar" class="btn btn-outlined">Add To Cart</a>
-                                    <a href="shop-grid-left-sidebar" class="card-link"><i class="fas fa-heart"></i>
+                                    <a class="btn btn-outlined">Add To Cart</a>
+                                    <a class="card-link"><i class="fas fa-heart"></i>
                                         Add
                                         To
                                         Wishlist</a>
-                                    <a href="shop-grid-left-sidebar" class="card-link"><i class="fas fa-random"></i>
+                                    <a class="card-link"><i class="fas fa-random"></i>
                                         Add
                                         To
                                         Cart</a>
@@ -242,21 +254,79 @@
         <div class="row pt--30">
             <div class="col-md-12">
                 <div class="pagination-block">
-                    <ul class="pagination-btns flex-center">
-                        <li><a href="shop-grid-left-sidebar" class="single-btn prev-btn ">|<i
-                                    class="zmdi zmdi-chevron-left"></i> </a></li>
-                        <li><a href="shop-grid-left-sidebar" class="single-btn prev-btn "><i
-                                    class="zmdi zmdi-chevron-left"></i> </a></li>
-                        <li class="active"><a href="shop-grid-left-sidebar" class="single-btn">1</a>
-                        </li>
-                        <li><a href="shop-grid-left-sidebar" class="single-btn">2</a></li>
-                        <li><a href="shop-grid-left-sidebar" class="single-btn">3</a></li>
-                        <li><a href="shop-grid-left-sidebar" class="single-btn">4</a></li>
-                        <li><a href="shop-grid-left-sidebar" class="single-btn next-btn"><i
-                                    class="zmdi zmdi-chevron-right"></i></a></li>
-                        <li><a href="shop-grid-left-sidebar" class="single-btn next-btn"><i
-                                    class="zmdi zmdi-chevron-right"></i>|</a></li>
-                    </ul>
+                    @if ($Books->hasPages())
+                        <ul class="pagination-btns flex-center">
+                            @if ($Books->onFirstPage())
+                                {{-- double back --}}
+                                <li><a class="single-btn prev-btn  opacity-75 text-muted">|<i
+                                            class="zmdi zmdi-chevron-left"></i> </a></li>
+                                {{-- single back --}}
+                                <li><a class="single-btn prev-btn  opacity-75 text-muted"><i
+                                            class="zmdi zmdi-chevron-left"></i> </a></li>
+                            @else
+                                {{-- double back --}}
+                                <li><a class="single-btn prev-btn" wire:click='previousPage' rel="prev">|<i
+                                            class="zmdi zmdi-chevron-left"></i> </a></li>
+                                {{-- single back --}}
+                                <li><a class="single-btn prev-btn" wire:click='previousPage' rel="prev"><i
+                                            class="zmdi zmdi-chevron-left"></i> </a></li>
+                            @endif
+
+                            {{-- Pagination Elements --}}
+                            @php
+                                $totalPages = $Books->lastPage();
+                                $currentPage = $Books->currentPage();
+                                $startPage = max(1, $currentPage - 2);
+                                $endPage = min($totalPages, $currentPage + 2);
+                            @endphp
+
+                            {{-- Show the First Page --}}
+                            @if ($startPage > 1)
+                                <li><a href="#" wire:click.prevent="gotoPage(1)" class="single-btn">1</a></li>
+                                @if ($startPage > 2)
+                                    <li><span>...</span></li>
+                                @endif
+                            @endif
+
+                            {{-- Show Pages Around the Current Page --}}
+                            @for ($page = $startPage; $page <= $endPage; $page++)
+                                @if ($page == $currentPage)
+                                    <li class="active"><a href="#" class="single-btn">{{ $page }}</a>
+                                    </li>
+                                @else
+                                    <li><a href="#" wire:click.prevent="gotoPage({{ $page }})"
+                                            class="single-btn">{{ $page }}</a></li>
+                                @endif
+                            @endfor
+
+                            {{-- Show the Last Page --}}
+                            @if ($endPage < $totalPages)
+                                @if ($endPage < $totalPages - 1)
+                                    <li><span>...</span></li>
+                                @endif
+                                <li><a href="#" wire:click.prevent="gotoPage({{ $totalPages }})"
+                                        class="single-btn">{{ $totalPages }}</a></li>
+                            @endif
+
+
+                            @if ($Books->hasMorePages())
+                                <li><a href="#" wire:click.prevent="nextPage" class="single-btn next-btn"><i
+                                            class="zmdi zmdi-chevron-right"></i></a></li>
+                                <li><a href="#" wire:click.prevent="nextPage" class="single-btn next-btn"><i
+                                            class="zmdi zmdi-chevron-right"></i>|</a></li>
+                            @else
+                                <li class="text-muted opacity-75"><a class=" single-btn next-btn "><i
+                                            class="zmdi zmdi-chevron-right"></i></a></li>
+                                <li class="text-muted opacity-75"><a class=" single-btn next-btn "><i
+                                            class="zmdi zmdi-chevron-right"></i>|</a></li>
+                            @endif
+                            {{-- <li><a class="single-btn next-btn" wire:click='nextPage'><i
+                                        class="zmdi zmdi-chevron-right"></i></a></li>
+                            <li><a class="single-btn next-btn" wire:click='nextPage'><i
+                                        class="zmdi zmdi-chevron-right"></i>|</a></li> --}}
+                        </ul>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -267,7 +337,7 @@
             <!-- Accordion -->
             <div class="single-block">
                 <h3 class="sidebar-title">Categories</h3>
-                <ul class="sidebar-menu--shop">
+                <ul class="sidebar-menu--shop" style="max-height: 600px; overflow-x:hidden;overflow-y:scroll; ">
 
 
                     <li>
@@ -350,7 +420,7 @@
                     </div>
                     <div class="row flex-row justify-content-center gap-2">
                         <div class="col-auto d-inline p-0 m-0">Max Price $</div>
-                        <div class="col-auto p-0"><input type="number"  placeholder="{{ $APriceMax }}"
+                        <div class="col-auto p-0"><input type="number" placeholder="{{ $APriceMax }}"
                                 wire:model.live.debounce.500ms="APriceMax" class="w-100" id="amountMax"></div>
                     </div>
 
@@ -359,7 +429,7 @@
             <!-- Manufacturer -->
             <div class="single-block">
                 <h3 class="sidebar-title">Select By Manufacturer</h3>
-                <ul class="sidebar-menu--shop menu-type-2">
+                <ul class="sidebar-menu--shop menu-type-2" style="max-height: 600px; overflow-x:hidden;overflow-y:scroll; ">
                     <li>
                         <a wire:click="SetManufacturerTo('')"
                             class="ClickAble  d-flex d-inline-block justify-content-between  w-100 {{ $AManufacturer == '' ? 'text-success fw-bolder' : '' }}">
@@ -379,7 +449,7 @@
                             </a>
                         </li>
                     @empty
-                        <li><a href="shop-grid-left-sidebar">No Manufacturer Available </a></li>
+                        <li><a>No Manufacturer Available </a></li>
                     @endforelse
 
                 </ul>
@@ -387,7 +457,7 @@
             <!-- Color -->
             <div class="single-block">
                 <h3 class="sidebar-title">Select By Color</h3>
-                <ul class="sidebar-menu--shop menu-type-2">
+                <ul class="sidebar-menu--shop menu-type-2" style="max-height: 600px; overflow-x:hidden;overflow-y:scroll; ">
                     <li>
                         <a wire:click="SetColorTo('')"
                             class="ClickAble  d-flex d-inline-block justify-content-between  w-100 {{ $AColor == '' ? 'text-success fw-bolder' : '' }}">
@@ -408,14 +478,14 @@
                             </a>
                         </li>
                     @empty
-                        <li><a href="shop-grid-left-sidebar">No Colors Available </a></li>
+                        <li><a>No Colors Available </a></li>
                     @endforelse
 
                 </ul>
             </div>
             <!-- Promotion Block -->
             <div class="single-block">
-                <a href="shop-grid-left-sidebar" class="promo-image sidebar">
+                <a class="promo-image sidebar">
                     <img src="{{ URL('image/others/home-side-promo.jpg') }}" alt="">
                 </a>
             </div>

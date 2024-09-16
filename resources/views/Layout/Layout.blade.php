@@ -42,6 +42,10 @@
             /* Center vertically */
 
         }
+        .c-pointer{
+            cursor: pointer;
+        }
+        .c-diable{cursor: not-allowed}
     </style>
 </head>
 

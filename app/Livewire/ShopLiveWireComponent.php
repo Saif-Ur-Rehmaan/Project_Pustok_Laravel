@@ -10,7 +10,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 class ShopLiveWireComponent extends Component
-{ 
+{
+    use WithPagination;
+
     public $Data = [];
 
     public $ASubCategory = '';
@@ -18,19 +20,32 @@ class ShopLiveWireComponent extends Component
     public $AManufacturer = '';
     public $APriceMin = 0.00;
     public $APriceMax = 3000.00;
-
+    public $SortBy = '';
+    public $BookPagination=[
+        'Showing'=>1,
+        'To'=>9,
+        'Of'=>14,
+        'Pages'=>2,
+        'NoOfBooksTOShowInOnePage'=>12
+    ];
 
     public function render()
     {
         $this->FetchCategories();
         $this->FetchColors();
         $this->FetchManufacturers();
-        $this->FetchBooks();
-
-        return view('livewire.shop-live-wire-component');
+        $Books= $this->FetchBooks();
+        $this->BookPagination['Showing'] = ($Books->currentPage() - 1) * $Books->perPage() + 1;
+        $this->BookPagination['To'] = min($Books->currentPage() * $Books->perPage(), $Books->total());
+        $this->BookPagination['Of'] = $Books->total();
+        $this->BookPagination['Pages'] = $Books->lastPage();
+        $this->BookPagination['NoOfBooksTOShowInOnePage'] = $Books->perPage();
+    
+  
+        return view('livewire.shop-live-wire-component',compact('Books'));
     }
+    
 
-   
     // functions
     public function FetchManufacturers()
     {
@@ -47,21 +62,42 @@ class ShopLiveWireComponent extends Component
     public function FetchCategories()
     {
         $this->Data['Categories'] = BookCategory::with('subcategories')->has('subcategories')->get();
-   
     }
     public function FetchBooks()
     {
-        $this->Data['Books'] = Book::with('author')
+        $query = Book::with('author')
             ->whereHas('subCategory', function ($query) {
                 $query->where('name', 'like', '%' . $this->ASubCategory . '%');
             })
             ->where('color', 'like', '%' . $this->AColor . '%')
             ->where('manufacturer', 'like', '%' . $this->AManufacturer . '%')
-            ->whereBetween('priceInUSD', [(float)$this->APriceMin,(float) $this->APriceMax])
-            ->get();
-    }
-
+            ->whereBetween('priceInUSD', [(float)$this->APriceMin, (float) $this->APriceMax]);
     
+        // Apply sorting based on the SortBy value
+        switch ($this->SortBy) {
+            case 'Sort By:Name (A - Z)':
+                $query->orderBy('title', 'asc');
+                break;
+            case 'Sort By:Name (Z - A)':
+                $query->orderBy('title', 'desc');
+                break;
+            case 'Sort By:Price (Low > High)':
+                $query->orderBy('priceInUSD', 'asc');
+                break;
+            case 'Sort By:Price (High > Low)':
+                $query->orderBy('priceInUSD', 'desc');
+                break;
+             
+            default:
+                // Default sorting can be applied here if needed
+                break;
+        }
+    
+        return $query->paginate($this->BookPagination['NoOfBooksTOShowInOnePage']);
+    }
+    
+
+
     //setters
     public function SetSubCategoryTo(string $CategoryName)
     {
