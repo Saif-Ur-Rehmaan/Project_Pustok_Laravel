@@ -497,11 +497,18 @@ jQuery(document).ready(function ($) {
             " - £" + $(".sb-range-slider").slider("values", 1));
     });
 
-  $('#quickModal').on('click', function() {
-    
-    
-    // Dispatch the event using Livewire's global object
-    window.Livewire.dispatch('CloseProductModal');
-});
+    $('#quickModal').on('click', function () {
+
+
+        // Dispatch the event using Livewire's global object
+        window.Livewire.dispatch('CloseProductModal');
+    });
+    $('.quickViewBtn').on('click', function (element) {
+        const id= parseInt($(this).attr("data-id"));
+   
+        
+        // Dispatch the event using Livewire's global object
+        window.Livewire.dispatch('OpenProductModal',{id:id});
+    });
 
 });

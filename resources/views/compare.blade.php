@@ -122,14 +122,14 @@
                                         <span class="author">
                                             Lpple
                                         </span>
-                                        <h3><a href="product-details">Revolutionize Your BOOK With These
+                                        <h3><a  href="{{URL('product-details')}}">Revolutionize Your BOOK With These
                                                 Easy-peasy Tips</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="{{ URL('image/products/product-10.jpg') }}" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details" class="hover-image">
+                                                <a  href="{{URL('product-details')}}" class="hover-image">
                                                     <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -163,13 +163,13 @@
                                         <span class="author">
                                             Jpple
                                         </span>
-                                        <h3><a href="product-details">Turn Your BOOK Into High Machine</a></h3>
+                                        <h3><a  href="{{URL('product-details')}}">Turn Your BOOK Into High Machine</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details" class="hover-image">
+                                                <a  href="{{URL('product-details')}}" class="hover-image">
                                                     <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -203,13 +203,13 @@
                                         <span class="author">
                                             Wpple
                                         </span>
-                                        <h3><a href="product-details">3 Ways Create Better BOOK With</a></h3>
+                                        <h3><a  href="{{URL('product-details')}}">3 Ways Create Better BOOK With</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="{{ URL('image/products/product-3.jpg') }}" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details" class="hover-image">
+                                                <a  href="{{URL('product-details')}}" class="hover-image">
                                                     <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -243,14 +243,14 @@
                                         <span class="author">
                                             Epple
                                         </span>
-                                        <h3><a href="product-details">What You Can Learn From Bill Gates</a>
+                                        <h3><a  href="{{URL('product-details')}}">What You Can Learn From Bill Gates</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="{{ URL('image/products/product-5.jpg') }}" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details" class="hover-image">
+                                                <a  href="{{URL('product-details')}}" class="hover-image">
                                                     <img src="{{ URL('image/products/product-4.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -284,13 +284,13 @@
                                         <span class="author">
                                             Hpple
                                         </span>
-                                        <h3><a href="product-details">Simple Things You To Save BOOK</a></h3>
+                                        <h3><a  href="{{URL('product-details')}}">Simple Things You To Save BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="{{ URL('image/products/product-6.jpg') }}" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details" class="hover-image">
+                                                <a  href="{{URL('product-details')}}" class="hover-image">
                                                     <img src="{{ URL('image/products/product-4.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">

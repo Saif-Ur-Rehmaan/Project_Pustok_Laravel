@@ -34,6 +34,7 @@ return new class extends Migration
             $table->decimal('priceInUSD',8,2,true)->nullable();
             $table->tinyInteger('discountPercent')->default(0)->max(100);
             $table->text("productDescription")->nullable();
+            $table->text("productSummary")->nullable();
             $table->string("manufacturer")->nullable();
             $table->string("color")->nullable();
             $table->integer("RewardPoints")->default(0);

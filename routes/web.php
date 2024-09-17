@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'Index');
 Route::view('index', 'Index');
-Route::view('/product-details', 'product-details');
 Route::view('/cart', 'cart');
 Route::view('/compare', 'compare');
 
@@ -31,7 +30,7 @@ Route::get('/contact', function () {
 Route::view('/checkout', 'checkout');
 Route::view('/wishlist', 'wishlist');
 Route::view('/faq', 'faq');
-Route::view('/search', 'search');
+Route::view('/search/{id?}', 'search')->name('search');
 
 
 
@@ -42,7 +41,8 @@ Route::prefix("/blogs")->group(function () {
 
 // App Controller
 Route::controller(AppController::class)->group(function (){
-   Route::view('/shop-grid/{id?}', 'shop-grid')->name('shop');  
+   Route::view('/shop-grid', 'shop-grid')->name('shop');  
+   Route::get('/product-details/{id}', 'ProductDetails');
 
 });
 

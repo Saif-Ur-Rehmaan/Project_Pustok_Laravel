@@ -1,81 +1,49 @@
 @extends('Layout.Layout')
 @section('Content')
-<x-Breadcrumb :items="['Home', 'Product Details']" />
+    <x-Breadcrumb :items="['Home', 'Product Details']" />
     <main class="inner-page-sec-padding-bottom">
         <div class="container">
             <div class="row  mb--60">
                 <div class="col-lg-5 mb--30">
                     <!-- Product Details Slider Big Image-->
-                    <div class="product-details-slider sb-slick-slider arrow-type-two"
-                        data-slick-setting='{
-                "slidesToShow": 1,
-                "arrows": false,
-                "fade": true,
-                "draggable": false,
-                "swipe": false,
-                "asNavFor": ".product-slider-nav"
-                }'>
+                    <div class="product-details-slider sb-slick-slider arrow-type-two">
                         <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-1.jpg')}}" alt="">
+                            <img src="{{ URL($Book->image) }}" alt="">
                         </div>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-2.jpg')}}" alt="">
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-3.jpg')}}" alt="">
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-4.jpg')}}" alt="">
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-5.jpg')}}" alt="">
-                        </div>
+
                     </div>
                     <!-- Product Details Slider Nav -->
-                    <div class="mt--30 product-slider-nav sb-slick-slider arrow-type-two"
-                        data-slick-setting='{
-                            "infinite":true,
-                            "autoplay": true,
-                            "autoplaySpeed": 8000,
-                            "slidesToShow": 4,
-                            "arrows": true,
-                            "prevArrow":{"buttonClass": "slick-prev","iconClass":"fa fa-chevron-left"},
-                            "nextArrow":{"buttonClass": "slick-next","iconClass":"fa fa-chevron-right"},
-                            "asNavFor": ".product-details-slider",
-                            "focusOnSelect": true
-                            }'>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-1.jpg')}}" alt="">
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-2.jpg')}}" alt="">
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-3.jpg')}}" alt="">
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-4.jpg')}}" alt="">
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{URL('image/products/product-details-5.jpg')}}" alt="">
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col-lg-7">
                     <div class="product-details-info pl-lg--30 ">
-                        <p class="tag-block">Tags: <a href="product-details#">Movado</a>, <a
-                                href="product-details#">Omega</a></p>
-                        <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
+                        <p class="tag-block">Tags:
+                            @foreach (json_decode($Book->tags) as $tag)
+                                <a href="{{ URL('search') }}" class="ClickAble">{{ $tag }}</a>,
+                            @endforeach
+                        </p>
+                        <h3 class="product-title">{{ $Book->title }}</h3>
                         <ul class="list-unstyled">
-                            <li>Ex Tax: <span class="list-value"> £60.24</span></li>
-                            <li>Brands: <a href="product-details#" class="list-value font-weight-bold"> Canon</a></li>
-                            <li>Product Code: <span class="list-value"> model1</span></li>
-                            <li>Reward Points: <span class="list-value"> 200</span></li>
-                            <li>Availability: <span class="list-value"> In Stock</span></li>
+                            <li>Ex Tax: <span class="list-value"> ${{ $Book->exTax }}</span></li>
+                            <li>Brands: <a href="product-details#"
+                                    class="list-value font-weight-bold">{{ $Book->brand }}</a></li>
+                            <li>Product Code: <span class="list-value"> {{ $Book->productCode }}</span></li>
+                            <li>Reward Points: <span class="list-value"> {{ $Book->RewardPoints }}</span></li>
+                            <li>Availability: <span class="list-value"> {{ $Book->availablity }}</span></li>
                         </ul>
                         <div class="price-block">
-                            <span class="price-new">£73.79</span>
-                            <del class="price-old">£91.86</del>
+                            @if ($Book->discountPercent != 0)
+                                <!-- After Discount Price in USD -->
+                                <span class="price">
+                                    ${{ number_format($Book->priceInUSD * (1 - $Book->discountPercent / 100), 2) }}</span>
+                                <!-- Before Discount Price in USD -->
+                                <del class="price-old">${{ $Book->priceInUSD }}</del>
+                                <!-- Discount Percentage -->
+                                <span class="price-discount">{{ $Book->discountPercent }}%</span>
+                            @else
+                                <!-- Regular Price if no Discount -->
+                                <span class="price">${{ $Book->priceInUSD }}</span>
+                            @endif
                         </div>
                         <div class="rating-widget">
                             <div class="rating-block">
@@ -86,15 +54,13 @@
                                 <span class="fas fa-star "></span>
                             </div>
                             <div class="review-widget">
-                                <a href="product-details">(1 Reviews)</a> <span>|</span>
-                                <a href="product-details">Write a review</a>
+                                <a href="{{ URL('product-details') }}">(1 Reviews)</a> <span>|</span>
+                                <a href="{{ URL('product-details') }}">Write a review</a>
                             </div>
                         </div>
                         <article class="product-details-article">
                             <h4 class="sr-only">Product Summery</h4>
-                            <p>Long printed dress with thin adjustable straps. V-neckline and wiring under the Dust
-                                with ruffles at the bottom of the
-                                dress.</p>
+                            <p>{{ $Book->productSummary }}.</p>
                         </article>
                         <div class="add-to-cart-row">
                             <div class="count-input-block">
@@ -102,14 +68,16 @@
                                 <input type="number" class="form-control text-center" value="1">
                             </div>
                             <div class="add-cart-btn">
-                                <a href="product-details" class="btn btn-outlined--primary"><span
+                                <a href="{{ URL('product-details') }}" class="btn btn-outlined--primary"><span
                                         class="plus-icon">+</span>Add to
                                     Cart</a>
                             </div>
                         </div>
                         <div class="compare-wishlist-row">
-                            <a href="product-details" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
-                            <a href="product-details" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
+                            <a href="{{ URL('product-details') }}" class="add-link"><i class="fas fa-heart"></i>Add to Wish
+                                List</a>
+                            <a href="{{ URL('product-details') }}" class="add-link"><i class="fas fa-random"></i>Add to
+                                Compare</a>
                         </div>
                     </div>
                 </div>
@@ -123,8 +91,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="tab2" data-bs-toggle="tab" href="product-details#tab-2"
-                            role="tab" aria-controls="tab-2" aria-selected="true">
+                        <a class="nav-link" id="tab2" data-bs-toggle="tab" href="product-details#tab-2" role="tab"
+                            aria-controls="tab-2" aria-selected="true">
                             REVIEWS (1)
                         </a>
                     </li>
@@ -133,21 +101,7 @@
                     <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab1">
                         <article class="review-article">
                             <h1 class="sr-only">Tab Article</h1>
-                            <p>Fashion has been creating well-designed collections since 2010. The brand offers
-                                feminine designs delivering
-                                stylish
-                                separates and statement dresses which have since evolved into a full ready-to-wear
-                                collection in which every
-                                item is
-                                a
-                                vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful
-                                elegance and unmistakable
-                                signature
-                                style. All the beautiful pieces are made in Italy and manufactured with the greatest
-                                attention. Now Fashion
-                                extends
-                                to
-                                a range of accessories including shoes, hats, belts and more!</p>
+                            <p>{{ $Book->productDescription }}</p>
                         </article>
                     </div>
                     <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
@@ -155,7 +109,7 @@
                             <h2 class="title-lg mb--20">1 REVIEW FOR AUCTOR GRAVIDA ENIM</h2>
                             <div class="review-comment mb--20">
                                 <div class="avatar">
-                                    <img src="{{URL('image/icon/author-logo.png')}}" alt="">
+                                    <img src="{{ URL('image/icon/author-logo.png') }}" alt="">
                                 </div>
                                 <div class="text">
                                     <div class="rating-block mb--15">
@@ -224,28 +178,11 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="tab-product-details">
-    <div class="brand">
-    <img src="{{URL('image/others/review-tab-product-details.jpg')}}" alt="">
-    </div>
-    <h5 class="meta">Reference <span class="small-text">demo_5</span></h5>
-    <h5 class="meta">In stock <span class="small-text">297 Items</span></h5>
-    <section class="product-features">
-    <h3 class="title">Data sheet</h3>
-    <dl class="data-sheet">
-    <dt class="name">Compositions</dt>
-    <dd class="value">Viscose</dd>
-    <dt class="name">Styles</dt>
-    <dd class="value">Casual</dd>
-    <dt class="name">Properties</dt>
-    <dd class="value">Maxi Dress</dd>
-    </dl>
-    </section>
-    </div> -->
+
         </div>
         <!--=================================
-    RELATED PRODUCTS BOOKS
-    ===================================== -->
+            RELATED PRODUCTS BOOKS
+            ===================================== -->
         <section class="">
             <div class="container">
                 <div class="section-title section-title--bordered">
@@ -253,31 +190,32 @@
                 </div>
                 <div class="product-slider sb-slick-slider slider-border-single-row"
                     data-slick-setting='{
-        "autoplay": true,
-        "autoplaySpeed": 8000,
-        "slidesToShow": 4,
-        "dots":true
-    }'
+                                "autoplay": true,
+                                "autoplaySpeed": 8000,
+                                "slidesToShow": 4,
+                                "dots":true
+                            }'
                     data-slick-responsive='[
-        {"breakpoint":1200, "settings": {"slidesToShow": 4} },
-        {"breakpoint":992, "settings": {"slidesToShow": 3} },
-        {"breakpoint":768, "settings": {"slidesToShow": 2} },
-        {"breakpoint":480, "settings": {"slidesToShow": 1} }
-    ]'>
+                                {"breakpoint":1200, "settings": {"slidesToShow": 4} },
+                                {"breakpoint":992, "settings": {"slidesToShow": 3} },
+                                {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                {"breakpoint":480, "settings": {"slidesToShow": 1} }
+                    ]'>
+                @forelse ($RelatedBooks as $book)
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="product-header">
-                                <a href="product-details" class="author">
-                                    Lpple
+                                <a class="author">
+                                    {{$book->author->displayName}}
                                 </a>
-                                <h3><a href="product-details">Revolutionize Your BOOK With</a></h3>
+                                <h3><a href="{{ URL('product-details',Crypt::encrypt($book->id)) }}">{{$book->title}}</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="{{URL('image/products/product-10.jpg')}}" alt="">
+                                    <img src="{{ URL($book->image) }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
-                                            <img src="{{URL('image/products/product-1.jpg')}}" alt="">
+                                        <a href="{{ URL('product-details',Crypt::encrypt($book->id)) }}" class="hover-image">
+                                            <img src="{{ URL($book->image) }}" alt="">
                                         </a>
                                         <div class="hover-btns">
                                             <a href="cart" class="single-btn">
@@ -289,186 +227,40 @@
                                             <a href="compare" class="single-btn">
                                                 <i class="fas fa-random"></i>
                                             </a>
-                                            <a href="product-details#" data-bs-toggle="modal"
-                                                data-bs-target="#quickModal" class="single-btn">
+                                      
+                                            <a    data-bs-toggle="modal"
+                                                data-bs-target="#quickModal"  class="single-btn quickViewBtn" data-id="{{$book->id}}">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="price-block">
-                                    <span class="price">£51.20</span>
-                                    <del class="price-old">£51.20</del>
-                                    <span class="price-discount">20%</span>
+                                    @if ($book->discountPercent != 0)
+                                        <!-- After Discount Price in USD -->
+                                        <span class="price">
+                                            ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
+                                        <!-- Before Discount Price in USD -->
+                                        <del class="price-old">${{ $book->priceInUSD }}</del>
+                                        <!-- Discount Percentage -->
+                                        <span class="price-discount">{{ $book->discountPercent }}%</span>
+                                    @else
+                                        <!-- Regular Price if no Discount -->
+                                        <span class="price">${{ $book->priceInUSD }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="product-header">
-                                <a href="product-details" class="author">
-                                    Jpple
-                                </a>
-                                <h3><a href="product-details">Turn Your BOOK Into High Machine</a>
-                                </h3>
-                            </div>
-                            <div class="product-card--body">
-                                <div class="card-image">
-                                    <img src="{{URL('image/products/product-2.jpg')}}" alt="">
-                                    <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
-                                            <img src="{{URL('image/products/product-1.jpg')}}" alt="">
-                                        </a>
-                                        <div class="hover-btns">
-                                            <a href="cart" class="single-btn">
-                                                <i class="fas fa-shopping-basket"></i>
-                                            </a>
-                                            <a href="wishlist" class="single-btn">
-                                                <i class="fas fa-heart"></i>
-                                            </a>
-                                            <a href="compare" class="single-btn">
-                                                <i class="fas fa-random"></i>
-                                            </a>
-                                            <a href="product-details#" data-bs-toggle="modal"
-                                                data-bs-target="#quickModal" class="single-btn">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="price-block">
-                                    <span class="price">£51.20</span>
-                                    <del class="price-old">£51.20</del>
-                                    <span class="price-discount">20%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="product-header">
-                                <a href="product-details" class="author">
-                                    Wpple
-                                </a>
-                                <h3><a href="product-details">3 Ways Create Better BOOK With</a></h3>
-                            </div>
-                            <div class="product-card--body">
-                                <div class="card-image">
-                                    <img src="{{URL('image/products/product-3.jpg')}}" alt="">
-                                    <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
-                                            <img src="{{URL('image/products/product-2.jpg')}}" alt="">
-                                        </a>
-                                        <div class="hover-btns">
-                                            <a href="cart" class="single-btn">
-                                                <i class="fas fa-shopping-basket"></i>
-                                            </a>
-                                            <a href="wishlist" class="single-btn">
-                                                <i class="fas fa-heart"></i>
-                                            </a>
-                                            <a href="compare" class="single-btn">
-                                                <i class="fas fa-random"></i>
-                                            </a>
-                                            <a href="product-details#" data-bs-toggle="modal"
-                                                data-bs-target="#quickModal" class="single-btn">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="price-block">
-                                    <span class="price">£51.20</span>
-                                    <del class="price-old">£51.20</del>
-                                    <span class="price-discount">20%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="product-header">
-                                <a href="product-details" class="author">
-                                    Epple
-                                </a>
-                                <h3><a href="product-details">What You Can Learn From Bill Gates</a>
-                                </h3>
-                            </div>
-                            <div class="product-card--body">
-                                <div class="card-image">
-                                    <img src="{{URL('image/products/product-5.jpg')}}" alt="">
-                                    <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
-                                            <img src="{{URL('image/products/product-4.jpg')}}" alt="">
-                                        </a>
-                                        <div class="hover-btns">
-                                            <a href="cart" class="single-btn">
-                                                <i class="fas fa-shopping-basket"></i>
-                                            </a>
-                                            <a href="wishlist" class="single-btn">
-                                                <i class="fas fa-heart"></i>
-                                            </a>
-                                            <a href="compare" class="single-btn">
-                                                <i class="fas fa-random"></i>
-                                            </a>
-                                            <a href="product-details#" data-bs-toggle="modal"
-                                                data-bs-target="#quickModal" class="single-btn">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="price-block">
-                                    <span class="price">£51.20</span>
-                                    <del class="price-old">£51.20</del>
-                                    <span class="price-discount">20%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="product-header">
-                                <a href="product-details" class="author">
-                                    Hpple
-                                </a>
-                                <h3><a href="product-details">a Half Very Simple Things You To</a></h3>
-                            </div>
-                            <div class="product-card--body">
-                                <div class="card-image">
-                                    <img src="{{URL('image/products/product-6.jpg')}}" alt="">
-                                    <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
-                                            <img src="{{URL('image/products/product-4.jpg')}}" alt="">
-                                        </a>
-                                        <div class="hover-btns">
-                                            <a href="cart" class="single-btn">
-                                                <i class="fas fa-shopping-basket"></i>
-                                            </a>
-                                            <a href="wishlist" class="single-btn">
-                                                <i class="fas fa-heart"></i>
-                                            </a>
-                                            <a href="compare" class="single-btn">
-                                                <i class="fas fa-random"></i>
-                                            </a>
-                                            <a href="product-details#" data-bs-toggle="modal"
-                                                data-bs-target="#quickModal" class="single-btn">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="price-block">
-                                    <span class="price">£51.20</span>
-                                    <del class="price-old">£51.20</del>
-                                    <span class="price-discount">20%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                @empty
+                    <h1>No Books Available of Same Category</h1>
+                @endforelse
+
+
                 </div>
             </div>
         </section>
-    
+
     </main>
 @endsection

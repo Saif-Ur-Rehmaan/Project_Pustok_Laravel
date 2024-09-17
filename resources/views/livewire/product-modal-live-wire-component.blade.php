@@ -59,7 +59,7 @@
                             </div>
                             <article class="product-details-article">
                                 <h4 class="sr-only">Product Summery</h4>
-                                <p>{{ $Book->productDescription }}.</p>
+                                <p>{{ $Book->productSummary }}.</p>
                             </article>
                             <div class="add-to-cart-row">
                                 <div class="count-input-block">

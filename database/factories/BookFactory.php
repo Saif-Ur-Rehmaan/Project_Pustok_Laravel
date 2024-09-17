@@ -29,7 +29,8 @@ class BookFactory extends Factory
             'extax' => 10.00, // Fixed extax value
             'priceInUSD' => $this->faker->randomFloat(2, 5, 100), // Generates a random price between 5 and 100 with 2 decimal places
             'discountPercent' => $this->faker->numberBetween(0, 50), // Generates a random discount percentage between 0 and 50
-            'productDescription' => $this->faker->paragraph(), // Generates a random paragraph for the product description
+            'productDescription' => $this->faker->paragraph(50), // Generates a random paragraph for the product description
+            'productSummary' => $this->faker->paragraph(5), // Generates a random paragraph for the product description
             'manufacturer' => $this->faker->company(), // Generates a random company name for the manufacturer
             'color' => $this->faker->safeColorName(), // Generates a random safe color name
             'productCode' => $this->faker->bothify('??-#####'), // Generates a random product code (e.g., AB-12345)

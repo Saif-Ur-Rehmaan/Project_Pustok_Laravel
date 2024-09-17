@@ -82,7 +82,7 @@
                                         <ul class="sub-menu">
                                             @foreach ($Category->subcategories as $SubCat)
                                                 <li><a
-                                                        href="{{ route('shop', Crypt::encrypt($SubCat->id)) }}">{{ $SubCat->name }}</a>
+                                                        href="{{ route('search', Crypt::encrypt($SubCat->id)) }}">{{ $SubCat->name }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -129,12 +129,12 @@
                                 <div class="cart-dropdown-block">
                                     <div class=" single-cart-block ">
                                         <div class="cart-product">
-                                            <a href="product-details" class="image">
+                                            <a  href="{{URL('product-details')}}" class="image">
                                                 <img src="{{ URL('image/products/cart-product-1.jpg') }}"
                                                     alt="">
                                             </a>
                                             <div class="content">
-                                                <h3 class="title"><a href="product-details">Kodak PIXPRO
+                                                <h3 class="title"><a  href="{{URL('product-details')}}">Kodak PIXPRO
                                                         Astro Zoom AZ421 16 MP</a>
                                                 </h3>
                                                 <p class="price"><span class="qty">1 ×</span> £87.34</p>
@@ -182,7 +182,7 @@
                                         <ul class="sub-menu">
                                             @foreach ($Category->subcategories as $SubCat)
                                                 <li><a
-                                                        href="{{ route('shop', Crypt::encrypt($SubCat->id)) }}">{{ $SubCat->name }}</a>
+                                                        href="{{ route('search', Crypt::encrypt($SubCat->id)) }}">{{ $SubCat->name }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>

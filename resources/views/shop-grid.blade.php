@@ -1,6 +1,7 @@
 @extends('Layout.Layout')
 
 @section('Content')
+    
     <x-Breadcrumb :items="['Home', 'Shop']" />
     <main class="inner-page-sec-padding-bottom">
         <div class="container">
@@ -27,5 +28,4 @@
 
         }
     </script>
-    
 @endsection

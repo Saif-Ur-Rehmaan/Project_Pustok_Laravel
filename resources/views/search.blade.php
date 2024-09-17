@@ -129,13 +129,13 @@
                                 <a href="shop-grid" class="author">
                                     Epple
                                 </a>
-                                <h3><a href="product-details">Here Is A Quick Cure For Book</a></h3>
+                                <h3><a  href="{{URL('product-details')}}">Here Is A Quick Cure For Book</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
                                     <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details')}}" class="hover-image">
                                             <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -171,7 +171,7 @@
                                     <a href="shop-grid" class="author">
                                         Gpple
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">Qpple cPad with Retina Display
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">Qpple cPad with Retina Display
                                             MD510LL/A</a></h3>
                                 </div>
                                 <article>
@@ -210,13 +210,13 @@
                                 <a href="shop-grid" class="author">
                                     Lpple
                                 </a>
-                                <h3><a href="product-details">Simple Things You To Save BOOK</a></h3>
+                                <h3><a  href="{{URL('product-details')}}">Simple Things You To Save BOOK</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
                                     <img src="{{ URL('image/products/product-4.jpg') }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details')}}" class="hover-image">
                                             <img src="{{ URL('image/products/product-5.jpg') }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -252,7 +252,7 @@
                                     <a href="shop-grid" class="author">
                                         Bpple
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">What You Can Learn From Bill
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">What You Can Learn From Bill
                                             Gates</a></h3>
                                 </div>
                                 <article>
@@ -291,13 +291,13 @@
                                 <a href="shop-grid" class="author">
                                     Cpple
                                 </a>
-                                <h3><a href="product-details">3 Ways Create Better BOOK With</a></h3>
+                                <h3><a  href="{{URL('product-details')}}">3 Ways Create Better BOOK With</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
                                     <img src="{{ URL('image/products/product-7.jpg') }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details')}}" class="hover-image">
                                             <img src="{{ URL('image/products/product-8.jpg') }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -333,7 +333,7 @@
                                     <a href="shop-grid" class="author">
                                         Happle
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">What You Can Learn From Bill
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">What You Can Learn From Bill
                                             Gates</a></h3>
                                 </div>
                                 <article>
@@ -372,13 +372,13 @@
                                 <a href="shop-grid" class="author">
                                     Rpple
                                 </a>
-                                <h3><a href="product-details">Simple Things You To Save BOOK</a></h3>
+                                <h3><a  href="{{URL('product-details')}}">Simple Things You To Save BOOK</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
                                     <img src="{{ URL('image/products/product-8.jpg') }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details')}}" class="hover-image">
                                             <img src="{{ URL('image/products/product-7.jpg') }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -414,7 +414,7 @@
                                     <a href="shop-grid" class="author">
                                         Epple
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">Never Changing BOOK Will
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">Never Changing BOOK Will
                                             Eventually Destroy You</a></h3>
                                 </div>
                                 <article>
@@ -453,13 +453,13 @@
                                 <a href="shop-grid" class="author">
                                     Gpple
                                 </a>
-                                <h3><a href="product-details">How Deal With Very Bad BOOK</a></h3>
+                                <h3><a  href="{{URL('product-details')}}">How Deal With Very Bad BOOK</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
                                     <img src="{{ URL('image/products/product-9.jpg') }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details')}}" class="hover-image">
                                             <img src="{{ URL('image/products/product-10.jpg') }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -495,7 +495,7 @@
                                     <a href="shop-grid" class="author">
                                         Tapple
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">OMG! The Best BOOK Ever!</a>
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">OMG! The Best BOOK Ever!</a>
                                     </h3>
                                 </div>
                                 <article>
@@ -534,13 +534,13 @@
                                 <a href="shop-grid" class="author">
                                     Rtpple
                                 </a>
-                                <h3><a href="product-details">The Hidden Mystery Behind</a></h3>
+                                <h3><a  href="{{URL('product-details')}}">The Hidden Mystery Behind</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
                                     <img src="{{ URL('image/products/product-10.jpg') }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details')}}" class="hover-image">
                                             <img src="{{ URL('image/products/product-9.jpg') }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -576,7 +576,7 @@
                                     <a href="shop-grid" class="author">
                                         Ypple
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">BOOK: Do You Really Need It?
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">BOOK: Do You Really Need It?
                                             This Will Help Y</a></h3>
                                 </div>
                                 <article>
@@ -615,13 +615,13 @@
                                 <a href="shop-grid" class="author">
                                     Upple
                                 </a>
-                                <h3><a href="product-details">Little Known Ways To Rid Yourself</a></h3>
+                                <h3><a  href="{{URL('product-details')}}">Little Known Ways To Rid Yourself</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
                                     <img src="{{ URL('image/products/product-11.jpg') }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details')}}" class="hover-image">
                                             <img src="{{ URL('image/products/product-12.jpg') }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -657,7 +657,7 @@
                                     <a href="shop-grid" class="author">
                                         Apple
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">Revolutionize Your BOOK With
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">Revolutionize Your BOOK With
                                             These Easy-peasy Tips</a></h3>
                                 </div>
                                 <article>
@@ -696,13 +696,13 @@
                                 <a href="shop-grid" class="author">
                                     Bpple
                                 </a>
-                                <h3><a href="product-details">Qple GPad with Retina Sisplay</a></h3>
+                                <h3><a  href="{{URL('product-details')}}">Qple GPad with Retina Sisplay</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
                                     <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details')}}" class="hover-image">
                                             <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -738,7 +738,7 @@
                                     <a href="shop-grid" class="author">
                                         Zpple
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">Here Is A Quick Cure For
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">Here Is A Quick Cure For
                                             Book</a></h3>
                                 </div>
                                 <article>

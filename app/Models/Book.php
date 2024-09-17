@@ -12,6 +12,7 @@ class Book extends Model
         'author_id',
         'subcategory_id',
         'RewardPoints',
+        'productSummary',
         'title',
         'brand',
         'image',

@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-lg-9 order-lg-2">
+    <div class="col-lg-9 order-lg-2"> 
         <div class="shop-toolbar with-sidebar mb--30">
             <div class="row align-items-center">
 
@@ -150,14 +150,14 @@
                                     {{ $Book->author->displayName }}
 
                                 </a>
-                                <h3><a href="product-details"> {{ $Book->title }}</a></h3>
+                                <h3><a  href="{{URL('product-details',Crypt::encrypt($Book->id))}}"> {{ $Book->title }}</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
 
                                     <img src="{{ URL($Book->image) }}" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details" class="hover-image">
+                                        <a  href="{{URL('product-details',Crypt::encrypt($Book->id))}}" class="hover-image">
                                             <img src="{{  URL($Book->image)  }}" alt="">
                                         </a>
                                         <div class="hover-btns">
@@ -170,8 +170,8 @@
                                             <a href="compare" class="single-btn">
                                                 <i class="fas fa-random"></i>
                                             </a>
-                                            <a  wire:click='OpenProductModal({{$Book->id}})'  data-bs-toggle="modal"
-                                                data-bs-target="#quickModal" class="single-btn">
+                                            <a     data-bs-toggle="modal"
+                                                data-bs-target="#quickModal" class="single-btn quickViewBtn" data-id="{{$Book->id}}">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </div>
@@ -202,7 +202,7 @@
                                     <a class="author">
                                         {{ $Book->author->displayName }}
                                     </a>
-                                    <h3><a href="product-details" tabindex="0">{{ $Book->title }}</a></h3>
+                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">{{ $Book->title }}</a></h3>
                                 </div>
                                 <article>
                                     <h2 class="sr-only">Card List Article</h2>

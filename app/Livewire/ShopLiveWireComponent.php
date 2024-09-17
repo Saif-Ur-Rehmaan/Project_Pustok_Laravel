@@ -4,8 +4,11 @@ namespace App\Livewire;
 
 use App\Models\Book;
 use App\Models\BookCategory;
+use App\Models\BookSubCategory;
+use Database\Seeders\BookSubCategorySeeder;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Ramsey\Uuid\Type\Integer;
@@ -25,12 +28,12 @@ class ShopLiveWireComponent extends Component
     public $APriceMin = 0.00;
     public $APriceMax = 3000.00;
     public $SortBy = '';
-    public $BookPagination=[
-        'Showing'=>1,
-        'To'=>9,
-        'Of'=>14,
-        'Pages'=>2,
-        'NoOfBooksTOShowInOnePage'=>12
+    public $BookPagination = [
+        'Showing' => 1,
+        'To' => 9,
+        'Of' => 14,
+        'Pages' => 2,
+        'NoOfBooksTOShowInOnePage' => 12
     ];
 
     public function render()
@@ -38,18 +41,20 @@ class ShopLiveWireComponent extends Component
         $this->FetchCategories();
         $this->FetchColors();
         $this->FetchManufacturers();
-        $Books= $this->FetchBooks();
+        $Books = $this->FetchBooks();
         $this->BookPagination['Showing'] = ($Books->currentPage() - 1) * $Books->perPage() + 1;
         $this->BookPagination['To'] = min($Books->currentPage() * $Books->perPage(), $Books->total());
         $this->BookPagination['Of'] = $Books->total();
         $this->BookPagination['Pages'] = $Books->lastPage();
         $this->BookPagination['NoOfBooksTOShowInOnePage'] = $Books->perPage();
-    
-  
-        return view('livewire.shop-live-wire-component',compact('Books'));
-    }
-    
+        
+ 
 
+        return view('livewire.shop-live-wire-component', compact('Books'));
+    }
+
+
+     
     // functions
     public function FetchManufacturers()
     {
@@ -76,7 +81,7 @@ class ShopLiveWireComponent extends Component
             ->where('color', 'like', '%' . $this->AColor . '%')
             ->where('manufacturer', 'like', '%' . $this->AManufacturer . '%')
             ->whereBetween('priceInUSD', [(float)$this->APriceMin, (float) $this->APriceMax]);
-    
+
         // Apply sorting based on the SortBy value
         switch ($this->SortBy) {
             case 'Sort By:Name (A - Z)':
@@ -91,22 +96,23 @@ class ShopLiveWireComponent extends Component
             case 'Sort By:Price (High > Low)':
                 $query->orderBy('priceInUSD', 'desc');
                 break;
-             
+
             default:
                 // Default sorting can be applied here if needed
                 break;
         }
-    
+
         return $query->paginate($this->BookPagination['NoOfBooksTOShowInOnePage']);
     }
 
     //emitter
-    public function OpenProductModal(int $BookId){
+    public function OpenProductModal(int $BookId)
+    {
         if (is_int($BookId)) {
-            $this->dispatch('OpenProductModal',$BookId);
+            $this->dispatch('OpenProductModal', $BookId);
         }
     }
-    
+
 
 
     //setters
@@ -122,4 +128,6 @@ class ShopLiveWireComponent extends Component
     {
         $this->AManufacturer = $Manufacturer;
     }
+
+
 }
