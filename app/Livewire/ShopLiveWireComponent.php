@@ -8,10 +8,14 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Ramsey\Uuid\Type\Integer;
+
+use function PHPSTORM_META\type;
 
 class ShopLiveWireComponent extends Component
 {
     use WithPagination;
+
 
     public $Data = [];
 
@@ -94,6 +98,13 @@ class ShopLiveWireComponent extends Component
         }
     
         return $query->paginate($this->BookPagination['NoOfBooksTOShowInOnePage']);
+    }
+
+    //emitter
+    public function OpenProductModal(int $BookId){
+        if (is_int($BookId)) {
+            $this->dispatch('OpenProductModal',$BookId);
+        }
     }
     
 

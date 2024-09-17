@@ -42,11 +42,17 @@
             /* Center vertically */
 
         }
-        .c-pointer{
+
+        .c-pointer {
             cursor: pointer;
         }
-        .c-diable{cursor: not-allowed}
+
+        .c-diable {
+            cursor: not-allowed
+        }
     </style>
+    @livewireStyles
+    @livewireScripts
 </head>
 
 <body>
@@ -65,7 +71,12 @@
             </div>
         @endsession
         @yield('Content')
-        <x-ProductModal></x-ProductModal>
+        {{-- Product Modal --}}
+        <div class="modal fade modal-quick-view" id="quickModal" tabindex="-1" role="dialog"
+            aria-labelledby="quickModal" aria-hidden="true">
+
+            @livewire('ProductModalLiveWireComponent')
+        </div>
     </div>
     <!--=================================
     Brands Slider

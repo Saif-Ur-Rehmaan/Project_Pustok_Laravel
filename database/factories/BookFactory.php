@@ -21,6 +21,7 @@ class BookFactory extends Factory
         return [
             'author_id' =>$increment,
             'subcategory_id' =>$increment,
+            'RewardPoints' =>$increment * 10,
             'title' => $this->faker->sentence(3), // Generates a random book title with 3 words
             'brand' => $this->faker->company(), // Generates a random company name
             'image' => "image/products/product-".$increment++.".jpg", // Generates a random book image URL

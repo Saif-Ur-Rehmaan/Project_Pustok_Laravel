@@ -158,7 +158,7 @@
                                     <img src="{{ URL($Book->image) }}" alt="">
                                     <div class="hover-contents">
                                         <a href="product-details" class="hover-image">
-                                            <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
+                                            <img src="{{  URL($Book->image)  }}" alt="">
                                         </a>
                                         <div class="hover-btns">
                                             <a href="cart" class="single-btn">
@@ -170,7 +170,7 @@
                                             <a href="compare" class="single-btn">
                                                 <i class="fas fa-random"></i>
                                             </a>
-                                            <a href="shop-grid-left-sidebar#" data-bs-toggle="modal"
+                                            <a  wire:click='OpenProductModal({{$Book->id}})'  data-bs-toggle="modal"
                                                 data-bs-target="#quickModal" class="single-btn">
                                                 <i class="fas fa-eye"></i>
                                             </a>

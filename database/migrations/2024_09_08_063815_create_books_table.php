@@ -36,6 +36,7 @@ return new class extends Migration
             $table->text("productDescription")->nullable();
             $table->string("manufacturer")->nullable();
             $table->string("color")->nullable();
+            $table->integer("RewardPoints")->default(0);
             $table->string("productCode")->nullable();
             $table->string("availability")->default("Available");
 

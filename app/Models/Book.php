@@ -11,6 +11,7 @@ class Book extends Model
     protected $fillable=[
         'author_id',
         'subcategory_id',
+        'RewardPoints',
         'title',
         'brand',
         'image',
