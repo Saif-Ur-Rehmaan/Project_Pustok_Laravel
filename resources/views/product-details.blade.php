@@ -24,12 +24,26 @@
                         </p>
                         <h3 class="product-title">{{ $Book->title }}</h3>
                         <ul class="list-unstyled">
-                            <li>Ex Tax: <span class="list-value"> ${{ $Book->exTax }}</span></li>
+                            <li>Ex Tax: <span class="list-value"> ${{ $Book->extax }}</span></li>
                             <li>Brands: <a href="product-details#"
                                     class="list-value font-weight-bold">{{ $Book->brand }}</a></li>
                             <li>Product Code: <span class="list-value"> {{ $Book->productCode }}</span></li>
                             <li>Reward Points: <span class="list-value"> {{ $Book->RewardPoints }}</span></li>
-                            <li>Availability: <span class="list-value"> {{ $Book->availablity }}</span></li>
+                            <li>Availability: 
+                                @switch($Book->availability)
+                                    @case("Out of Stock")
+                                        <span class="list-value text-danger fw-bolder"> {{ $Book->availability }}</span>
+                                        @break
+                                
+                                    @case("In Stock")
+                                        <span class="list-value text-success"> {{ $Book->availability }}</span>
+                                        
+                                        @break
+                                    @default
+                                        <span class="list-value  "> {{ $Book->availability }}</span>
+                                        
+                                @endswitch
+                            </li>
                         </ul>
                         <div class="price-block">
                             @if ($Book->discountPercent != 0)

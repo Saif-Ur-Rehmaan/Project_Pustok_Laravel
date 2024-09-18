@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
-                    <a href="{{URL('/index')}}" class="site-brand">
+                    <a href="{{ URL('/index') }}" class="site-brand">
                         <img src="{{ URL('image/logo.png') }}" alt="">
                     </a>
                 </div>
@@ -93,12 +93,28 @@
                         </div>
                     </nav>
                 </div>
+                <!-- search box start -->
                 <div class="col-lg-5">
-                    <div class="header-search-block">
-                        <input type="text" placeholder="Search entire store here">
-                        <button>Search</button>
+                    <div  class="header-search-block">
+                        <input type="text" name="Query" id="SearchBox" value="" placeholder="Search entire store here">
+                        <button id="SearchBtn">Search</button>
+                        @section('Scripts')
+                            <script>
+                                const inp=document.getElementById('SearchBox');
+                                const btn=document.getElementById('SearchBtn');
+                                btn.addEventListener("click",()=>{
+
+                                    
+                                    const query=inp.value;
+                                    console.log('asjcb');
+                                    window.location = `{{ url('search') }}/${query}`;
+                                });
+                            </script>
+                            
+                        @endsection
                     </div>
                 </div>
+                <!-- search box end -->
                 <div class="col-lg-4">
                     <div class="main-navigation flex-lg-right">
                         <div class="cart-widget">
@@ -129,12 +145,12 @@
                                 <div class="cart-dropdown-block">
                                     <div class=" single-cart-block ">
                                         <div class="cart-product">
-                                            <a  href="{{URL('product-details')}}" class="image">
+                                            <a href="{{ URL('product-details') }}" class="image">
                                                 <img src="{{ URL('image/products/cart-product-1.jpg') }}"
                                                     alt="">
                                             </a>
                                             <div class="content">
-                                                <h3 class="title"><a  href="{{URL('product-details')}}">Kodak PIXPRO
+                                                <h3 class="title"><a href="{{ URL('product-details') }}">Kodak PIXPRO
                                                         Astro Zoom AZ421 16 MP</a>
                                                 </h3>
                                                 <p class="price"><span class="qty">1 ×</span> £87.34</p>
@@ -166,7 +182,7 @@
         <div class="container">
             <div class="row align-items-sm-end align-items-center">
                 <div class="col-md-4 col-7">
-                    <a href="{{URL('/index')}}" class="site-brand">
+                    <a href="{{ URL('/index') }}" class="site-brand">
                         <img src="{{ URL('image/logo.png') }}" alt="">
                     </a>
                 </div>
@@ -285,8 +301,10 @@
             </nav>
             <div class="off-canvas-bottom">
                 <div class="contact-list mb--10">
-                    <a href="{{URL('/index')}}" class="sin-contact"><i class="fas fa-mobile-alt"></i>(12345) 78790220</a>
-                    <a href="{{URL('/index')}}" class="sin-contact"><i class="fas fa-envelope"></i>examle@handart.com</a>
+                    <a href="{{ URL('/index') }}" class="sin-contact"><i class="fas fa-mobile-alt"></i>(12345)
+                        78790220</a>
+                    <a href="{{ URL('/index') }}" class="sin-contact"><i
+                            class="fas fa-envelope"></i>examle@handart.com</a>
                 </div>
                 <div class="off-canvas-social">
                     <a class="single-icon"><i class="fab fa-facebook-f"></i></a>
@@ -307,7 +325,7 @@
     <div class="container d-none d-lg-block">
         <div class="row align-items-center">
             <div class="col-lg-4">
-                <a href="{{URL('/index')}}" class="site-brand">
+                <a href="{{ URL('/index') }}" class="site-brand">
                     <img src="{{ URL('image/logo.png') }}" alt="">
                 </a>
             </div>

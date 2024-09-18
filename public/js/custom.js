@@ -503,7 +503,7 @@ jQuery(document).ready(function ($) {
         // Dispatch the event using Livewire's global object
         window.Livewire.dispatch('CloseProductModal');
     });
-    $('.quickViewBtn').on('click', function (element) {
+    $('.quickViewBtn').on('click', function () {
         const id= parseInt($(this).attr("data-id"));
    
         
