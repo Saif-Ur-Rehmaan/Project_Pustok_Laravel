@@ -20,12 +20,6 @@ Route::view('index', 'Index');
 Route::view('/cart', 'cart');
 Route::view('/compare', 'compare');
 
-Route::get('/contact', function () {
-
-   $APIKEY = config('services.api.GOOGLE_MAP_API_KEY');
-
-   return view('contact', compact('APIKEY'));
-});
 
 Route::view('/checkout', 'checkout');
 Route::view('/wishlist', 'wishlist');
@@ -40,29 +34,33 @@ Route::prefix("/blogs")->group(function () {
 });
 
 // App Controller
-Route::controller(AppController::class)->group(function (){
-   Route::view('/shop-grid', 'shop-grid')->name('shop');  
+Route::controller(AppController::class)->group(function () {
+   Route::view('/shop-grid', 'shop-grid')->name('shop');
    Route::get('/product-details/{id}', 'ProductDetails');
    Route::get('/search/{Query?}', 'Search')->name('search');
+
+
+   Route::get('/contact','ContactUs');
+   Route::post('/contact','SendMessage')->name('sendMessage');
 });
 
 
 // user  Authentication
 Route::controller(UserController::class)->group(function () {
    // only guest allowed
-   Route::middleware('guest')->group(function (){
+   Route::middleware('guest')->group(function () {
       // login or register page
       Route::view('/login-register', 'login-register');
       // register
-      Route::post('/register','RegisterUser')->name('users.register');
+      Route::post('/register', 'RegisterUser')->name('users.register');
       // login
-      Route::post('/login','LoginUser')->name('users.login');
+      Route::post('/login', 'LoginUser')->name('users.login');
    });
    Route::middleware('auth')->group(function () {
       Route::view('/my-account', 'my-account');
       Route::view('/order-completed', 'order-completed');
-      
 
-      Route::get('/logout','logoutUser');
+
+      Route::get('/logout', 'logoutUser');
    });
 });

@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\BookCategory;
-use Illuminate\Http\Client\Request;
+use App\Models\Contact; 
+use Illuminate\Http\Request ;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\URL;
-use Psy\Command\WhereamiCommand;
 
 class AppController extends Controller
 {
@@ -28,8 +25,30 @@ class AppController extends Controller
 
     function Search($Query = "")
     {
-
-
         return view('search', compact('Query'));
+    }
+
+    function ContactUs()
+    {
+        $APIKEY = config('services.api.GOOGLE_MAP_API_KEY');
+        return view('contact', compact('APIKEY'));
+    }
+    function SendMessage(Request $req)
+    {
+        $reqV=$req->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'phoneNumber'=>'required',
+            'message'=>'required'
+        ]); 
+        Contact::create([
+            'name'=>$req['name'],
+            'email'=>$req['email'],
+            'phoneNumber'=>$req['phoneNumber'],
+            'message'=>$req['message'],
+        ]);
+
+        return redirect('/contact')->with('success','Message Sended Successfully We Will Respond you Soon');
+    
     }
 }

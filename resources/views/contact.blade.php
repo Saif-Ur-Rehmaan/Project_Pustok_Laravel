@@ -1,8 +1,8 @@
-@extends("Layout.Layout")
-@section("Content")
-<x-Breadcrumb :items="['Home', 'Contact']" />
-     <!-- Cart Page Start -->
-     <main class="contact_area inner-page-sec-padding-bottom">
+@extends('Layout.Layout')
+@section('Content')
+    <x-Breadcrumb :items="['Home', 'Contact']" />
+    <!-- Cart Page Start -->
+    <main class="contact_area inner-page-sec-padding-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -32,7 +32,7 @@
                                     <i class="far fa-envelope"></i>
                                 </div>
                                 <div class="contact-info-text">
-                                    <p><span>Email: </span> support@example.com </p>
+                                    <p><span>Email: </span> support@Pustok.com </p>
                                 </div>
                             </div>
                             <div class="address">
@@ -49,33 +49,47 @@
                 <div class="col-lg-7 col-md-7 col-12 mt--30 mt-md--0">
                     <div class="contact_form">
                         <h3 class="ct_title">Send Us a Message</h3>
-                        <form id="contact-form" action="" method="post" class="contact-form">
+                        <form  action="{{ route('sendMessage') }}" method="post" class="contact-form">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Your Name <span class="required">*</span></label>
-                                        <input type="text" id="con_name" name="con_name" class="form-control"
-                                            required>
+                                        <input type="text" value="{{old('name')}}" id="con_name" name="name" class="form-control" >
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Your Email <span class="required">*</span></label>
-                                        <input type="email" id="con_email" name="con_email" class="form-control"
-                                            required>
+                                        <input type="email" id="con_email" value="{{old('email')}}" name="email" class="form-control"  >
+
+                                        @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Your Phone*</label>
-                                        <input type="text" id="con_phone" name="con_phone" class="form-control">
+                                        <input type="text" value="{{old('phoneNumber')}}" id="con_phone" name="phoneNumber" class="form-control">
+
+                                        @error('phoneNumber')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
+
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Your Message</label>
-                                        <textarea id="con_message" name="con_message"
-                                            class="form-control"></textarea>
+                                        <textarea id="con_message" name="message" class="form-control">{{old('message')}}</textarea>
+
+                                        @error('message')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -86,6 +100,7 @@
                                     <div class="form__output"></div>
                                 </div>
                             </div>
+
                         </form>
                         <div class="form-output">
                             <p class="form-messege"></p>
@@ -97,6 +112,6 @@
     </main>
     <!-- Cart Page End -->
 @endsection
-@section("Scripts")
-<script src="https://maps.googleapis.com/maps/api/js?key={{$APIKEY}}"></script>
+@section('Scripts')
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ $APIKEY }}"></script>
 @endsection
