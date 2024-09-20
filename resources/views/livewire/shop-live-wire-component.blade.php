@@ -1,6 +1,8 @@
 <div class="row">
-
     <div class="col-lg-9 order-lg-2">
+
+
+        aaa
         <div class="shop-toolbar with-sidebar mb--30">
             <div class="row align-items-center">
 
@@ -133,7 +135,7 @@
 
         </div>
         {{-- Book List --}}
-        <div class="shop-product-wrap grid position-relative with-pagination row space-db--30 shop-border">
+        <div class="shop-product-wrap grid g-5 position-relative with-pagination row space-db--30 shop-border">
             <div wire:loading>
                 <x-Loader></x-Loader>
 
@@ -141,8 +143,8 @@
 
             @forelse ($Books as $Book)
                 <!--Card-->
-                <div class="col-lg-4 col-sm-6">
-                    <div class="product-card">
+                <div class="col-lg-4 col-sm-6 py-3 ">
+                    <div class="product-card h-100 m-0">
                         <div class="product-grid-content">
                             <div class="product-header">
                                 <a class="author">
@@ -150,8 +152,11 @@
                                     {{ $Book->author->displayName }}
 
                                 </a>
-                                <h3><a href="{{ URL('product-details', Crypt::encrypt($Book->id)) }}">
-                                        {{ $Book->title }}</a></h3>
+                                <h3 >
+                                    <a class=" text-truncate" href="{{ URL('product-details', Crypt::encrypt($Book->id)) }}">
+                                        {{ $Book->title }}
+                                    </a>
+                                    </h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
@@ -163,10 +168,12 @@
                                             <img src="{{ URL($Book->image) }}" alt="">
                                         </a>
                                         <div class="hover-btns">
-                                            <a href="cart" class="single-btn">
+                                            <a class="AddToCartBtn single-btn"
+                                                data-id="{{ $Book->id }}">
                                                 <i class="fas fa-shopping-basket"></i>
                                             </a>
-                                            <a href="wishlist" class="single-btn">
+                                         
+                                            <a   class="single-btn">
                                                 <i class="fas fa-heart"></i>
                                             </a>
                                             <a href="compare" class="single-btn">
@@ -178,6 +185,9 @@
                                             </a>
                                         </div>
                                     </div>
+
+
+
                                 </div>
                                 <div class="price-block">
                                     @if ($Book->discountPercent != 0)
@@ -195,6 +205,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="product-list-content">
                             <div class="card-image">
                                 <img src="{{ URL($Book->image) }}" alt="">
@@ -234,7 +246,7 @@
                                             $NumberOfReviews++;
                                         }
                                         if ($NumberOfReviews > 0) {
-                                            $average = number_format((float) $total / $NumberOfReviews,2); // ensures float division
+                                            $average = number_format((float) $total / $NumberOfReviews, 2); // ensures float division
                                         } else {
                                             $average = 0; // handle division by zero if necessary
                                         }
@@ -246,7 +258,7 @@
                                             <span class="fas fa-star "></span>
                                         @endif
                                     @endfor
-                                    {{$average;}}
+                                    {{ $average }}
                                 </div>
                                 <div class="btn-block">
                                     <a class="btn btn-outlined">Add To Cart</a>

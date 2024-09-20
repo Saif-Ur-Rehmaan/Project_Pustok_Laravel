@@ -41,6 +41,7 @@ Route::controller(AppController::class)->group(function () {
 
 
    Route::get('/contact','ContactUs');
+   
    Route::post('/contact','SendMessage')->name('sendMessage');
 });
 

@@ -35,9 +35,12 @@ class ShopLiveWireComponent extends Component
         'Pages' => 2,
         'NoOfBooksTOShowInOnePage' => 12
     ];
+    public $ShowAddSuccess = false;
+    public $ShowRemoveSuccess = false;
 
     public function render()
     {
+
         $this->FetchCategories();
         $this->FetchColors();
         $this->FetchManufacturers();
@@ -47,14 +50,13 @@ class ShopLiveWireComponent extends Component
         $this->BookPagination['Of'] = $Books->total();
         $this->BookPagination['Pages'] = $Books->lastPage();
         $this->BookPagination['NoOfBooksTOShowInOnePage'] = $Books->perPage();
-        
- 
 
-        return view('livewire.shop-live-wire-component', compact('Books'));
+
+
+        return view('livewire.shop-live-wire-component', compact(['Books']));
     }
 
 
-     
     // functions
     public function FetchManufacturers()
     {
@@ -112,7 +114,45 @@ class ShopLiveWireComponent extends Component
             $this->dispatch('OpenProductModal', $BookId);
         }
     }
+    //listeners
+    #[On('AddOrRemoveFromCart')]
+    public function AddToCart($id)
+    {
 
+
+        if (!session()->has('cart')) {
+            session()->put('cart', [$id]);
+            $this->dispatch('itemAddedInCartSuccessfully');
+    
+
+            return;
+        } else {
+            $cart = session()->get('cart');
+
+            if (in_array($id, $cart)) {
+                $index = array_search($id, $cart);
+                if ($index !== false) {
+                    unset($cart[$index]);
+                    $cart = array_values($cart);
+
+                    session()->put('cart', $cart);
+                    $this->dispatch('itemRemovedFromCartSuccessfully');
+             
+
+                    return;
+                }
+            } else {
+                $cart[] = $id;
+
+                session()->put('cart', $cart);
+
+ 
+                $this->dispatch('itemAddedInCartSuccessfully');
+
+                return;
+            }
+        }
+    }
 
 
     //setters
@@ -128,6 +168,4 @@ class ShopLiveWireComponent extends Component
     {
         $this->AManufacturer = $Manufacturer;
     }
-
-
 }

@@ -504,11 +504,103 @@ jQuery(document).ready(function ($) {
         window.Livewire.dispatch('CloseProductModal');
     });
     $('.quickViewBtn').on('click', function () {
-        const id= parseInt($(this).attr("data-id"));
-   
-        
+        const id = parseInt($(this).attr("data-id"));
+
+
         // Dispatch the event using Livewire's global object
-        window.Livewire.dispatch('OpenProductModal',{id:id});
+        window.Livewire.dispatch('OpenProductModal', { id: id });
     });
 
+
+
 });
+
+
+
+
+
+
+/*-------------------------------------
+    --> Add To Cart
+---------------------------------------*/
+
+const btns_ = document.getElementsByClassName("AddToCartBtn");
+Array.from(btns_).forEach(btn => {
+    btn.addEventListener('click', async () => { // Add 'async' here
+        try {
+            let bookId = btn.getAttribute('data-id');
+
+            console.log("addtocart dispatched, id is", parseInt(bookId));
+
+
+            await window.Livewire.dispatch('AddOrRemoveFromCart', { id: bookId });
+
+            console.log("addtocart action completed");
+
+        } catch (error) {
+            console.error("Error during AddOrRemoveFromCart:", error);
+        }
+    });
+});
+// Create a container div for all alerts
+const alertContainer = document.createElement('div');
+alertContainer.id = 'alert-container';
+alertContainer.style.position = 'fixed';
+alertContainer.style.top = '20px';
+alertContainer.style.right = '20px';
+alertContainer.style.zIndex = '1000';
+alertContainer.style.width = 'auto';
+
+// Append the container to the body (if not already present)
+if (!document.getElementById('alert-container')) {
+    document.body.appendChild(alertContainer);
+}
+
+// Event listener for adding item to the cart
+window.addEventListener('itemAddedInCartSuccessfully', event => {
+    console.log('added');
+
+    // Create the alert div
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-success alert-dismissible fade show';
+    alertDiv.role = 'alert';
+    alertDiv.innerHTML = `
+        Item added to cart successfully!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    // Append the alert to the alert container
+    alertContainer.appendChild(alertDiv);
+
+    // Auto-dismiss the alert after 3 seconds
+    setTimeout(() => {
+        const alert = new bootstrap.Alert(alertDiv);
+        alert.close();
+    }, 3000);
+});
+
+// Event listener for removing item from the cart
+window.addEventListener('itemRemovedFromCartSuccessfully', event => {
+    console.log("removed");
+
+    // Create the alert div
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-danger alert-dismissible fade show';
+    alertDiv.role = 'alert';
+    alertDiv.innerHTML = `
+        Item removed from cart successfully!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    // Append the alert to the alert container
+    alertContainer.appendChild(alertDiv);
+
+    // Auto-dismiss the alert after 3 seconds
+    setTimeout(() => {
+        const alert = new bootstrap.Alert(alertDiv);
+        alert.close();
+    }, 3000);
+});
+
+
+

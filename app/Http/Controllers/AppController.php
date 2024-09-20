@@ -53,4 +53,5 @@ class AppController extends Controller
         return back()->with('success','Message Sended Successfully We Will Respond you Soon');
     
     }
+    
 }

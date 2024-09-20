@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; 
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,7 +20,7 @@ class SearchFilterLiveWireComponent extends Component
         'NoOfBooksTOShowInOnePage' => 12
     ];
   
-
+   
     public function render()
     {
         $Books=$this->FetchBooks();

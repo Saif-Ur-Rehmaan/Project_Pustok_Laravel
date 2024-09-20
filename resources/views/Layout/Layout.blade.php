@@ -57,8 +57,7 @@
 
 <body>
 
-    <div class="site-wrapper" id="top">
-
+    <div class="site-wrapper" id="top"> 
         <x-NavBar></x-NavBar>
         @session('success')
             <div class="alert alert-success" role="alert">
@@ -91,7 +90,7 @@
     <script src="{{ URL('js/plugins.js') }}"></script>
     <script src="{{ URL('js/ajax-mail.js') }}"></script>
     <script src="{{ URL('js/custom.js') }}"></script>
-
+        
     @yield('Scripts')
 </body>
 
