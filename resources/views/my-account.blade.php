@@ -27,7 +27,7 @@
                                 <a href="my-account#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i>
                                     Account
                                     Details</a>
-                                <a href="login-register"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                <a href="{{URL('login-register')}}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                             </div>
                         </div>
                         <!-- My Account Tab Menu End -->

@@ -74,7 +74,7 @@ class ShopLiveWireComponent extends Component
     }
     public function FetchBooks()
     {
-        $query = Book::with('author')
+        $query = Book::with('author')->with('reviews')
             ->whereHas('subCategory', function ($query) {
                 $query->where('name', 'like', '%' . $this->ASubCategory . '%');
             })

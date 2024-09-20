@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-lg-9 order-lg-2"> 
+    <div class="col-lg-9 order-lg-2">
         <div class="shop-toolbar with-sidebar mb--30">
             <div class="row align-items-center">
 
@@ -51,11 +51,11 @@
                             <option value='Sort By:Name (Z - A)'>Sort By:Name (Z - A)</option>
                             <option value='Sort By:Price (Low > High)'>Sort By:Price (Low > High)</option>
                             <option value='Sort By:Price (High > Low)'>Sort By:Price (High > Low)</option>
-                            
+
                         </select>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -150,15 +150,17 @@
                                     {{ $Book->author->displayName }}
 
                                 </a>
-                                <h3><a  href="{{URL('product-details',Crypt::encrypt($Book->id))}}"> {{ $Book->title }}</a></h3>
+                                <h3><a href="{{ URL('product-details', Crypt::encrypt($Book->id)) }}">
+                                        {{ $Book->title }}</a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
 
                                     <img src="{{ URL($Book->image) }}" alt="">
                                     <div class="hover-contents">
-                                        <a  href="{{URL('product-details',Crypt::encrypt($Book->id))}}" class="hover-image">
-                                            <img src="{{  URL($Book->image)  }}" alt="">
+                                        <a href="{{ URL('product-details', Crypt::encrypt($Book->id)) }}"
+                                            class="hover-image">
+                                            <img src="{{ URL($Book->image) }}" alt="">
                                         </a>
                                         <div class="hover-btns">
                                             <a href="cart" class="single-btn">
@@ -170,8 +172,8 @@
                                             <a href="compare" class="single-btn">
                                                 <i class="fas fa-random"></i>
                                             </a>
-                                            <a     data-bs-toggle="modal"
-                                                data-bs-target="#quickModal" class="single-btn quickViewBtn" data-id="{{$Book->id}}">
+                                            <a data-bs-toggle="modal" data-bs-target="#quickModal"
+                                                class="single-btn quickViewBtn" data-id="{{ $Book->id }}">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </div>
@@ -202,11 +204,12 @@
                                     <a class="author">
                                         {{ $Book->author->displayName }}
                                     </a>
-                                    <h3><a  href="{{URL('product-details')}}" tabindex="0">{{ $Book->title }}</a></h3>
+                                    <h3><a href="{{ URL('product-details') }}"
+                                            tabindex="0">{{ $Book->title }}</a></h3>
                                 </div>
                                 <article>
                                     <h2 class="sr-only">Card List Article</h2>
-                                    <p>{{ $Book->productDescription }}</p>
+                                    <p>{{ $Book->productSummary }}</p>
                                 </article>
                                 <div class="price-block">
                                     @if ($Book->discountPercent != 0)
@@ -223,11 +226,27 @@
                                     @endif
                                 </div>
                                 <div class="rating-block">
-                                    <span class="fas fa-star star_on"></span>
-                                    <span class="fas fa-star star_on"></span>
-                                    <span class="fas fa-star star_on"></span>
-                                    <span class="fas fa-star star_on"></span>
-                                    <span class="fas fa-star "></span>
+                                    @php
+                                        $total = 0;
+                                        $NumberOfReviews = 0;
+                                        foreach ($Book->reviews as $review) {
+                                            $total += (int) $review->reviewStars;
+                                            $NumberOfReviews++;
+                                        }
+                                        if ($NumberOfReviews > 0) {
+                                            $average = number_format((float) $total / $NumberOfReviews,2); // ensures float division
+                                        } else {
+                                            $average = 0; // handle division by zero if necessary
+                                        }
+                                    @endphp
+                                    @for ($i = 0; $i < 5; $i++)
+                                        @if ($average > $i)
+                                            <span class="fas fa-star star_on"></span>
+                                        @else
+                                            <span class="fas fa-star "></span>
+                                        @endif
+                                    @endfor
+                                    {{$average;}}
                                 </div>
                                 <div class="btn-block">
                                     <a class="btn btn-outlined">Add To Cart</a>
@@ -429,7 +448,8 @@
             <!-- Manufacturer -->
             <div class="single-block">
                 <h3 class="sidebar-title">Select By Manufacturer</h3>
-                <ul class="sidebar-menu--shop menu-type-2" style="max-height: 600px; overflow-x:hidden;overflow-y:scroll; ">
+                <ul class="sidebar-menu--shop menu-type-2"
+                    style="max-height: 600px; overflow-x:hidden;overflow-y:scroll; ">
                     <li>
                         <a wire:click="SetManufacturerTo('')"
                             class="ClickAble  d-flex d-inline-block justify-content-between  w-100 {{ $AManufacturer == '' ? 'text-success fw-bolder' : '' }}">
@@ -457,7 +477,8 @@
             <!-- Color -->
             <div class="single-block">
                 <h3 class="sidebar-title">Select By Color</h3>
-                <ul class="sidebar-menu--shop menu-type-2" style="max-height: 600px; overflow-x:hidden;overflow-y:scroll; ">
+                <ul class="sidebar-menu--shop menu-type-2"
+                    style="max-height: 600px; overflow-x:hidden;overflow-y:scroll; ">
                     <li>
                         <a wire:click="SetColorTo('')"
                             class="ClickAble  d-flex d-inline-block justify-content-between  w-100 {{ $AColor == '' ? 'text-success fw-bolder' : '' }}">

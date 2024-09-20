@@ -39,16 +39,16 @@
                                 <a href="javascript:void(0)">Pages <i
                                         class="fas fa-chevron-down dropdown-arrow"></i></a>
                                 <ul class="sub-menu">
-                                    <li><a href="cart">Cart</a></li>
-                                    <li><a href="search">Search</a></li>
-                                    <li><a href="checkout">Checkout</a></li>
-                                    <li><a href="compare">Compare</a></li>
-                                    <li><a href="wishlist">Wishlist</a></li>
-                                    <li><a href="login-register">Login Register</a></li>
-                                    <li><a href="my-account">My Account</a></li>
-                                    <li><a href="order-complete">Order Complete</a></li>
-                                    <li><a href="faq">Faq</a></li>
-                                    <li><a href="contact-2">contact 02</a></li>
+                                    <li><a href="{{URL('cart')}}">Cart</a></li>
+                                    <li><a href="{{URL('search')}}">Search</a></li>
+                                    <li><a href="{{URL('checkout')}}">Checkout</a></li>
+                                    <li><a href="{{URL('compare')}}">Compare</a></li>
+                                    <li><a href="{{URL('wishlist')}}">Wishlist</a></li>
+                                    <li><a href="{{URL('login-register')}}">Login Register</a></li>
+                                    <li><a href="{{URL('my-account')}}">My Account</a></li>
+                                    <li><a href="{{URL('order')}}-complete">Order Complete</a></li>
+                                    <li><a href="{{URL('faq')}}">Faq</a></li>
+                                    <li><a href="{{URL('contact-2')}}">contact 02</a></li>
                                 </ul>
                             </li>
 
@@ -120,10 +120,10 @@
                         <div class="cart-widget">
                             <div class="login-block">
                                 @if (Auth::guest())
-                                    <a href="login-register" class="font-weight-bold">Login</a> <br>
-                                    <span>or</span><a href="login-register">Register</a>
+                                    <a href="{{URL('login-register')}}" class="font-weight-bold">Login</a> <br>
+                                    <span>or</span><a href="{{URL('login-register')}}">Register</a>
                                 @else
-                                    <img src="{{ Storage::url(Auth::user()->image) }}" width="40" height="40"
+                                    <img src="{{ URL(Auth::user()->image) }}" width="40" height="40"
                                         class="rounded-circle" alt="">
                                     <a href="/my-account" class="fw-bold fs-6 text-success text-decoration-underline">My
                                         Account</a>
@@ -256,15 +256,16 @@
                         <li class="menu-item-has-children">
                             <a>Pages</a>
                             <ul class="sub-menu">
-                                <li><a href="cart">Cart</a></li>
-                                <li><a href="checkout">Checkout</a></li>
-                                <li><a href="compare">Compare</a></li>
-                                <li><a href="wishlist">Wishlist</a></li>
-                                <li><a href="login-register">Login Register</a></li>
-                                <li><a href="my-account">My Account</a></li>
-                                <li><a href="order-complete">Order Complete</a></li>
-                                <li><a href="faq">Faq</a></li>
-                                <li><a href="contact-2">contact 02</a></li>
+                                <li><a href="{{URL('cart')}}">Cart</a></li>
+                                <li><a href="{{URL('search')}}">Search</a></li>
+                                <li><a href="{{URL('checkout')}}">Checkout</a></li>
+                                <li><a href="{{URL('compare')}}">Compare</a></li>
+                                <li><a href="{{URL('wishlist')}}">Wishlist</a></li>
+                                <li><a href="{{URL('login-register')}}">Login Register</a></li>
+                                <li><a href="{{URL('my-account')}}">My Account</a></li>
+                                <li><a href="{{URL('order')}}-complete">Order Complete</a></li>
+                                <li><a href="{{URL('faq')}}">Faq</a></li>
+                                <li><a href="{{URL('contact-2')}}">contact 02</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ URL('/contact') }}">Contact</a></li>
@@ -348,16 +349,16 @@
                         <li class="menu-item has-children">
                             <a href="javascript:void(0)">Pages <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="cart">Cart</a></li>
-                                <li><a href="search">Search</a></li>
-                                <li><a href="checkout">Checkout</a></li>
-                                <li><a href="compare">Compare</a></li>
-                                <li><a href="wishlist">Wishlist</a></li>
-                                <li><a href="login-register">Login Register</a></li>
-                                <li><a href="my-account">My Account</a></li>
-                                <li><a href="order-complete">Order Complete</a></li>
-                                <li><a href="faq">Faq</a></li>
-                                <li><a href="contact-2">contact 02</a></li>
+                                <li><a href="{{URL('cart')}}">Cart</a></li>
+                                <li><a href="{{URL('search')}}">Search</a></li>
+                                <li><a href="{{URL('checkout')}}">Checkout</a></li>
+                                <li><a href="{{URL('compare')}}">Compare</a></li>
+                                <li><a href="{{URL('wishlist')}}">Wishlist</a></li>
+                                <li><a href="{{URL('login-register')}}">Login Register</a></li>
+                                <li><a href="{{URL('my-account')}}">My Account</a></li>
+                                <li><a href="{{URL('order')}}-complete">Order Complete</a></li>
+                                <li><a href="{{URL('faq')}}">Faq</a></li>
+                                <li><a href="{{URL('contact-2')}}">contact 02</a></li>
                             </ul>
                         </li>
 
