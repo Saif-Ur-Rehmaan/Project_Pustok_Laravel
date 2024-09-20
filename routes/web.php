@@ -50,7 +50,7 @@ Route::controller(UserController::class)->group(function () {
    // only guest allowed
    Route::middleware('guest')->group(function () {
       // login or register page
-      Route::view('/login-register', 'login-register');
+      Route::view('/login-register', 'login-register')->name('login');
       // register
       Route::post('/register', 'RegisterUser')->name('users.register');
       // login
@@ -59,8 +59,11 @@ Route::controller(UserController::class)->group(function () {
    Route::middleware('auth')->group(function () {
       Route::view('/my-account', 'my-account');
       Route::view('/order-completed', 'order-completed');
-
-
+      
+      
       Route::get('/logout', 'logoutUser');
+      // Review
+      Route::post('/SendReview', 'SendReview');
+      Route::get('/DeleteReview/{EncryptedId}', 'DeleteReview');
    });
 });

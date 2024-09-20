@@ -107,7 +107,7 @@
                     <li class="nav-item">
                         <a class="nav-link" id="tab2" data-bs-toggle="tab" href="product-details#tab-2" role="tab"
                             aria-controls="tab-2" aria-selected="true">
-                            REVIEWS (1)
+                            REVIEWS &lpar;{{$Reviews->count()}}&rpar;
                         </a>
                     </li>
                 </ul>
@@ -120,74 +120,99 @@
                     </div>
                     <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
                         <div class="review-wrapper">
-                            <h2 class="title-lg mb--20">1 REVIEW FOR AUCTOR GRAVIDA ENIM</h2>
-                            <div class="review-comment mb--20">
-                                <div class="avatar">
-                                    <img src="{{ URL('image/icon/author-logo.png') }}" alt="">
-                                </div>
-                                <div class="text">
-                                    <div class="rating-block mb--15">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
+                            <h2 class="title-lg mb--20">{{$Reviews->count()}} REVIEW FOR AUCTOR GRAVIDA ENIM</h2>
+                            @forelse ($Reviews as $review)
+                                <div class="review-comment mb--20">
+                                    <div class="avatar">
+                                        <img src="{{ URL($review->user->image) }}" width="60" height="60" class="rounded-circle" alt="">
                                     </div>
-                                    <h6 class="author">ADMIN – <span class="font-weight-400">March 23, 2015</span>
-                                    </h6>
-                                    <p>Lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                        quis mi.</p>
+                                    <div class="text">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto">
+                                                <div class="rating-block mb--15"> 
+                                                    @for ($i = 0; $i < 5; $i++)
+                                                        @if ($review->reviewStars>$i)
+                                                            <span class="ion-android-star-outline star_on"></span>
+                                                            @else
+                                                            <span class="ion-android-star-outline"></span>  
+                                                        @endif
+                                                        
+                                                    @endfor
+        
+                                                </div>
+                                            </div>
+                                            @if (Auth::check() && Auth::user()->id==$review->user->id)
+                                                <a href="{{URL('/DeleteReview',Crypt::encrypt($review->id))}}" class="col-auto">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,300,150">
+                                                            <g fill="#c61919" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M10,2l-1,1h-4c-0.6,0 -1,0.4 -1,1c0,0.6 0.4,1 1,1h2h10h2c0.6,0 1,-0.4 1,-1c0,-0.6 -0.4,-1 -1,-1h-4l-1,-1zM5,7v13c0,1.1 0.9,2 2,2h10c1.1,0 2,-0.9 2,-2v-13zM9,9c0.6,0 1,0.4 1,1v9c0,0.6 -0.4,1 -1,1c-0.6,0 -1,-0.4 -1,-1v-9c0,-0.6 0.4,-1 1,-1zM15,9c0.6,0 1,0.4 1,1v9c0,0.6 -0.4,1 -1,1c-0.6,0 -1,-0.4 -1,-1v-9c0,-0.6 0.4,-1 1,-1z"></path></g></g>
+                                                            </svg>
+                                                </a>
+                                            @endif
+                                        </div>
+                                        <h6 class="author ">{{$review->user->displayName}} &nbsp;<span class="font-weight-400">{{($review->created_at)}}</span>
+                                        </h6>
+                                        <p>{{$review->comment}}</p>
+                                    </div>
                                 </div>
-                            </div>
+                                
+                            @empty
+                                <h1>No Reviews Available</h1>
+                            @endforelse
                             <h2 class="title-lg mb--20 pt--15">ADD A REVIEW</h2>
-                            <div class="rating-row pt-2">
-                                <p class="d-block">Your Rating</p>
-                                <span class="rating-widget-block">
-                                    <input type="radio" name="star" id="star1">
-                                    <label for="star1"></label>
-                                    <input type="radio" name="star" id="star2">
-                                    <label for="star2"></label>
-                                    <input type="radio" name="star" id="star3">
-                                    <label for="star3"></label>
-                                    <input type="radio" name="star" id="star4">
-                                    <label for="star4"></label>
-                                    <input type="radio" name="star" id="star5">
-                                    <label for="star5"></label>
-                                </span>
-                                <form action="https://htmldemo.net/pustok/pustok/" class="mt--15 site-form ">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="message">Comment</label>
-                                                <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                               <div class="rating-row pt-2">
+                                    <p class="d-block">Your Rating</p>
+                                    <span class="rating-widget-block">
+                                        <input type="radio" class="StarIcon" value="5" name="star" id="star5">
+                                        <label for="star5"></label>
+                                        <input type="radio" class="StarIcon" value="4" name="star" id="star4">
+                                        <label for="star4"></label>
+                                        <input type="radio" class="StarIcon" value="3" name="star" id="star3">
+                                        <label for="star3"></label>
+                                        <input type="radio" class="StarIcon" value="2" name="star" id="star2">
+                                        <label for="star2"></label>
+                                        <input type="radio" class="StarIcon" value="1" name="star" id="star1">
+                                        <label for="star1"></label>
+                                    </span>
+                                    <form action="{{URL('SendReview')}}" method="POST" class="mt--15 site-form ">
+                                        @error('reviewStar')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="message">Comment</label>
+                                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                                                    @error('message')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                             <input type="hidden" name="bookId" value="{{$Book->id}}">
+                                             <input type="hidden" id="ReviewStar" name="reviewStar" value="0">
+                                             @section('Scripts')
+                                                <script>
+                                                    const stars = document.getElementsByClassName("StarIcon");
+                                                        for (let i = 0; i < stars.length; i++) {
+                                                            const star = stars[i];
+                                                            star.addEventListener("click", () => { 
+                                                                document.getElementById("ReviewStar").value=star.value;
+                                                            });
+                                                        }
+                                                </script>
+                                                 
+                                             @endsection
+                                          
+                                    
+                                            <div class="col-lg-4">
+                                                <div class="submit-btn">
+                                                    <button type="submit"  class="btn btn-black">Post Comment</button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="name">Name *</label>
-                                                <input type="text" id="name" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="email">Email *</label>
-                                                <input type="text" id="email" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="website">Website</label>
-                                                <input type="text" id="website" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="submit-btn">
-                                                <a href="product-details#" class="btn btn-black">Post Comment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                    </form>
+                                </div>
+                           
                         </div>
                     </div>
                 </div>

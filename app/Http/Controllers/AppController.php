@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Contact; 
+use App\Models\Contact;
+use App\Models\Review;
 use Illuminate\Http\Request ;
 use Illuminate\Support\Facades\Crypt;
 
@@ -19,8 +20,9 @@ class AppController extends Controller
             die();
         }
         $RelatedBooks = Book::with('author')->where('subcategory_id', $Book->subcategory_id)->get();
-
-        return view('product-details', compact(['Book', 'RelatedBooks']));
+        $Reviews=Review::with('user')->where('book_id',$Id)->get();
+       
+        return view('product-details', compact(['Book', 'RelatedBooks','Reviews']));
     }
 
     function Search($Query = "")
@@ -48,7 +50,7 @@ class AppController extends Controller
             'message'=>$req['message'],
         ]);
 
-        return redirect('/contact')->with('success','Message Sended Successfully We Will Respond you Soon');
+        return back()->with('success','Message Sended Successfully We Will Respond you Soon');
     
     }
 }

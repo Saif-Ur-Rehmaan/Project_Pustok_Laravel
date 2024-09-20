@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\User;
 use App\Models\UserRole;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -14,11 +16,11 @@ class UserController extends Controller
     {
         $ValidCredentials = $request->validate([
             'ProfilePic' => ['image', 'required', 'mimes:png,jpg,jpeg'],
-           'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+            'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'confirmed', 'min:8'],
             'password_confirmation' => ['required', 'min:8'],
-        ],[
+        ], [
             'name.regex' => 'The name may only contain letters and spaces.',
         ]);
 
@@ -26,7 +28,7 @@ class UserController extends Controller
             $role_id = UserRole::all()->where('name', 'user')->select("id")->first()["id"]; //selecting id of record where role is user
             $uploadedImg = $ValidCredentials['ProfilePic'];
 
-            $imagePath = $request->file('ProfilePic')->store('UserProfilePics');
+            $imagePath = 'storage/'.$request->file('ProfilePic')->store('UserProfilePics', 'public');
             User::create([
                 'role_id' => $role_id,
                 'image' => $imagePath,
@@ -62,10 +64,40 @@ class UserController extends Controller
             return redirect('/login-register')->with('fail', 'An Error Occur While Registering Please try again later');
         }
     }
-    function logoutUser(Request $req) {
-        
+    function logoutUser(Request $req)
+    {
+
         Auth::logout();
-        $req->session()->regenerate();//prevent from Fixation attack
+        $req->session()->regenerate(); //prevent from Fixation attack
         return redirect('/');
+    }
+    function SendReview(Request $req)
+    {
+        $req->validate([
+            "message" => 'required',
+            "bookId" => 'required|numeric|exists:books,id',
+            "reviewStar" => 'required|numeric|in:1,2,3,4,5' 
+        ]);
+        Review::create([
+            'user_id'=>Auth::user()->id,
+            'book_id'=>$req["bookId"],
+            'reviewStars'=>$req["reviewStar"],
+            'comment'=>$req["message"],
+            
+        ]);
+        return back()->with('success','Review Added Successfully');
+     
+    }
+    function DeleteReview($EncryptedId) {
+        $ID = Crypt::decrypt($EncryptedId); 
+        if (!is_numeric($ID)) {
+            return back()->with('fail', 'Comment Deletion failed: Invalid ID');
+        } 
+        $deleted = Review::destroy($ID);  
+        if ($deleted) {
+            return back()->with('success', 'Comment Deleted Successfully');
+        } else {
+            return back()->with('fail', 'Comment Deletion failed: Review not found');
+        }
     }
 }
