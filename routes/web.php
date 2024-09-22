@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'Index');
+Route::get('/s', function () { 
+   return session()->all();
+});
 Route::view('index', 'Index');
 Route::view('/cart', 'cart');
 Route::view('/compare', 'compare');

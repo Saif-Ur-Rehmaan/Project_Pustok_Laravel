@@ -22068,7 +22068,7 @@ input[type=number] {
 }
 .common-sticky.sticky-header {
   display: block;
-  z-index: 99999;
+  z-index: 999;
   padding: 0 !important;
   width: 100%;
   position: fixed;

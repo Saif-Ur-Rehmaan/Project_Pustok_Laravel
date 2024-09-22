@@ -56,7 +56,8 @@
 </head>
 
 <body>
-
+    <div id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1000; width: auto;"></div>
+    
     <div class="site-wrapper" id="top"> 
         <x-NavBar></x-NavBar>
         @session('success')
@@ -92,6 +93,7 @@
     <script src="{{ URL('js/custom.js') }}"></script>
         
     @yield('Scripts')
+    
 </body>
 
 </html>

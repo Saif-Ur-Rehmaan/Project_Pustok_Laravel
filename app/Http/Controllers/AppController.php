@@ -19,7 +19,7 @@ class AppController extends Controller
             return redirect('/shop-grid')->with('fail', 'No Book Found Of this type');
             die();
         }
-        $RelatedBooks = Book::with('author')->where('subcategory_id', $Book->subcategory_id)->get();
+        $RelatedBooks = Book::with('author')->where('subcategory_id', $Book->subcategory_id)->where('books.id','!=',$Id)->get();
         $Reviews=Review::with('user')->where('book_id',$Id)->get();
        
         return view('product-details', compact(['Book', 'RelatedBooks','Reviews']));

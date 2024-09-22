@@ -93,15 +93,20 @@
                             <p>{{ $Book->productSummary }}.</p>
                         </article>
                         <div class="add-to-cart-row">
+                      
                             <div class="count-input-block">
                                 <span class="widget-label">Qty</span>
-                                <input type="number" class="form-control text-center" value="1">
+                                <input type="number" onkeyup="setquantity(this)" class="form-control text-center" value="1">
                             </div>
                             <div class="add-cart-btn">
-                                <a href="{{ URL('product-details') }}" class="btn btn-outlined--primary"><span
-                                        class="plus-icon">+</span>Add to
-                                    Cart</a>
+                                <a  data-id="{{$Book->id}}" id="addToCrtBtn" class="btn btn-outlined--primary AddToCartBtn" data-quantity="1"><span
+                                    class="plus-icon">+</span>Add to Cart</a>
                             </div>
+                                    <script>
+                                        function setquantity(e) {
+                                            document.getElementById('addToCrtBtn').setAttribute('data-quantity', e.value);                                           
+                                        }
+                                    </script>
                         </div>
                         <div class="compare-wishlist-row">
                             <a href="{{ URL('product-details') }}" class="add-link"><i class="fas fa-heart"></i>Add to Wish
@@ -233,7 +238,7 @@
                                                     star.addEventListener("click", () => {
                                                         document.getElementById("ReviewStar").value = star.value;
                                                     });
-                                                }
+                                                }                                              
                                             </script>
                                         @endsection
 
@@ -294,7 +299,8 @@
                                                 <img src="{{ URL($book->image) }}" alt="">
                                             </a>
                                             <div class="hover-btns">
-                                                <a href="cart" class="single-btn">
+                                                <a  class="AddToCartBtn single-btn"
+                                                data-id="{{ $book->id }}">
                                                     <i class="fas fa-shopping-basket"></i>
                                                 </a>
                                                 <a href="wishlist" class="single-btn">

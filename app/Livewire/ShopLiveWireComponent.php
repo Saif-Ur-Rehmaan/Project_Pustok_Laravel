@@ -34,9 +34,7 @@ class ShopLiveWireComponent extends Component
         'Of' => 14,
         'Pages' => 2,
         'NoOfBooksTOShowInOnePage' => 12
-    ];
-    public $ShowAddSuccess = false;
-    public $ShowRemoveSuccess = false;
+    ]; 
 
     public function render()
     {
@@ -114,45 +112,7 @@ class ShopLiveWireComponent extends Component
             $this->dispatch('OpenProductModal', $BookId);
         }
     }
-    //listeners
-    #[On('AddOrRemoveFromCart')]
-    public function AddToCart($id)
-    {
-
-
-        if (!session()->has('cart')) {
-            session()->put('cart', [$id]);
-            $this->dispatch('itemAddedInCartSuccessfully');
-    
-
-            return;
-        } else {
-            $cart = session()->get('cart');
-
-            if (in_array($id, $cart)) {
-                $index = array_search($id, $cart);
-                if ($index !== false) {
-                    unset($cart[$index]);
-                    $cart = array_values($cart);
-
-                    session()->put('cart', $cart);
-                    $this->dispatch('itemRemovedFromCartSuccessfully');
-             
-
-                    return;
-                }
-            } else {
-                $cart[] = $id;
-
-                session()->put('cart', $cart);
-
  
-                $this->dispatch('itemAddedInCartSuccessfully');
-
-                return;
-            }
-        }
-    }
 
 
     //setters

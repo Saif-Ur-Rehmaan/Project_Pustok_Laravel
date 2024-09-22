@@ -517,57 +517,50 @@ jQuery(document).ready(function ($) {
 
 
 
+const inp = document.getElementById('SearchBox');
+const btn = document.getElementById('SearchBtn');
+btn.addEventListener("click", () => {
 
+    console.log('search');
 
+    const query = inp.value;
+    window.location = `{{ url('search') }}/${query}`;
+});
 
 /*-------------------------------------
-    --> Add To Cart
+--> Add To Cart
 ---------------------------------------*/
 
 const btns_ = document.getElementsByClassName("AddToCartBtn");
 Array.from(btns_).forEach(btn => {
     btn.addEventListener('click', async () => { // Add 'async' here
+        console.log('clicked');
+
         try {
-            let bookId = btn.getAttribute('data-id');
+            let id = btn.getAttribute('data-id');
+            let quantity =btn.hasAttribute("data-quantity")? btn.getAttribute('data-quantity'):1;
+            
+            await window.Livewire.dispatch('AddOrRemoveFromCart', { id,quantity});
 
-            console.log("addtocart dispatched, id is", parseInt(bookId));
-
-
-            await window.Livewire.dispatch('AddOrRemoveFromCart', { id: bookId });
-
-            console.log("addtocart action completed");
 
         } catch (error) {
             console.error("Error during AddOrRemoveFromCart:", error);
         }
     });
 });
-// Create a container div for all alerts
-const alertContainer = document.createElement('div');
-alertContainer.id = 'alert-container';
-alertContainer.style.position = 'fixed';
-alertContainer.style.top = '20px';
-alertContainer.style.right = '20px';
-alertContainer.style.zIndex = '1000';
-alertContainer.style.width = 'auto';
-
-// Append the container to the body (if not already present)
-if (!document.getElementById('alert-container')) {
-    document.body.appendChild(alertContainer);
-}
-
 // Event listener for adding item to the cart
 window.addEventListener('itemAddedInCartSuccessfully', event => {
     console.log('added');
+    const alertContainer = document.getElementById('alert-container');
 
     // Create the alert div
     const alertDiv = document.createElement('div');
     alertDiv.className = 'alert alert-success alert-dismissible fade show';
     alertDiv.role = 'alert';
     alertDiv.innerHTML = `
-        Item added to cart successfully!
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
+Item added to cart successfully!
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+`;
 
     // Append the alert to the alert container
     alertContainer.appendChild(alertDiv);
@@ -578,19 +571,19 @@ window.addEventListener('itemAddedInCartSuccessfully', event => {
         alert.close();
     }, 3000);
 });
-
 // Event listener for removing item from the cart
 window.addEventListener('itemRemovedFromCartSuccessfully', event => {
     console.log("removed");
+    const alertContainer = document.getElementById('alert-container');
 
     // Create the alert div
     const alertDiv = document.createElement('div');
     alertDiv.className = 'alert alert-danger alert-dismissible fade show';
     alertDiv.role = 'alert';
     alertDiv.innerHTML = `
-        Item removed from cart successfully!
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
+Item removed from cart successfully!
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+`;
 
     // Append the alert to the alert container
     alertContainer.appendChild(alertDiv);
@@ -601,6 +594,8 @@ window.addEventListener('itemRemovedFromCartSuccessfully', event => {
         alert.close();
     }, 3000);
 });
+
+
 
 
 

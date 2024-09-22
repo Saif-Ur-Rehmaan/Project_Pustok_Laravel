@@ -39,16 +39,16 @@
                                 <a href="javascript:void(0)">Pages <i
                                         class="fas fa-chevron-down dropdown-arrow"></i></a>
                                 <ul class="sub-menu">
-                                    <li><a href="{{URL('cart')}}">Cart</a></li>
-                                    <li><a href="{{URL('search')}}">Search</a></li>
-                                    <li><a href="{{URL('checkout')}}">Checkout</a></li>
-                                    <li><a href="{{URL('compare')}}">Compare</a></li>
-                                    <li><a href="{{URL('wishlist')}}">Wishlist</a></li>
-                                    <li><a href="{{URL('login-register')}}">Login Register</a></li>
-                                    <li><a href="{{URL('my-account')}}">My Account</a></li>
-                                    <li><a href="{{URL('order')}}-complete">Order Complete</a></li>
-                                    <li><a href="{{URL('faq')}}">Faq</a></li>
-                                    <li><a href="{{URL('contact-2')}}">contact 02</a></li>
+                                    <li><a href="{{ URL('cart') }}">Cart</a></li>
+                                    <li><a href="{{ URL('search') }}">Search</a></li>
+                                    <li><a href="{{ URL('checkout') }}">Checkout</a></li>
+                                    <li><a href="{{ URL('compare') }}">Compare</a></li>
+                                    <li><a href="{{ URL('wishlist') }}">Wishlist</a></li>
+                                    <li><a href="{{ URL('login-register') }}">Login Register</a></li>
+                                    <li><a href="{{ URL('my-account') }}">My Account</a></li>
+                                    <li><a href="{{ URL('order') }}-complete">Order Complete</a></li>
+                                    <li><a href="{{ URL('faq') }}">Faq</a></li>
+                                    <li><a href="{{ URL('contact-2') }}">contact 02</a></li>
                                 </ul>
                             </li>
 
@@ -95,23 +95,11 @@
                 </div>
                 <!-- search box start -->
                 <div class="col-lg-5">
-                    <div  class="header-search-block">
-                        <input type="text" name="Query" id="SearchBox" value="" placeholder="Search entire store here">
+                    <div class="header-search-block">
+                        <input type="text" name="Query" id="SearchBox" value=""
+                            placeholder="Search entire store here">
                         <button id="SearchBtn">Search</button>
-                        @section('Scripts')
-                            <script>
-                                const inp=document.getElementById('SearchBox');
-                                const btn=document.getElementById('SearchBtn');
-                                btn.addEventListener("click",()=>{
 
-                                    
-                                    const query=inp.value;
-                                    console.log('asjcb');
-                                    window.location = `{{ url('search') }}/${query}`;
-                                });
-                            </script>
-                            
-                        @endsection
                     </div>
                 </div>
                 <!-- search box end -->
@@ -120,8 +108,8 @@
                         <div class="cart-widget">
                             <div class="login-block">
                                 @if (Auth::guest())
-                                    <a href="{{URL('login-register')}}" class="font-weight-bold">Login</a> <br>
-                                    <span>or</span><a href="{{URL('login-register')}}">Register</a>
+                                    <a href="{{ URL('login-register') }}" class="font-weight-bold">Login</a> <br>
+                                    <span>or</span><a href="{{ URL('login-register') }}">Register</a>
                                 @else
                                     <img src="{{ URL(Auth::user()->image) }}" width="40" height="40"
                                         class="rounded-circle" alt="">
@@ -129,45 +117,7 @@
                                         Account</a>
                                 @endif
                             </div>
-                            <div class="cart-block">
-                                <div class="cart-total">
-                                    <span class="text-number">
-                                        1
-                                    </span>
-                                    <span class="text-item">
-                                        Shopping Cart
-                                    </span>
-                                    <span class="price">
-                                        £0.00
-                                        <i class="fas fa-chevron-down"></i>
-                                    </span>
-                                </div>
-                                <div class="cart-dropdown-block">
-                                    <div class=" single-cart-block ">
-                                        <div class="cart-product">
-                                            <a href="{{ URL('product-details') }}" class="image">
-                                                <img src="{{ URL('image/products/cart-product-1.jpg') }}"
-                                                    alt="">
-                                            </a>
-                                            <div class="content">
-                                                <h3 class="title"><a href="{{ URL('product-details') }}">Kodak PIXPRO
-                                                        Astro Zoom AZ421 16 MP</a>
-                                                </h3>
-                                                <p class="price"><span class="qty">1 ×</span> £87.34</p>
-                                                <button class="cross-btn"><i class="fas fa-times"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class=" single-cart-block ">
-                                        <div class="btn-block">
-                                            <a href="cart" class="btn">View Cart <i
-                                                    class="fas fa-chevron-right"></i></a>
-                                            <a href="checkout" class="btn btn--primary">Check Out <i
-                                                    class="fas fa-chevron-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @livewire('CartLiveWireComponent')
                         </div>
                     </div>
                 </div>
@@ -256,16 +206,16 @@
                         <li class="menu-item-has-children">
                             <a>Pages</a>
                             <ul class="sub-menu">
-                                <li><a href="{{URL('cart')}}">Cart</a></li>
-                                <li><a href="{{URL('search')}}">Search</a></li>
-                                <li><a href="{{URL('checkout')}}">Checkout</a></li>
-                                <li><a href="{{URL('compare')}}">Compare</a></li>
-                                <li><a href="{{URL('wishlist')}}">Wishlist</a></li>
-                                <li><a href="{{URL('login-register')}}">Login Register</a></li>
-                                <li><a href="{{URL('my-account')}}">My Account</a></li>
-                                <li><a href="{{URL('order')}}-complete">Order Complete</a></li>
-                                <li><a href="{{URL('faq')}}">Faq</a></li>
-                                <li><a href="{{URL('contact-2')}}">contact 02</a></li>
+                                <li><a href="{{ URL('cart') }}">Cart</a></li>
+                                <li><a href="{{ URL('search') }}">Search</a></li>
+                                <li><a href="{{ URL('checkout') }}">Checkout</a></li>
+                                <li><a href="{{ URL('compare') }}">Compare</a></li>
+                                <li><a href="{{ URL('wishlist') }}">Wishlist</a></li>
+                                <li><a href="{{ URL('login-register') }}">Login Register</a></li>
+                                <li><a href="{{ URL('my-account') }}">My Account</a></li>
+                                <li><a href="{{ URL('order') }}-complete">Order Complete</a></li>
+                                <li><a href="{{ URL('faq') }}">Faq</a></li>
+                                <li><a href="{{ URL('contact-2') }}">contact 02</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ URL('/contact') }}">Contact</a></li>
@@ -349,16 +299,16 @@
                         <li class="menu-item has-children">
                             <a href="javascript:void(0)">Pages <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="{{URL('cart')}}">Cart</a></li>
-                                <li><a href="{{URL('search')}}">Search</a></li>
-                                <li><a href="{{URL('checkout')}}">Checkout</a></li>
-                                <li><a href="{{URL('compare')}}">Compare</a></li>
-                                <li><a href="{{URL('wishlist')}}">Wishlist</a></li>
-                                <li><a href="{{URL('login-register')}}">Login Register</a></li>
-                                <li><a href="{{URL('my-account')}}">My Account</a></li>
-                                <li><a href="{{URL('order')}}-complete">Order Complete</a></li>
-                                <li><a href="{{URL('faq')}}">Faq</a></li>
-                                <li><a href="{{URL('contact-2')}}">contact 02</a></li>
+                                <li><a href="{{ URL('cart') }}">Cart</a></li>
+                                <li><a href="{{ URL('search') }}">Search</a></li>
+                                <li><a href="{{ URL('checkout') }}">Checkout</a></li>
+                                <li><a href="{{ URL('compare') }}">Compare</a></li>
+                                <li><a href="{{ URL('wishlist') }}">Wishlist</a></li>
+                                <li><a href="{{ URL('login-register') }}">Login Register</a></li>
+                                <li><a href="{{ URL('my-account') }}">My Account</a></li>
+                                <li><a href="{{ URL('order') }}-complete">Order Complete</a></li>
+                                <li><a href="{{ URL('faq') }}">Faq</a></li>
+                                <li><a href="{{ URL('contact-2') }}">contact 02</a></li>
                             </ul>
                         </li>
 
