@@ -521,10 +521,10 @@ const inp = document.getElementById('SearchBox');
 const btn = document.getElementById('SearchBtn');
 btn.addEventListener("click", () => {
 
-    console.log('search');
-
+    console.log('search'); 
+    
     const query = inp.value;
-    window.location = `{{ url('search') }}/${query}`;
+    window.location = `${window.location.origin}/search/${query}`;
 });
 
 
