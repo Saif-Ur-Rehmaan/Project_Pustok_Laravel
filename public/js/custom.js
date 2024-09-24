@@ -527,22 +527,32 @@ btn.addEventListener("click", () => {
     window.location = `{{ url('search') }}/${query}`;
 });
 
+
 /*-------------------------------------
---> Add To Cart
----------------------------------------*/
+    --> Add To Cart
+--------------------------------------*/
 
 const btns_ = document.getElementsByClassName("AddToCartBtn");
+
+
+
+// Convert HTMLCollection to Array and set up event listeners
 Array.from(btns_).forEach(btn => {
-    btn.addEventListener('click', async () => { // Add 'async' here
+    // Add new click event listener
+    btn.addEventListener('click', async () => {
         console.log('clicked');
 
         try {
             let id = btn.getAttribute('data-id');
-            let quantity =btn.hasAttribute("data-quantity")? btn.getAttribute('data-quantity'):1;
+            let quantity = btn.hasAttribute("data-quantity") ? btn.getAttribute('data-quantity') :
+                1;
+
+            await window.Livewire.dispatch('AddOrRemoveFromCart', { id, quantity });
+            btn.classList.contains('bg-success')?btn.classList.remove('bg-success'):btn.classList.add('bg-success');
             
-            await window.Livewire.dispatch('AddOrRemoveFromCart', { id,quantity});
 
 
+            // Handle errors or other scenarios as needed
         } catch (error) {
             console.error("Error during AddOrRemoveFromCart:", error);
         }
@@ -551,16 +561,15 @@ Array.from(btns_).forEach(btn => {
 // Event listener for adding item to the cart
 window.addEventListener('itemAddedInCartSuccessfully', event => {
     console.log('added');
-    const alertContainer = document.getElementById('alert-container');
 
-    // Create the alert div
+    const alertContainer = document.getElementById('alert-container');
     const alertDiv = document.createElement('div');
     alertDiv.className = 'alert alert-success alert-dismissible fade show';
     alertDiv.role = 'alert';
     alertDiv.innerHTML = `
-Item added to cart successfully!
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-`;
+      Item added to cart successfully!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
 
     // Append the alert to the alert container
     alertContainer.appendChild(alertDiv);
@@ -569,21 +578,21 @@ Item added to cart successfully!
     setTimeout(() => {
         const alert = new bootstrap.Alert(alertDiv);
         alert.close();
-    }, 3000);
+    }, 3000); // Adjusted to 3000ms for better visibility
 });
+
 // Event listener for removing item from the cart
 window.addEventListener('itemRemovedFromCartSuccessfully', event => {
     console.log("removed");
-    const alertContainer = document.getElementById('alert-container');
 
-    // Create the alert div
+    const alertContainer = document.getElementById('alert-container');
     const alertDiv = document.createElement('div');
     alertDiv.className = 'alert alert-danger alert-dismissible fade show';
     alertDiv.role = 'alert';
     alertDiv.innerHTML = `
-Item removed from cart successfully!
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-`;
+      Item removed from cart successfully!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
 
     // Append the alert to the alert container
     alertContainer.appendChild(alertDiv);
@@ -592,10 +601,7 @@ Item removed from cart successfully!
     setTimeout(() => {
         const alert = new bootstrap.Alert(alertDiv);
         alert.close();
-    }, 3000);
+    }, 3000); // Adjusted to 3000ms for better visibility
 });
-
-
-
 
 

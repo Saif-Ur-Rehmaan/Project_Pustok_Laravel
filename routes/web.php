@@ -41,6 +41,10 @@ Route::controller(AppController::class)->group(function () {
    Route::view('/shop-grid', 'shop-grid')->name('shop');
    Route::get('/product-details/{id}', 'ProductDetails');
    Route::get('/search/{Query?}', 'Search')->name('search');
+   Route::get('/s', function (){
+      return session()->get('cart',[]);
+      // session()->forget('cart');
+   });
 
 
    Route::get('/contact','ContactUs');

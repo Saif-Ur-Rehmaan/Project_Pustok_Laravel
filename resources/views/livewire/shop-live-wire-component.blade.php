@@ -152,11 +152,12 @@
                                     {{ $Book->author->displayName }}
 
                                 </a>
-                                <h3 >
-                                    <a class=" text-truncate" href="{{ URL('product-details', Crypt::encrypt($Book->id)) }}">
+                                <h3>
+                                    <a class=" text-truncate"
+                                        href="{{ URL('product-details', Crypt::encrypt($Book->id)) }}">
                                         {{ $Book->title }}
                                     </a>
-                                    </h3>
+                                </h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
@@ -168,12 +169,11 @@
                                             <img src="{{ URL($Book->image) }}" alt="">
                                         </a>
                                         <div class="hover-btns">
-                                            <a class="AddToCartBtn single-btn"
-                                                data-id="{{ $Book->id }}">
+                                            <a class="AddToCartBtn single-btn {{ session()->has('cart') && collect(session('cart'))->contains(fn($item) => $item['id'] == $Book->id) ? 'bg-success' : '' }}" data-id="{{ $Book->id }}">
                                                 <i class="fas fa-shopping-basket"></i>
                                             </a>
-                                         
-                                            <a   class="single-btn">
+
+                                            <a class="single-btn">
                                                 <i class="fas fa-heart"></i>
                                             </a>
                                             <a href="compare" class="single-btn">
@@ -524,4 +524,5 @@
             </div>
         </div>
     </div>
+ 
 </div>

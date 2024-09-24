@@ -80,7 +80,7 @@
                                         <span class="fas fa-star "></span>
                                     @endif
                                 @endfor
-                           
+
                             </div>
                             <div class="review-widget">
                                 <a href="{{ URL('product-details') }}">({{ $Reviews->count() }} Reviews)</a>
@@ -92,22 +92,7 @@
                             <h4 class="sr-only">Product Summery</h4>
                             <p>{{ $Book->productSummary }}.</p>
                         </article>
-                        <div class="add-to-cart-row">
-                      
-                            <div class="count-input-block">
-                                <span class="widget-label">Qty</span>
-                                <input type="number" onkeyup="setquantity(this)" class="form-control text-center" value="1">
-                            </div>
-                            <div class="add-cart-btn">
-                                <a  data-id="{{$Book->id}}" id="addToCrtBtn" class="btn btn-outlined--primary AddToCartBtn" data-quantity="1"><span
-                                    class="plus-icon">+</span>Add to Cart</a>
-                            </div>
-                                    <script>
-                                        function setquantity(e) {
-                                            document.getElementById('addToCrtBtn').setAttribute('data-quantity', e.value);                                           
-                                        }
-                                    </script>
-                        </div>
+                        @livewire('AddtoCartbtn',['id'=>$Book->id])
                         <div class="compare-wishlist-row">
                             <a href="{{ URL('product-details') }}" class="add-link"><i class="fas fa-heart"></i>Add to Wish
                                 List</a>
@@ -238,7 +223,7 @@
                                                     star.addEventListener("click", () => {
                                                         document.getElementById("ReviewStar").value = star.value;
                                                     });
-                                                }                                              
+                                                }
                                             </script>
                                         @endsection
 
@@ -259,8 +244,8 @@
 
         </div>
         <!--=================================
-                    RELATED PRODUCTS BOOKS
-                    ===================================== -->
+                                RELATED PRODUCTS BOOKS
+                                ===================================== -->
         <section class="">
             <div class="container">
                 <div class="section-title section-title--bordered">
@@ -299,8 +284,7 @@
                                                 <img src="{{ URL($book->image) }}" alt="">
                                             </a>
                                             <div class="hover-btns">
-                                                <a  class="AddToCartBtn single-btn"
-                                                data-id="{{ $book->id }}">
+                                                <a class="AddToCartBtn single-btn" data-id="{{ $book->id }}">
                                                     <i class="fas fa-shopping-basket"></i>
                                                 </a>
                                                 <a href="wishlist" class="single-btn">
@@ -343,6 +327,6 @@
                 </div>
             </div>
         </section>
-
+     
     </main>
 @endsection
