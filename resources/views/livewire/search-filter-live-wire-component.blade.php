@@ -152,7 +152,7 @@
                                         <img src="{{ URL($Book->image) }}" alt="">
                                     </a>
                                     <div class="hover-btns">
-                                        <a href="cart" class="single-btn">
+                                        <a href="{{URL('cart')}}" class="single-btn">
                                             <i class="fas fa-shopping-basket"></i>
                                         </a>
                                         <a href="wishlist" class="single-btn">

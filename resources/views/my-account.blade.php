@@ -73,7 +73,7 @@
                                                         <td>Aug 22, 2018</td>
                                                         <td>Pending</td>
                                                         <td>$45</td>
-                                                        <td><a href="cart" class="btn">View</a></td>
+                                                        <td><a href="{{URL('cart')}}" class="btn">View</a></td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
@@ -81,7 +81,7 @@
                                                         <td>July 22, 2018</td>
                                                         <td>Approved</td>
                                                         <td>$100</td>
-                                                        <td><a href="cart" class="btn">View</a></td>
+                                                        <td><a href="{{URL('cart')}}" class="btn">View</a></td>
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
@@ -89,7 +89,7 @@
                                                         <td>June 12, 2017</td>
                                                         <td>On Hold</td>
                                                         <td>$99</td>
-                                                        <td><a href="cart" class="btn">View</a></td>
+                                                        <td><a href="{{URL('cart')}}" class="btn">View</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

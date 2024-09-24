@@ -51,7 +51,7 @@
         </div>
         <div class=" single-cart-block ">
             <div class="btn-block">
-                <a href="cart" class="btn">View Cart <i class="fas fa-chevron-right"></i></a>
+                <a href="{{URL('cart')}}" class="btn">View Cart <i class="fas fa-chevron-right"></i></a>
                 <a href="checkout" class="btn btn--primary">Check Out <i class="fas fa-chevron-right"></i></a>
             </div>
         </div>

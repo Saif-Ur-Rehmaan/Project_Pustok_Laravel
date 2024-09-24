@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'Index');
-Route::get('/s', function () { 
+Route::get('/s', function () {
+   // session()->forget('coupon');
    return session()->all();
 });
 Route::view('index', 'Index');
@@ -24,7 +25,6 @@ Route::view('/cart', 'cart');
 Route::view('/compare', 'compare');
 
 
-Route::view('/checkout', 'checkout');
 Route::view('/wishlist', 'wishlist');
 Route::view('/faq', 'faq');
 
@@ -41,15 +41,12 @@ Route::controller(AppController::class)->group(function () {
    Route::view('/shop-grid', 'shop-grid')->name('shop');
    Route::get('/product-details/{id}', 'ProductDetails');
    Route::get('/search/{Query?}', 'Search')->name('search');
-   Route::get('/s', function (){
-      return session()->get('cart',[]);
-      // session()->forget('cart');
-   });
 
 
-   Route::get('/contact','ContactUs');
-   
-   Route::post('/contact','SendMessage')->name('sendMessage');
+
+   Route::get('/contact', 'ContactUs');
+
+   Route::post('/contact', 'SendMessage')->name('sendMessage');
 });
 
 
@@ -66,9 +63,10 @@ Route::controller(UserController::class)->group(function () {
    });
    Route::middleware('auth')->group(function () {
       Route::view('/my-account', 'my-account');
+      Route::view('/checkout', 'checkout');
       Route::view('/order-completed', 'order-completed');
-      
-      
+
+
       Route::get('/logout', 'logoutUser');
       // Review
       Route::post('/SendReview', 'SendReview');

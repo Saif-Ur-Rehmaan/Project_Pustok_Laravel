@@ -133,7 +133,7 @@
                                                     <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart" class="single-btn">
+                                                    <a href="{{URL('cart')}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist" class="single-btn">
@@ -173,7 +173,7 @@
                                                     <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart" class="single-btn">
+                                                    <a href="{{URL('cart')}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist" class="single-btn">
@@ -213,7 +213,7 @@
                                                     <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart" class="single-btn">
+                                                    <a href="{{URL('cart')}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist" class="single-btn">
@@ -254,7 +254,7 @@
                                                     <img src="{{ URL('image/products/product-4.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart" class="single-btn">
+                                                    <a href="{{URL('cart')}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist" class="single-btn">
@@ -294,7 +294,7 @@
                                                     <img src="{{ URL('image/products/product-4.jpg') }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart" class="single-btn">
+                                                    <a href="{{URL('cart')}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist" class="single-btn">

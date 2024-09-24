@@ -10,7 +10,7 @@ class CartLiveWireComponent extends Component
 {
     public $TotalPrice = 0.00;
     public $Books = [];
-
+    #[On('RenderCartListAgain')]
     public function render()
     {
         // Get the cart from the session or an empty array if it doesn't exist

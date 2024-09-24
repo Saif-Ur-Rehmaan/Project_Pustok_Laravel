@@ -162,7 +162,7 @@
                     <div class="mobile-header-btns header-top-widget">
                         <ul class="header-links">
                             <li class="sin-link">
-                                <a href="cart" class="cart-link link-icon"><i class="ion-bag"></i></a>
+                                <a href="{{URL('cart')}}" class="cart-link link-icon"><i class="ion-bag"></i></a>
                             </li>
                             <li class="sin-link">
                                 <a href="javascript:" class="link-icon hamburgur-icon off-canvas-btn"><i
@@ -234,7 +234,7 @@
                     <li class="menu-item-has-children">
                         <a>Currency - USD $ <i class="fas fa-angle-down"></i></a>
                         <ul class="sub-menu">
-                            <li> <a href="cart">USD $</a></li>
+                            <li> <a href="{{URL('cart')}}">USD $</a></li>
                             <li> <a href="checkout">EUR €</a></li>
                         </ul>
                     </li>
