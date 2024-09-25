@@ -63,7 +63,14 @@ Route::controller(UserController::class)->group(function () {
    });
    Route::middleware('auth')->group(function () {
       Route::view('/my-account', 'my-account');
-      Route::view('/checkout', 'checkout');
+      Route::get('/checkout', function () {
+         if (!session()->has('cart')) {
+            return redirect('/shop-grid')->with('fail','No Items Were In Cart You Must Add Some Items In Cart Before Checkout');
+         }
+
+         return view('checkout'); // return the checkout view
+
+      });
       Route::view('/order-completed', 'order-completed');
 
 
