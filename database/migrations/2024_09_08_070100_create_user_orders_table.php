@@ -29,6 +29,7 @@ return new class extends Migration
         
             $table->enum("orderStatus",['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'])->default("Pending");
             $table->integer("quantity");
+            $table->string("Code")->unique();
             $table->decimal("pricePerProduct",8,2,true);
             $table->decimal("shippingFee",8,2,true);
             $table->string("firstName");

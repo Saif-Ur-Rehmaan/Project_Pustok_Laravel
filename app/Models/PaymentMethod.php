@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderRecipt extends Model
+class PaymentMethod extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'title',
-        'order_id',
-        'File'
+        'name',
+        'status'
     ];
-    public function payments()
+    public function Orders()
     {
-        return $this->belongsTo(UserOrder::class, 'order_id');
+        return $this->hasMany(OrderPayment::class, 'payment_method_id');
     }
 }

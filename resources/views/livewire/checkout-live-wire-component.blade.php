@@ -99,7 +99,14 @@
                                 <span class="text-danger ">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="col-12 col-12 mb--20">
+                            <label>Order Note* (optional)</label>
+                            <input wire:model='ShippingDetails.OrderNote' type="text" placeholder="OrderNote">
+                            @error('ShippingDetails.OrderNote')
+                                <span class="text-danger ">{{ $message }}</span>
+                            @enderror
 
+                        </div>
                     </div>
                 </div>
                 <!-- Shipping Address -->
@@ -134,14 +141,12 @@
                             <p>Coupon Discount <span>${{ number_format($couponDiscount, 2) }}</span></p>
                             <h4>Grand Total <span>${{ number_format($grandTotal, 2) }}</span></h4>
                             <div class="method-notice mt--25">
-                                <article>
-                                    <h3 class="d-none sr-only">blog-article</h3>
-                                    Sorry, it seems that there are no available payment methods for
-                                    your state. Please contact us if you
-                                    require
-                                    assistance
-                                    or wish to make alternate arrangements.
-                                </article>
+                                <select wire:model='SelectedPaymenyMethod' id="">
+                                    @foreach ($PaymentMethods as $method)
+                                        <option value="{{$method->name}}" {{  $SelectedPaymenyMethod==$method->name?'selected':''}}>{{$method->name}}</option>
+                                    @endforeach 
+                                </select> 
+                              
                             </div>
                             <div class="term-block">
                                 <input type="checkbox" id="accept_terms2">

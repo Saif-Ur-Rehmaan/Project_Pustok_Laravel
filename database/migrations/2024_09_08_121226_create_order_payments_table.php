@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('order_payments', function (Blueprint $table) {
             $table->id(); // Primary key
             $table->unsignedBigInteger('order_id'); // Foreign key to the orders table
-            $table->string('payment_method'); // Payment method (e.g., Credit Card, PayPal, COD)
+            $table->unsignedBigInteger('payment_method_id'); // Payment method (e.g., Credit Card, PayPal, COD)
             $table->decimal('amount', 10, 2); // Payment amount
             $table->string('currency', 3)->default('USD'); // Currency code (e.g., USD, EUR)
             $table->string('payment_status')->default('pending'); // Payment status (e.g., pending, completed, failed)
@@ -27,6 +27,11 @@ return new class extends Migration
             $table->foreign('order_id')
                 ->references('id')
                 ->on('user_orders')
+                ->onDelete('cascade'); // Delete payments if the related order is deleted
+                
+            $table->foreign('payment_method_id')
+                ->references('id')
+                ->on('payment_methods')
                 ->onDelete('cascade'); // Delete payments if the related order is deleted
         
         });

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\OrderPayment;
+use App\Models\OrderRecipt;
 use App\Models\UserOrder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,6 +24,7 @@ class UserOrderFactory extends Factory
         return [
             'user_id' => $recNo, 
             'book_id' => $recNo, 
+            'Code' => 'ORDTTOD'.now(), 
             'orderStatus' => $this->faker->randomElement(['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']),
             'quantity' => $this->faker->numberBetween(1, 10), // Random quantity between 1 and 10
             'pricePerProduct' => $this->faker->randomFloat(2, 5, 100), // Random price between 5 and 100 with 2 decimal places
@@ -36,5 +39,14 @@ class UserOrderFactory extends Factory
             'contactNumber' => $this->faker->phoneNumber(), // Random phone number
             'orderNote' => $this->faker->sentence(), // Random sentence for order note
         ];
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(OrderPayment::class, 'order_id');
+    }
+    public function recipts()
+    {
+        return $this->hasMany(OrderRecipt::class, 'order_id');
     }
 }

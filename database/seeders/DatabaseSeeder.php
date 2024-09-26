@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             BookSeeder::class,  
             UserOrderSeeder::class,  
             OrderReciptSeeder::class,  
+            PaymentMethodSeeder::class,  
             OrderPaymentSeeder::class,  
             BlogSeeder::class,  
             BlogCommentSeeder::class,  

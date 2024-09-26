@@ -20,7 +20,7 @@ class OrderPaymentFactory extends Factory
         static $increment = 1; 
         return [
             'order_id' =>$increment++ ,
-            'payment_method' => $this->faker->randomElement(['Credit Card', 'PayPal', 'Bank Transfer', 'Cash']),
+            'payment_method_id' => 1,
             'amount' => $this->faker->randomFloat(2, 5, 500), // Random amount between 5 and 500
             'currency' => $this->faker->randomElement(['USD', 'EUR', 'GBP']), // Random currency
             'payment_status' => $this->faker->randomElement(['Pending', 'Completed', 'Failed']),
