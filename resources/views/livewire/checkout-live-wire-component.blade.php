@@ -1,4 +1,7 @@
-<div class="col-12">
+<div class="col-12 position-relative">
+    <div wire:loading>
+        <x-Loader></x-Loader>
+    </div>
     <!-- Checkout Form s-->
     <div class="checkout-form">
         <div class="row row-40">
@@ -57,13 +60,7 @@
                                 <option>Japan</option>
                             </select> --}}
                         </div>
-                        <div class="col-md-6 col-12 mb--20">
-                            <label>Email Address*</label>
-                            <input type="email" wire:model='ShippingDetails.EmailAddress' placeholder="Email Address">
-                            @error('ShippingDetails.EmailAddress')
-                                <span class="text-danger ">{{ $message }}</span>
-                            @enderror
-                        </div>
+                        
                         <div class="col-md-6 col-12 mb--20">
                             <label>Phone no*</label>
                             <input type="text" wire:model='ShippingDetails.PhoneNumber' placeholder="Phone number">
@@ -127,14 +124,6 @@
                                             class="right">${{ number_format($item['TotalPriceOfThisBook'], 2) }}</span>
                                     </li>
                                 @endforeach
-                                <li><span class="left">Auctor gravida pellentesque X 02 </span><span
-                                        class="right">$50.00</span></li>
-                                <li><span class="left">Condimentum posuere consectetur X 01</span>
-                                    <span class="right">$29.00</span>
-                                </li>
-                                <li><span class="left">Habitasse dictumst elementum X 01</span>
-                                    <span class="right">$10.00</span>
-                                </li>
                             </ul>
                             <p>Sub Total <span>${{ number_format($SubTotal, 2) }}</span></p>
                             <p>Shipping Fee <span>${{ number_format($shippingFee, 2) }}</span></p>

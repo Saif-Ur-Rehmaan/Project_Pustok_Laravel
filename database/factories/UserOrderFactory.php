@@ -24,7 +24,7 @@ class UserOrderFactory extends Factory
         return [
             'user_id' => $recNo, 
             'book_id' => $recNo, 
-            'Code' => 'ORDTTOD'.now(), 
+            'Code' => 'ORDTTOD'.$recNo, 
             'orderStatus' => $this->faker->randomElement(['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']),
             'quantity' => $this->faker->numberBetween(1, 10), // Random quantity between 1 and 10
             'pricePerProduct' => $this->faker->randomFloat(2, 5, 100), // Random price between 5 and 100 with 2 decimal places

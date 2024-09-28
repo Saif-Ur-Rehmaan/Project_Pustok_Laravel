@@ -13,7 +13,7 @@ class OrderPayment extends Model
 
     // Fields that are mass assignable
     protected $fillable = [
-        'order_id',
+        'order_Code',
         'payment_method_id',
         'amount',
         'currency',
@@ -28,12 +28,7 @@ class OrderPayment extends Model
         'payment_details' => 'array',
         'paid_at' => 'datetime',
     ];
-
-    // Define the relationship with the Order model
-    public function order()
-    {
-        return $this->belongsTo(UserOrder::class, 'order_id');
-    }
+  
     public function paymentMethod()
     {
         return $this->belongsTo(UserOrder::class, 'payment_method_id');

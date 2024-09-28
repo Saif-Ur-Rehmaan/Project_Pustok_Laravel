@@ -26,4 +26,6 @@ class UserOrder extends Model
         "contactNumber",
         "orderNote",
     ];
+    
+    
 }

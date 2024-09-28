@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'Index');
 Route::get('/s', function () {
-   // session()->forget('coupon');
+   // session()->forget('coupon'); 
+   // dump(session()->all());
    return session()->all();
 });
 Route::view('index', 'Index');
@@ -71,7 +72,12 @@ Route::controller(UserController::class)->group(function () {
          return view('checkout'); // return the checkout view
 
       });
-      Route::view('/order-completed', 'order-completed');
+      Route::get('/order-completed', function(){
+         if (!session('Details')) {
+            return redirect('/shop-grid')->with('fail','Add Some Items to cart And Checkout First');
+         }
+         return view('order-completed',['Details'=>session('Details')]);
+      });
 
 
       Route::get('/logout', 'logoutUser');

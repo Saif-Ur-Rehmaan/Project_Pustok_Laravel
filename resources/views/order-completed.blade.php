@@ -1,7 +1,11 @@
 @extends("Layout.Layout")
 @section("Content")
 <x-Breadcrumb :items="['Home', 'Order Complated']" />
-
+<pre>
+	@php
+		print_r($Details);
+	@endphp 
+</pre>
 		<!-- order complete Page Start -->
 		<section class="order-complete inner-page-sec-padding-bottom">
 			<div class="container">
