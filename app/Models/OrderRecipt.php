@@ -11,7 +11,7 @@ class OrderRecipt extends Model
     protected $fillable=[
         'title',
         'order_id',
-        'File'
+        'FilePath'
     ];
     public function payments()
     {

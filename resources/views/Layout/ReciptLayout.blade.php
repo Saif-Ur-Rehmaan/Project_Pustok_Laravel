@@ -139,7 +139,7 @@
 
     <div class="total">
         Shipping Fee: ${{ number_format($data['shippingFee'], 2) }} USD <br> <!-- Shipping fee formatted -->
-        Sub total: ${{ number_format($TotalPrice, 2) }} USD <!-- Final total formatted -->
+        Sub total: ${{ number_format($TotalPrice, 2) }} USD <br> <!-- Final total formatted --> 
         Coupon Discount: ${{ number_format($data['CouponDiscount'], 2) }} USD <br> <!-- Discount formatted -->
         Total: ${{ number_format($TotalPrice - $data['CouponDiscount'], 2) }} USD <!-- Final total formatted -->
     </div>

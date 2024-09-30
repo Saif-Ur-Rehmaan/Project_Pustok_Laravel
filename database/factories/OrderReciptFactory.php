@@ -21,7 +21,7 @@ class OrderReciptFactory extends Factory
         return [
             'title'=>$this->faker->title(),
             'order_id'=>$increment++,
-            'File'=>$this->faker->filePath()
+            'FilePath'=>$this->faker->filePath()
         ];
     }
 }

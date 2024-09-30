@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->unsignedBigInteger('order_id');
+            $table->string('FilePath');
             $table->foreign('order_id')
             ->references('id')
             ->on('user_orders')
@@ -25,9 +26,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding the MEDIUMBLOB column using raw SQL
-        DB::statement('ALTER TABLE order_recipts ADD COLUMN `File` MEDIUMBLOB');
-    
     }
 
     /**

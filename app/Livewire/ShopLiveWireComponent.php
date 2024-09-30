@@ -78,6 +78,7 @@ class ShopLiveWireComponent extends Component
             ->whereHas('subCategory', function ($query) {
                 $query->where('name', 'like', '%' . $this->ASubCategory . '%');
             })
+            ->where('availability','!=','Out of Stock')
             ->where('color', 'like', '%' . $this->AColor . '%')
             ->where('manufacturer', 'like', '%' . $this->AManufacturer . '%')
             ->whereBetween('priceInUSD', [(float)$this->APriceMin, (float) $this->APriceMax]);

@@ -66,17 +66,18 @@ Route::controller(UserController::class)->group(function () {
       Route::view('/my-account', 'my-account');
       Route::get('/checkout', function () {
          if (!session()->has('cart')) {
-            return redirect('/shop-grid')->with('fail','No Items Were In Cart You Must Add Some Items In Cart Before Checkout');
+            return redirect('/shop-grid')->with('fail', 'No Items Were In Cart You Must Add Some Items In Cart Before Checkout');
          }
 
          return view('checkout'); // return the checkout view
 
       });
-      Route::get('/order-completed', function(){
+      Route::get('/order-completed', function () {
          if (!session('Details')) {
-            return redirect('/shop-grid')->with('fail','Add Some Items to cart And Checkout First');
+            return redirect('/shop-grid')->with('fail', 'Add Some Items to cart And Checkout First');
          }
-         return view('order-completed',['Details'=>session('Details')]);
+     
+         return view('order-completed', ['Details' => session('Details')]);
       });
 
 

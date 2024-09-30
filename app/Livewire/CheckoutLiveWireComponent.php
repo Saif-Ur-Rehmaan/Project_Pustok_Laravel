@@ -212,12 +212,12 @@ class CheckoutLiveWireComponent extends Component
                 $NewRecipt = OrderRecipt::create([
                     'title' => 'COD Books Order',
                     'order_id' => $NewOrder->id,
-                    'File' => $Recipt
+                    'FilePath' => $Recipt
                 ]);
 
                 session()->has('cart') ? session()->forget('cart') : '';
                 session()->has('coupon') ? session()->forget('coupon') : '';
-                dump('added');
+        
                 DB::commit();
 
                 return redirect('/order-completed')
@@ -226,9 +226,16 @@ class CheckoutLiveWireComponent extends Component
                         'Details',
                         [
                             'orderCode' => $OrderCode,
-                            'order' => $orders,
+                            'orders' => $orders,
                             'payment' => $NewPayment,
                             'recipt' => $NewRecipt,
+                            'paymentMethod'=>$PaymentMethod->name,
+
+                            'order_date' => Carbon::now(),
+                            'SubTotal'=>$this->SubTotal,
+                            'CouponDiscount'=>$this->couponDiscount,
+                            'ShippingFee'=>$this->shippingFee,
+                            'grandTotal'=>$this->grandTotal
                         ]
                     );
             } catch (Exception $ex) {
@@ -298,9 +305,10 @@ class CheckoutLiveWireComponent extends Component
         $filePath = 'receipts/order_receipt_' . $OrderCode . '.pdf';
 
         // Save the PDF to the specified location
-        Storage::put($filePath, $pdf->output());
-
-        // Optionally, return the file path or any other response
-        return $pdf->download('Pustok_OrderRecipt.pdf');
+        Storage::disk('public')->put($filePath, $pdf->output());
+        return $filePath;
+        
+        // // Optionally, return the file path or any other response
+        // return $pdf->download('Pustok_OrderRecipt.pdf');
     }
 }
