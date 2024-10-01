@@ -2,7 +2,7 @@
     <div class="col-lg-9 order-lg-2">
 
 
-        aaa
+ 
         <div class="shop-toolbar with-sidebar mb--30">
             <div class="row align-items-center">
 
@@ -173,7 +173,7 @@
                                                 <i class="fas fa-shopping-basket"></i>
                                             </a>
 
-                                            <a class="single-btn">
+                                            <a class="single-btn ManageWishlistBtn {{ Auth::check() && $Book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $Book->id)->isNotEmpty() ? 'bg-success' : '' }}" data-id="{{ $Book->id }}">
                                                 <i class="fas fa-heart"></i>
                                             </a>
                                             <a href="compare" class="single-btn">

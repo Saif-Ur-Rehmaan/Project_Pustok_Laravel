@@ -43,6 +43,7 @@ class SearchFilterLiveWireComponent extends Component
             ->join('book_sub_categories', 'book_sub_categories.id', '=', 'books.subcategory_id')
             ->join('book_categories', 'book_categories.id', '=', 'book_sub_categories.category_id')
             ->join('users', 'users.id', '=', 'books.author_id')
+            
 
             // conditions books
             ->where('books.title', 'like', "%$this->Query%")
@@ -86,8 +87,12 @@ class SearchFilterLiveWireComponent extends Component
                 ->paginate($this->BookPagination['NoOfBooksTOShowInOnePage']);
     
     }
+    function ManageWishlist($book_id) {
+        $this->dispatch('AddOrRemoveFromWishlist',$book_id);
+    }
     //hooks
     function mount($query=" ") {
         $this->Query=$query; 
     }
+    
 }

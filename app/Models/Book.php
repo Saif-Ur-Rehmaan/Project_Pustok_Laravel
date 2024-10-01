@@ -40,4 +40,8 @@ class Book extends Model
        {
            return $this->hasMany(Review::class, 'book_id');
        }
+       public function wishlists()
+       {
+           return $this->hasMany(wishList::class, 'book_id');
+       }
 }

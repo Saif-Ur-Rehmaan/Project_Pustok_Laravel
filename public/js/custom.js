@@ -533,9 +533,6 @@ btn.addEventListener("click", () => {
 --------------------------------------*/
 
 const btns_ = document.getElementsByClassName("AddToCartBtn");
-
-
-
 // Convert HTMLCollection to Array and set up event listeners
 Array.from(btns_).forEach(btn => {
     // Add new click event listener
@@ -558,16 +555,45 @@ Array.from(btns_).forEach(btn => {
         }
     });
 });
-// Event listener for adding item to the cart
-window.addEventListener('itemAddedInCartSuccessfully', event => {
-    console.log('added');
+const Wishlistbtns_ = document.getElementsByClassName("ManageWishlistBtn");
 
+
+
+// Convert HTMLCollection to Array and set up event listeners
+Array.from(Wishlistbtns_).forEach(btn => {
+    // Add new click event listener
+    btn.addEventListener('click', async () => {
+        console.log('clicked');
+
+        try {
+            let book_id = btn.getAttribute('data-id');
+            
+
+            await window.Livewire.dispatch('AddOrRemoveFromWishlist', { book_id });
+            btn.classList.contains('bg-success')?btn.classList.remove('bg-success'):btn.classList.add('bg-success');
+            
+
+
+            // Handle errors or other scenarios as needed
+        } catch (error) {
+            console.error("Error during AddOrRemoveFromWishlist:", error);
+        }
+    });
+});
+
+
+
+// Event listener for adding item to the cart / wishlist
+
+window.addEventListener('ManageAddedAlert', event => {
+    console.log('added');
+    const message=event.detail[0];
     const alertContainer = document.getElementById('alert-container');
     const alertDiv = document.createElement('div');
     alertDiv.className = 'alert alert-success alert-dismissible fade show';
     alertDiv.role = 'alert';
     alertDiv.innerHTML = `
-      Item added to cart successfully!
+     ${message}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
 
@@ -581,16 +607,16 @@ window.addEventListener('itemAddedInCartSuccessfully', event => {
     }, 3000); // Adjusted to 3000ms for better visibility
 });
 
-// Event listener for removing item from the cart
-window.addEventListener('itemRemovedFromCartSuccessfully', event => {
-    console.log("removed");
-
+// Event listener for removing item from the cart / wishlist
+window.addEventListener('ManageRemoveAlert', event => {
+    console.log("removed")
+    const message=event.detail[0];
     const alertContainer = document.getElementById('alert-container');
     const alertDiv = document.createElement('div');
     alertDiv.className = 'alert alert-danger alert-dismissible fade show';
     alertDiv.role = 'alert';
     alertDiv.innerHTML = `
-      Item removed from cart successfully!
+      ${message}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
 

@@ -155,7 +155,7 @@
                                         <a href="{{URL('cart')}}" class="single-btn">
                                             <i class="fas fa-shopping-basket"></i>
                                         </a>
-                                        <a href="wishlist" class="single-btn">
+                                        <a wire:click='ManageWishlist({{$Book->id}})' class="single-btn">
                                             <i class="fas fa-heart"></i>
                                         </a>
                                         <a href="compare" class="single-btn">

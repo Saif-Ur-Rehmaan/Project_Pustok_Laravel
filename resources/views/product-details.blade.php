@@ -93,9 +93,10 @@
                             <p>{{ $Book->productSummary }}.</p>
                         </article>
                         @livewire('AddtoCartbtn',['id'=>$Book->id])
-                        <div class="compare-wishlist-row">
-                            <a href="{{ URL('product-details') }}" class="add-link"><i class="fas fa-heart"></i>Add to Wish
+                        <div class="compare-wishlist-row ">
+                            <a   class="add-link ManageWishlistBtn ClickAble {{ Auth::check() && $Book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $Book->id)->isNotEmpty() ? 'bg-success' : '' }}" data-id="{{ $Book->id }}"><i class="fas fa-heart"></i>Add to Wish
                                 List</a>
+
                             <a href="{{ URL('product-details') }}" class="add-link"><i class="fas fa-random"></i>Add to
                                 Compare</a>
                         </div>
@@ -287,7 +288,8 @@
                                                 <a class="AddToCartBtn single-btn" data-id="{{ $book->id }}">
                                                     <i class="fas fa-shopping-basket"></i>
                                                 </a>
-                                                <a href="wishlist" class="single-btn">
+                                                <a class="single-btn ManageWishlistBtn {{ Auth::check() && $book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $book->id)->isNotEmpty() ? 'bg-success' : '' }}" data-id="{{
+                                                 $book->id }}">
                                                     <i class="fas fa-heart"></i>
                                                 </a>
                                                 <a href="compare" class="single-btn">

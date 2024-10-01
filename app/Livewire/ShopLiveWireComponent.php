@@ -5,8 +5,10 @@ namespace App\Livewire;
 use App\Models\Book;
 use App\Models\BookCategory;
 use App\Models\BookSubCategory;
+use App\Models\wishList;
 use Database\Seeders\BookSubCategorySeeder;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -34,7 +36,7 @@ class ShopLiveWireComponent extends Component
         'Of' => 14,
         'Pages' => 2,
         'NoOfBooksTOShowInOnePage' => 12
-    ]; 
+    ];
 
     public function render()
     {
@@ -49,6 +51,7 @@ class ShopLiveWireComponent extends Component
         $this->BookPagination['Pages'] = $Books->lastPage();
         $this->BookPagination['NoOfBooksTOShowInOnePage'] = $Books->perPage();
 
+      
 
 
         return view('livewire.shop-live-wire-component', compact(['Books']));
@@ -74,11 +77,12 @@ class ShopLiveWireComponent extends Component
     }
     public function FetchBooks()
     {
-        $query = Book::with('author')->with('reviews')
-            ->whereHas('subCategory', function ($query) {
-                $query->where('name', 'like', '%' . $this->ASubCategory . '%');
-            })
-            ->where('availability','!=','Out of Stock')
+        $query = Book::with('author')->with('reviews')->with('wishlists');
+        
+        $query->whereHas('subCategory', function ($query) {
+            $query->where('name', 'like', '%' . $this->ASubCategory . '%');
+        })
+            ->where('availability', '!=', 'Out of Stock')
             ->where('color', 'like', '%' . $this->AColor . '%')
             ->where('manufacturer', 'like', '%' . $this->AManufacturer . '%')
             ->whereBetween('priceInUSD', [(float)$this->APriceMin, (float) $this->APriceMax]);
@@ -113,7 +117,7 @@ class ShopLiveWireComponent extends Component
             $this->dispatch('OpenProductModal', $BookId);
         }
     }
- 
+
 
 
     //setters

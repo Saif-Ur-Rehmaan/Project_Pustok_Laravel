@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Book;
+use App\Models\wishList;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -47,12 +49,13 @@ class CartLiveWireComponent extends Component
 
         return view('livewire.cart-live-wire-component');
     }
-    public function removeFromCart($id) {
-        $this->dispatch('AddOrRemoveFromCart',$id);
+    public function removeFromCart($id)
+    {
+        $this->dispatch('AddOrRemoveFromCart', $id);
     }
     //listeners
     #[On('AddOrRemoveFromCart')]
-    public function AddToCart($id, $quantity=1)
+    public function AddToCart($id, $quantity = 1)
     {
 
         // Get the current cart session or initialize an empty array
@@ -60,14 +63,15 @@ class CartLiveWireComponent extends Component
 
         // Check if the item is already in the cart
         $index = array_search($id, array_column($cart, 'id'));
-
+       
         if ($index !== false) {
             // If the item exists, remove it from the cart (this is like "removing from cart")
             unset($cart[$index]);
             $cart = array_values($cart); // Reset the array indices after removing the item
 
-            session()->put('cart', $cart);
-            $this->dispatch('itemRemovedFromCartSuccessfully');
+            session()->put('cart', $cart);  
+            $message='Item Removed From Cart SuccessFully';
+            $this->dispatch('ManageRemoveAlert', $message);
             return;
         } else {
             // If the item is not in the cart, add it to the cart
@@ -75,9 +79,40 @@ class CartLiveWireComponent extends Component
                 'id' => $id,
                 'quantity' => $quantity
             ];
-
+            
             session()->put('cart', $cart);
-            $this->dispatch('itemAddedInCartSuccessfully');
+            $message='Item Added From Cart SuccessFully';
+            $this->dispatch('ManageAddedAlert',$message);
+            return;
+        }
+    }
+    #[On('AddOrRemoveFromWishlist')]
+    function ManageWishlist($book_id)
+    {
+        if (!Auth::check()) {
+            return redirect('/login-register')->with('fail', 'You need to login first');
+        }
+
+        $wishlist = WishList::where('user_id', Auth::id())
+            ->where('book_id', $book_id)
+            ->first();
+
+        $message =  '';
+        if ($wishlist) {
+            // Remove from wishlist
+            $wishlist->delete();
+            $message='Item Removed From Wishlist SuccessFully';
+            $this->dispatch('ManageRemoveAlert', $message);
+
+            return response()->json(['message' => 'Book removed from wishlist']);
+        } else {
+            // Add to wishlist
+            WishList::create([
+                'user_id' => Auth::id(),
+                'book_id' => $book_id,
+            ]);
+            $message='Item Added From Wishlist SuccessFully';
+            $this->dispatch('ManageAddedAlert',$message);
             return;
         }
     }
