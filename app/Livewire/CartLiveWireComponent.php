@@ -81,7 +81,7 @@ class CartLiveWireComponent extends Component
             ];
             
             session()->put('cart', $cart);
-            $message='Item Added From Cart SuccessFully';
+            $message='Item Added To Cart SuccessFully';
             $this->dispatch('ManageAddedAlert',$message);
             return;
         }
@@ -104,14 +104,14 @@ class CartLiveWireComponent extends Component
             $message='Item Removed From Wishlist SuccessFully';
             $this->dispatch('ManageRemoveAlert', $message);
 
-            return response()->json(['message' => 'Book removed from wishlist']);
+            return;
         } else {
             // Add to wishlist
             WishList::create([
                 'user_id' => Auth::id(),
                 'book_id' => $book_id,
             ]);
-            $message='Item Added From Wishlist SuccessFully';
+            $message='Item Added To Wishlist SuccessFully';
             $this->dispatch('ManageAddedAlert',$message);
             return;
         }

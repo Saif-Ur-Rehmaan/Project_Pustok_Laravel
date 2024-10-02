@@ -32,6 +32,10 @@ class Book extends Model
        {
            return $this->belongsTo(BookSubCategory::class, 'subcategory_id');
        }
+       public function Userorders()
+       {
+           return $this->hasMany(UserOrder::class, 'book_id');
+       }
        public function author()
        {
            return $this->belongsTo(User::class, 'author_id');

@@ -211,7 +211,7 @@ class CheckoutLiveWireComponent extends Component
                 $Recipt = $this->CreateRecipt($orders, $NewPayment, $PaymentMethod, $OrderCode, $this->shippingFee);
                 $NewRecipt = OrderRecipt::create([
                     'title' => 'COD Books Order',
-                    'order_id' => $NewOrder->id,
+                    'order_Code' => $OrderCode,
                     'FilePath' => $Recipt
                 ]);
 

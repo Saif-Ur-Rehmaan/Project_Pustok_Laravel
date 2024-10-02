@@ -15,12 +15,9 @@ return new class extends Migration
         Schema::create('order_recipts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('order_id');
+            $table->string('order_Code');
             $table->string('FilePath');
-            $table->foreign('order_id')
-            ->references('id')
-            ->on('user_orders')
-            ->onDelete('cascade');
+         
 
 
             $table->timestamps();
@@ -32,11 +29,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
-        Schema::table('order_recipts', function (Blueprint $table) {
-            // Dropping the MEDIUMBLOB column using raw SQL
-            DB::statement('ALTER TABLE order_recipts DROP COLUMN `File`');
-        });
+    { 
 
         Schema::dropIfExists('order_recipts');
     }

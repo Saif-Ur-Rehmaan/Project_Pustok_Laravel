@@ -20,7 +20,7 @@ class UserAddressFactory extends Factory
         static $increment = 1; 
         return [
             'user_id'=>$increment++,
-            'title'=>$this->faker->title(),
+            'title'=>$this->faker->randomElement(['Home',"another Address",'work']),
             'city'=>$this->faker->city(),
             'contactNumber'=>$this->faker->phoneNumber(),
             'address'=>$this->faker->streetAddress(),

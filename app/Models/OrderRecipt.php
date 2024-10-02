@@ -10,11 +10,8 @@ class OrderRecipt extends Model
     use HasFactory;
     protected $fillable=[
         'title',
-        'order_id',
+        'order_Code',
         'FilePath'
     ];
-    public function payments()
-    {
-        return $this->belongsTo(UserOrder::class, 'order_id');
-    }
+ 
 }

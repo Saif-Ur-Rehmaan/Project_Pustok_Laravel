@@ -27,5 +27,7 @@ class UserOrder extends Model
         "orderNote",
     ];
     
-    
+    function book() {
+        return $this->belongsTo(Book::class);
+    }
 }

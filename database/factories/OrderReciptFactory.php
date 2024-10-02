@@ -20,7 +20,7 @@ class OrderReciptFactory extends Factory
         static $increment = 1; 
         return [
             'title'=>$this->faker->title(),
-            'order_id'=>$increment++,
+            'order_Code'=>$increment++,
             'FilePath'=>$this->faker->filePath()
         ];
     }

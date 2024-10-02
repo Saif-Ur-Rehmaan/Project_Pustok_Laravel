@@ -23,7 +23,7 @@ class UserOrderFactory extends Factory
         $recNo=$increment++;
         return [
             'user_id' => $recNo, 
-            'book_id' => $recNo, 
+            'book_id' => $recNo,    
             'Code' => 'ORDTTOD'.$recNo, 
             'orderStatus' => $this->faker->randomElement(['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']),
             'quantity' => $this->faker->numberBetween(1, 10), // Random quantity between 1 and 10
