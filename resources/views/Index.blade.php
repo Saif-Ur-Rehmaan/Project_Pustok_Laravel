@@ -565,462 +565,155 @@
             </div>
         </section>
     @endif
-    <!--================================= CHILDREN’S BOOKS ===================================== -->
-    <section class="section-margin">
-        <div class="container">
-            <div class="section-title section-title--bordered">
-                <h2>CHILDREN’S BOOKS</h2>
-            </div>
-            <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row"
-                data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow":3,
-                                            "rows":2,
-                                            "dots":true
-                                        }'
-                data-slick-responsive='[
-                                            {"breakpoint":1200, "settings": {"slidesToShow": 2} },
-                                            {"breakpoint":992, "settings": {"slidesToShow": 2} },
-                                            {"breakpoint":768, "settings": {"slidesToShow": 1} },
-                                            {"breakpoint":575, "settings": {"slidesToShow": 1} },
-                                            {"breakpoint":490, "settings": {"slidesToShow": 1} }
-                                        ]'>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
+    <!--================================= FEATURED  CATEGORIES  BOOKS ===================================== -->
+    @if ($Data['FeaturedCatsWithBooks'])
+        @foreach ($Data['FeaturedCatsWithBooks'] as $item)
+            <!--================================= {{ $item['ParentCatName'] }}’S BOOKS ===================================== -->
+            @if ($loop->index % 2 != 0)
+                {{-- 2 row slick slide --}}
+                <section class="section-margin">
+                    <div class="container">
+                        <div class="section-title section-title--bordered">
+                            <h2>{{ $item['ParentCatName'] }} BOOKS</h2>
                         </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="index#" class="author">
-                                    Rpple
-                                </a>
-                                <h3><a href="{{ URL('product-details') }}">Revolutionize Your BOOK With</a></h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="index#" class="author">
-                                    Dpple
-                                </a>
-                                <h3><a href="{{ URL('product-details') }}">Turn Your BOOK Into High Machine</a>
-                                </h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="{{ URL('image/products/product-3.jpg') }}" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="index#" class="author">
-                                    Epple
-                                </a>
-                                <h3><a href="{{ URL('product-details') }}">BOOK: Do You Really Need It? This </a></h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="{{ URL('image/products/product-4.jpg') }}" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="index#" class="author">
-                                    Ppple
-                                </a>
-                                <h3><a href="{{ URL('product-details') }}">Here Is A Quick Cure For Book</a>
-                                </h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="{{ URL('image/products/product-5.jpg') }}" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="index#" class="author">
-                                    Ypple
-                                </a>
-                                <h3><a href="{{ URL('product-details') }}">What You Can Learn From Bill Gates</a>
-                                </h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="{{ URL('image/products/product-6.jpg') }}" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="index#" class="author">
-                                    Wpple
-                                </a>
-                                <h3><a href="{{ URL('product-details') }}">3 Ways Create Better BOOK With</a></h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row"
+                            data-slick-setting='{
+                                                            "autoplay": true,
+                                                            "autoplaySpeed": 8000,
+                                                            "slidesToShow":3,
+                                                            "rows":2,
+                                                            "dots":true
+                                                        }'
+                            data-slick-responsive='[
+                                                            {"breakpoint":1200, "settings": {"slidesToShow": 2} },
+                                                            {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                                            {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                                                            {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                                            {"breakpoint":490, "settings": {"slidesToShow": 1} }
+                                                        ]'>
 
-    <!--================================= ARTS & PHOTOGRAPHY BOOKS ===================================== -->
-    <section class="section-margin">
-        <div class="container">
-            <div class="section-title section-title--bordered">
-                <h2>ARTS & PHOTOGRAPHY BOOKS</h2>
-            </div>
-            <div class="product-slider sb-slick-slider slider-border-single-row"
-                data-slick-setting='{
-                "autoplay": true,
-                "autoplaySpeed": 8000,
-                "slidesToShow": 5,
-                "dots":true
-            }'
-                data-slick-responsive='[
-                {"breakpoint":1500, "settings": {"slidesToShow": 4} },
-                {"breakpoint":992, "settings": {"slidesToShow": 3} },
-                {"breakpoint":768, "settings": {"slidesToShow": 2} },
-                {"breakpoint":480, "settings": {"slidesToShow": 1} },
-                {"breakpoint":320, "settings": {"slidesToShow": 1} }
-            ]'>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="index#" class="author">
-                                Lpple
-                            </a>
-                            <h3><a href="{{ URL('product-details') }}">Revolutionize Your BOOK With These Easy
-                                </a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
-                                <div class="hover-contents">
-                                    <a href="{{ URL('product-details') }}" class="hover-image">
-                                        <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="{{ URL('cart') }}" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="index#" data-bs-toggle="modal" data-bs-target="#quickModal"
-                                            class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                            @foreach ($item['Books'] as $book)
+                                <div class="single-slide">
+                                    <div class="product-card card-style-list">
+                                        <div class="card-image">
+                                            <img src="{{ URL($book->image) }}" style="min-width: 155px;" alt="">
+                                        </div>
+                                        <div
+                                            class="product-card--body  d-flex align-items-center flex-column justify-content-center">
+                                            <div class="product-header">
+                                                <a href="index#" class="author">
+                                                    {{ $book->author->displayName }}
+                                                </a>
+                                                <h3><a
+                                                        href="{{ URL('product-details', Crypt::encrypt($book->id)) }}">{{ $book->title }}</a>
+                                                </h3>
+                                            </div>
+                                            <div class="price-block">
+                                                @if ($book->discountPercent != 0)
+                                                    <!-- After Discount Price in USD -->
+                                                    <span class="price">
+                                                        ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
+                                                    <!-- Before Discount Price in USD -->
+                                                    <del class="price-old">${{ $book->priceInUSD }}</del>
+                                                    <!-- Discount Percentage -->
+                                                    <span class="price-discount">{{ $book->discountPercent }}%</span>
+                                                @else
+                                                    <!-- Regular Price if no Discount -->
+                                                    <span class="price">${{ $book->priceInUSD }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="{{ URL('/index') }}" class="author">
-                                Jpple
-                            </a>
-                            <h3><a href="{{ URL('product-details') }}">Turn Your BOOK Into High Machine</a>
-                            </h3>
+                </section>
+            @else
+                {{-- 1 row slick slide --}}
+                <section class="section-margin">
+                    <div class="container">
+                        <div class="section-title section-title--bordered">
+                            <h2>{{ $item['ParentCatName'] }} BOOKS</h2>
                         </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
-                                <div class="hover-contents">
-                                    <a href="{{ URL('product-details') }}" class="hover-image">
-                                        <img src="{{ URL('image/products/product-1.jpg') }}" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="{{ URL('cart') }}" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="index#" data-bs-toggle="modal" data-bs-target="#quickModal"
-                                            class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                        <div class="product-slider sb-slick-slider slider-border-single-row"
+                            data-slick-setting='{
+                                "autoplay": true,
+                                "autoplaySpeed": 8000,
+                                "slidesToShow": 5,
+                                "dots":true
+                            }'
+                            data-slick-responsive='[
+                                {"breakpoint":1500, "settings": {"slidesToShow": 4} },
+                                {"breakpoint":992, "settings": {"slidesToShow": 3} },
+                                {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                            ]'>
+                            @foreach ($item['Books'] as $book)
+                                <div class="single-slide">
+                                    <div class="product-card">
+                                        <div class="product-header">
+                                            <a href="index#" class="author">
+                                                {{ $book->author->name }}
+                                            </a>
+                                            <h3><a style="height: 40px;"
+                                                    href="{{ URL('product-details', Crypt::encrypt($book->id)) }}">{{ $book->title }}</a>
+                                            </h3>
+                                        </div>
+                                        <div class="product-card--body">
+                                            <div class="card-image">
+                                                <img src="{{ URL($book->image) }}" alt="">
+                                                <div class="hover-contents">
+                                                    <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}" class="hover-image">
+                                                        <img src="{{ URL($book->image) }}" alt="">
+                                                    </a>
+                                                    <div class="hover-btns">
+                                                        <a class="AddToCartBtn single-btn" data-id="{{ $book->id }}">
+                                                            <i class="fas fa-shopping-basket"></i>
+                                                        </a>
+                                                        <a class="single-btn ManageWishlistBtn {{ Auth::check() &&$book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $book->id)->isNotEmpty()? 'bg-success': '' }}"
+                                                            data-id="{{ $book->id }}">
+                                                            <i class="fas fa-heart"></i>
+                                                        </a>
+                                                        <a href="compare" class="single-btn">
+                                                            <i class="fas fa-random"></i>
+                                                        </a>
+
+                                                        <a data-bs-toggle="modal" data-bs-target="#quickModal"
+                                                            class="single-btn quickViewBtn"
+                                                            data-id="{{ $book->id }}">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="price-block">
+                                                @if ($book->discountPercent != 0)
+                                                    <!-- After Discount Price in USD -->
+                                                    <span class="price">
+                                                        ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
+                                                    <!-- Before Discount Price in USD -->
+                                                    <del class="price-old">${{ $book->priceInUSD }}</del>
+                                                    <!-- Discount Percentage -->
+                                                    <span class="price-discount">{{ $book->discountPercent }}%</span>
+                                                @else
+                                                    <!-- Regular Price if no Discount -->
+                                                    <span class="price">${{ $book->priceInUSD }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="{{ URL('/index') }}" class="author">
-                                Wpple
-                            </a>
-                            <h3><a href="{{ URL('product-details') }}">Create Better BOOK With The Help Of Your</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="{{ URL('image/products/product-3.jpg') }}" alt="">
-                                <div class="hover-contents">
-                                    <a href="{{ URL('product-details') }}" class="hover-image">
-                                        <img src="{{ URL('image/products/product-2.jpg') }}" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="{{ URL('cart') }}" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="index#" data-bs-toggle="modal" data-bs-target="#quickModal"
-                                            class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="{{ URL('/index') }}" class="author">
-                                Epple
-                            </a>
-                            <h3><a href="{{ URL('product-details') }}">What You Can Learn From Bill Gates</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="{{ URL('image/products/product-5.jpg') }}" alt="">
-                                <div class="hover-contents">
-                                    <a href="{{ URL('product-details') }}" class="hover-image">
-                                        <img src="{{ URL('image/products/product-4.jpg') }}" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="{{ URL('cart') }}" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="index#" data-bs-toggle="modal" data-bs-target="#quickModal"
-                                            class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="{{ URL('/index') }}" class="author">
-                                Hpple
-                            </a>
-                            <h3><a href="{{ URL('product-details') }}">a Half Very Simple Things You To Save</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="{{ URL('image/products/product-6.jpg') }}" alt="">
-                                <div class="hover-contents">
-                                    <a href="{{ URL('product-details') }}" class="hover-image">
-                                        <img src="{{ URL('image/products/product-4.jpg') }}" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="{{ URL('cart') }}" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="index#" data-bs-toggle="modal" data-bs-target="#quickModal"
-                                            class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="index#" class="author">
-                                Bpple
-                            </a>
-                            <h3><a href="{{ URL('product-details') }}">Here Is A Quick Cure For Book</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="{{ URL('image/products/product-8.jpg') }}" alt="">
-                                <div class="hover-contents">
-                                    <a href="{{ URL('product-details') }}" class="hover-image">
-                                        <img src="{{ URL('image/products/product-7.jpg') }}" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="{{ URL('cart') }}" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="index#" data-bs-toggle="modal" data-bs-target="#quickModal"
-                                            class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="index#" class="author">
-                                zpple
-                            </a>
-                            <h3><a href="{{ URL('product-details') }}">Do You Really Need It? This Will Help You
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="{{ URL('image/products/product-13.jpg') }}" alt="">
-                                <div class="hover-contents">
-                                    <a href="{{ URL('product-details') }}" class="hover-image">
-                                        <img src="{{ URL('image/products/product-11.jpg') }}" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="{{ URL('cart') }}" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="index#" data-bs-toggle="modal" data-bs-target="#quickModal"
-                                            class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                </section>
+            @endif
+        @endforeach
+    @endif
+
     <!--================================= Home Blog Slider ===================================== -->
 
     <!--================================= Home Blog ===================================== -->

@@ -9,7 +9,8 @@ class BookCategory extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'name'
+        'name',
+        'isFeatured'
     ];
     public function subcategories()
     {

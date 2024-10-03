@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\BookCategory;
+use App\Models\BookSubCategory;
 use App\Models\Contact;
 use App\Models\DealOfTheDay;
 use App\Models\Review;
@@ -86,7 +88,25 @@ class AppController extends Controller
         } else {
             $BestSellerBooks = null;
         } 
-        // $CatsWithBooksSection=Ca;
+        $FeaturedCatsWithBooks=null;
+        //parent categories where isFeatured=true
+        $FeaturedCats=BookCategory::all()->where('isFeatured',true);
+        foreach ($FeaturedCats as  $Cat) {
+            //getting subcats of that parent cat
+            $subCatIds_ofFeaturedCategories=BookSubCategory::all()->where('category_id',$Cat->id)->pluck('id');
+            //pushing books (having  subcategories's parent category isFeatured) and parent Cat Name
+            $books=Book::all()->whereIn('subcategory_id',$subCatIds_ofFeaturedCategories);
+            if ($books->count()>5) {
+                    $FeaturedCatsWithBooks[]=[
+                        'ParentCatName'=>$Cat->name,
+                        'Books'=>$books,
+                    ];
+            }
+            
+        }
+ 
+           
+
         $Data = [
             'Section_FNM' => [
 
@@ -100,7 +120,7 @@ class AppController extends Controller
                 'books'=>$BestSellerBooks,
                 'author'=>$Author
             ],
-            'CatsWithBooksSection'
+            'FeaturedCatsWithBooks'=>$FeaturedCatsWithBooks
 
         ];
         return view('Index', compact('Data'));
