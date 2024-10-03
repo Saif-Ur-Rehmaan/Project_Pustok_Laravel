@@ -11,6 +11,7 @@ class UserOrder extends Model
     protected $fillable = [
         'user_id',
         'book_id',
+        "orderNote_id",
         'Code',
         "orderStatus",
         "quantity",
@@ -24,10 +25,12 @@ class UserOrder extends Model
         "stateName",
         "zipCode",
         "contactNumber",
-        "orderNote",
     ];
     
     function book() {
         return $this->belongsTo(Book::class);
+    }
+    function orderNotes() {
+        return $this->hasMany(OrderNote::class,'orderNote_id');
     }
 }

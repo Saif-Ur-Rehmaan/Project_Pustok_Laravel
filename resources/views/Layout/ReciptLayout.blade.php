@@ -147,7 +147,7 @@
 
     <div class="footer margin-top">
         <div>Order Note</div>
-        <div>{{ $data['orders'][0]['orderNote'] }}</div>
+        <div>{{ $data['OrderNote']->Note }}</div>
     </div>
     <div class="footer margin-top">
         <div>Thank you</div>

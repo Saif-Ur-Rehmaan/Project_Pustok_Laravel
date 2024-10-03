@@ -24,6 +24,7 @@ class UserOrderFactory extends Factory
         return [
             'user_id' => $recNo, 
             'book_id' => $recNo,    
+            'orderNote_id' => $recNo, // Random sentence for order note
             'Code' => 'ORDTTOD'.$recNo, 
             'orderStatus' => $this->faker->randomElement(['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']),
             'quantity' => $this->faker->numberBetween(1, 10), // Random quantity between 1 and 10
@@ -37,7 +38,6 @@ class UserOrderFactory extends Factory
             'stateName' => $this->faker->state(), // Random state name
             'zipCode' => $this->faker->postcode(), // Random postal code
             'contactNumber' => $this->faker->phoneNumber(), // Random phone number
-            'orderNote' => $this->faker->sentence(), // Random sentence for order note
         ];
     }
 

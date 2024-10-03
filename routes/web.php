@@ -15,12 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'Index');
 Route::get('/s', function () {
- 
+   
    return session()->all();
 });
-Route::view('index', 'Index');
 Route::view('/cart', 'cart');
 Route::view('/compare', 'compare');
 
@@ -38,6 +36,10 @@ Route::prefix("/blogs")->group(function () {
 
 // App Controller
 Route::controller(AppController::class)->group(function () {
+
+   Route::get('/', 'Index');
+   Route::get('index', 'Index');
+   
    Route::view('/shop-grid', 'shop-grid')->name('shop');
    Route::get('/product-details/{id}', 'ProductDetails');
    Route::get('/search/{Query?}', 'Search')->name('search');

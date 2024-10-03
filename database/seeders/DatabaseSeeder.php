@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\DealOfTheDay;
+use App\Models\OrderNote;
 use App\Models\Review;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +25,7 @@ class DatabaseSeeder extends Seeder
             BookCategorySeeder::class,  
             BookSubCategorySeeder::class,  
             BookSeeder::class,  
+            OrderNoteSeeder::class,  
             UserOrderSeeder::class,  
             OrderReciptSeeder::class,  
             PaymentMethodSeeder::class,  
@@ -31,6 +34,7 @@ class DatabaseSeeder extends Seeder
             BlogCommentSeeder::class,  
             ReviewSeeder::class,  
             CouponSeeder::class,  
+            DealOfTheDaySeeder::class,  
         ]);
         
     }

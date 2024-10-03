@@ -152,7 +152,7 @@
                                         <img src="{{ URL($Book->image) }}" alt="">
                                     </a>
                                     <div class="hover-btns">
-                                        <a href="{{URL('cart')}}" class="single-btn">
+                                        <a  wire:click='AddToCart({{ $Book->id }})' class="single-btn">
                                             <i class="fas fa-shopping-basket"></i>
                                         </a>
                                         <a wire:click='ManageWishlist({{$Book->id}})' class="single-btn">

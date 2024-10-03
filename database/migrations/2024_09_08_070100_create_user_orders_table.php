@@ -13,25 +13,31 @@ return new class extends Migration
     {
         Schema::create('user_orders', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->unsignedBigInteger("book_id")->nullable()->comment("every order must be completed before deleting thats why this column is restricts the deleting action of book");
             $table->foreign("book_id")
-            ->references('id')
-            ->on('books')
-            ->onDelete('restrict');
-            
+                ->references('id')
+                ->on('books')
+                ->onDelete('restrict');
+
+            $table->unsignedBigInteger("orderNote_id");
+            $table->foreign("orderNote_id")
+                ->references('id')
+                ->on('order_notes')
+                ->onDelete('cascade');
+
+
             $table->string("Code");
-        
-            $table->enum("orderStatus",['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'])->default("Pending");
+            $table->enum("orderStatus", ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'])->default("Pending");
             $table->integer("quantity");
-            $table->decimal("pricePerProduct",8,2,true);
-            $table->decimal("shippingFee",8,2,true)->nullable();
+            $table->decimal("pricePerProduct", 8, 2, true);
+            $table->decimal("shippingFee", 8, 2, true)->nullable();
             $table->string("firstName");
             $table->string("lastName");
             $table->string("address");
@@ -40,7 +46,6 @@ return new class extends Migration
             $table->string("stateName");
             $table->string("zipCode");
             $table->string("contactNumber");
-            $table->string("orderNote");
             $table->timestamps();
         });
     }

@@ -82,7 +82,7 @@
                                         <ul class="sub-menu">
                                             @foreach ($Category->subcategories as $SubCat)
                                                 <li><a
-                                                        href="{{ route('search', Crypt::encrypt($SubCat->id)) }}">{{ $SubCat->name }}</a>
+                                                        href="{{ route('search',$SubCat->name) }}">{{ $SubCat->name }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>

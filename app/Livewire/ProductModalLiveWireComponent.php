@@ -39,6 +39,11 @@ class ProductModalLiveWireComponent extends Component
     {
         $this->Loading = true;
     }
+    #[On('StopLoading')]
+    function StopLoading()
+    {
+        $this->Loading = false;
+    }
     #[On('OpenProductModal')]
     function setProductId(int $id)
     {

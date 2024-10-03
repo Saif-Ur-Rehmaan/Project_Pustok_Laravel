@@ -37,13 +37,15 @@ class AddToCartBtn extends Component
                 if ($item['id'] == $this->BookId) {
                     $this->isInCart = true;
                     $this->quantity = $item['quantity'];
-
+                    $this->dispatch('StopLoading');
                     return;
                 }
             }
+            $this->dispatch('StopLoading');
             $this->isInCart = false;
             return;
         } else {
+            $this->dispatch('StopLoading');
             $this->isInCart = false;
         }
     }

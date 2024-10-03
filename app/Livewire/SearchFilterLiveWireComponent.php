@@ -87,6 +87,10 @@ class SearchFilterLiveWireComponent extends Component
                 ->paginate($this->BookPagination['NoOfBooksTOShowInOnePage']);
     
     }
+     public function AddToCart($id)
+    {
+        $this->dispatch('AddOrRemoveFromCart', $id);
+    }
     function ManageWishlist($book_id) {
         $this->dispatch('AddOrRemoveFromWishlist',$book_id);
     }

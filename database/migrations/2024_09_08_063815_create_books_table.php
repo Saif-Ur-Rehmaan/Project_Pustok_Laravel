@@ -27,6 +27,7 @@ return new class extends Migration
             ->onDelete("cascade");
             
             $table->string("title");
+            $table->boolean("isFeatured")->default(false);
             $table->string("brand")->nullable();
             $table->text("image")->nullable();
             $table->json("tags")->nullable();

@@ -11,6 +11,7 @@ class Book extends Model
     protected $fillable=[
         'author_id',
         'subcategory_id',
+        'isFeatured',
         'RewardPoints',
         'productSummary',
         'title',
@@ -47,5 +48,9 @@ class Book extends Model
        public function wishlists()
        {
            return $this->hasMany(wishList::class, 'book_id');
+       }
+       public function deals()
+       {
+           return $this->hasMany(DealOfTheDay::class, 'book_id');
        }
 }

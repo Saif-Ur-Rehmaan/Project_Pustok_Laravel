@@ -102,8 +102,9 @@ class CartLiveWireComponent extends Component
             // Remove from wishlist
             $wishlist->delete();
             $message='Item Removed From Wishlist SuccessFully';
+            $this->dispatch('StopLoading');
             $this->dispatch('ManageRemoveAlert', $message);
-
+            
             return;
         } else {
             // Add to wishlist
@@ -112,6 +113,7 @@ class CartLiveWireComponent extends Component
                 'book_id' => $book_id,
             ]);
             $message='Item Added To Wishlist SuccessFully';
+            $this->dispatch('StopLoading');
             $this->dispatch('ManageAddedAlert',$message);
             return;
         }

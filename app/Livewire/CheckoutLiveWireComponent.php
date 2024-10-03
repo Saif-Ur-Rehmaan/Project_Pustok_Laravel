@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Book;
 use App\Models\Coupon;
+use App\Models\OrderNote;
 use App\Models\OrderPayment;
 use App\Models\OrderRecipt;
 use App\Models\PaymentMethod;
@@ -155,6 +156,10 @@ class CheckoutLiveWireComponent extends Component
                 $orders = [];
                 $OrderCode = Str::upper(Str::random(5)) . Carbon::now()->format('YmdHis');
                 $shippingFeePerProduct = ((int)$this->shippingFee) / count($cart);
+
+                $newOrderNote=OrderNote::create([
+                    'Note'=>$this->ShippingDetails['OrderNote']
+                ]);
                 foreach ($cart as  $item) {
                     $Bookid = $item['id'];
                     $quantity = $item['quantity'];
@@ -172,6 +177,7 @@ class CheckoutLiveWireComponent extends Component
                     $NewOrder = UserOrder::create([
                         'user_id' => Auth::user()->id,
                         'book_id' => $Bookid,
+                        "orderNote_id" => $newOrderNote->id,
                         'Code' => $OrderCode,
                         "orderStatus" => 'Pending',
                         "quantity" => $quantity,
@@ -185,7 +191,6 @@ class CheckoutLiveWireComponent extends Component
                         "stateName" => $this->ShippingDetails['StateName'],
                         "zipCode" => $this->ShippingDetails['ZipCode'],
                         "contactNumber" => $this->ShippingDetails['PhoneNumber'],
-                        "orderNote" => $this->ShippingDetails['OrderNote'],
                     ]);
                     $orders[] = [
                         'user_id' => Auth::user()->id,
@@ -193,7 +198,7 @@ class CheckoutLiveWireComponent extends Component
                         "quantity" => $quantity,
                         "pricePerProduct" => $price,
                         "shippingFee" => $shippingFeePerProduct,
-                        "orderNote" => $this->ShippingDetails['OrderNote'],
+                        "orderNote" => $newOrderNote->Note,
                     ];
                 }
                 //creating order payment
@@ -208,7 +213,7 @@ class CheckoutLiveWireComponent extends Component
                     'paid_at' => null,
                 ]);
                 //creating Recipt
-                $Recipt = $this->CreateRecipt($orders, $NewPayment, $PaymentMethod, $OrderCode, $this->shippingFee);
+                $Recipt = $this->CreateRecipt($orders, $NewPayment, $PaymentMethod, $OrderCode, $this->shippingFee,$newOrderNote);
                 $NewRecipt = OrderRecipt::create([
                     'title' => 'COD Books Order',
                     'order_Code' => $OrderCode,
@@ -229,6 +234,7 @@ class CheckoutLiveWireComponent extends Component
                             'orders' => $orders,
                             'payment' => $NewPayment,
                             'recipt' => $NewRecipt,
+                            'OrderNote' => $newOrderNote,
                             'paymentMethod'=>$PaymentMethod->name,
 
                             'order_date' => Carbon::now(),
@@ -263,7 +269,7 @@ class CheckoutLiveWireComponent extends Component
         ];
     }
 
-    function CreateRecipt($orders, $NewPayment, $PaymentMethod, $OrderCode, $shippingFee)
+    function CreateRecipt($orders, $NewPayment, $PaymentMethod, $OrderCode, $shippingFee,$newOrderNote)
     {
         $user = Auth::user();
 
@@ -285,6 +291,7 @@ class CheckoutLiveWireComponent extends Component
                 'phone' => $this->ShippingDetails['PhoneNumber']
             ],
             'orders' => $orders,
+            'OrderNote'=>$newOrderNote,
             'payments' => $NewPayment,
             'shippingFee' => $shippingFee,
             'CouponDiscount' => $this->couponDiscount,
