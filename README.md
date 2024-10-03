@@ -20,13 +20,12 @@ To clone this repository, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/book-ecommerce.git
-   ```
-   Replace `yourusername` with your GitHub username.
+   git clone https://github.com/saif-ur-rehmaan/Project_Pustok_Laravel.git
+   ``` 
 
 2. **Navigate to the Project Directory**:
    ```bash
-   cd book-ecommerce
+   cd Project_Pustok_Laravel
    ```
 
 3. **Install Dependencies**:
@@ -65,5 +64,5 @@ To clone this repository, follow these steps:
 This project demonstrates a full-stack eCommerce system with a focus on efficiency and user-friendliness.
 
 ---
+Keep in mind To start xampp server for mysql db
 
-Feel free to adjust any details to better fit your project!
