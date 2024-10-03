@@ -569,7 +569,7 @@
     @if ($Data['FeaturedCatsWithBooks'])
         @foreach ($Data['FeaturedCatsWithBooks'] as $item)
             <!--================================= {{ $item['ParentCatName'] }}’S BOOKS ===================================== -->
-            @if ($loop->index % 2 != 0)
+            @if ($loop->index % 2 == 0)
                 {{-- 2 row slick slide --}}
                 <section class="section-margin">
                     <div class="container">

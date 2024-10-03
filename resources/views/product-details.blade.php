@@ -85,7 +85,7 @@
                             <div class="review-widget">
                                 <a href="{{ URL('product-details') }}">({{ $Reviews->count() }} Reviews)</a>
                                 <span>|</span>
-                                <a href="{{ URL('product-details') }}">Write a review</a>
+                                <a href="#tab2" onclick="tab2.click()">Write a review</a>
                             </div>
                         </div>
                         <article class="product-details-article">
