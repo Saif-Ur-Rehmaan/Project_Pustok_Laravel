@@ -354,7 +354,7 @@
                                                                 data-id="{{ $book->id }}">
                                                                 <i class="fas fa-shopping-basket"></i>
                                                             </a>
-                                                            <a class="single-btn ManageWishlistBtn {{ Auth::check() &&$book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $book->id)->isNotEmpty()? 'bg-success': '' }}"
+                                                            <a class="single-btn ManageWishlistBtn "
                                                                 data-id="{{ $book->id }}">
                                                                 <i class="fas fa-heart"></i>
                                                             </a>
@@ -443,7 +443,7 @@
                                                 <a class="AddToCartBtn single-btn" data-id="{{ $deal->book->id }}">
                                                     <i class="fas fa-shopping-basket"></i>
                                                 </a>
-                                                <a class="single-btn ManageWishlistBtn {{ Auth::check() &&$book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $deal->book->id)->isNotEmpty()? 'bg-success': '' }}"
+                                                <a class="single-btn ManageWishlistBtn {{ Auth::check() &&$deal->book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $deal->book->id)->isNotEmpty()? 'bg-success': '' }}"
                                                     data-id="{{ $deal->book->id }}">
                                                     <i class="fas fa-heart"></i>
                                                 </a>

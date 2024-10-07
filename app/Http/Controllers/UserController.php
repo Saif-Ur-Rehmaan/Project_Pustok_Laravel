@@ -31,7 +31,7 @@ class UserController extends Controller
             $imagePath = 'storage/'.$request->file('ProfilePic')->store('UserProfilePics', 'public');
             User::create([
                 'role_id' => $role_id,
-                'image' => $imagePath,
+                'image' => env('APP_URL').$imagePath,
                 'displayName' => $ValidCredentials['name'],
                 'email' => $ValidCredentials['email'],
                 'password' => $ValidCredentials['password'],
@@ -56,7 +56,9 @@ class UserController extends Controller
         try {
             if (Auth::attempt(['email' => $VD['LoginEmail'], 'password' => $VD['LoginPassword']])) {
                 $req->session()->regenerate(); //prevent from fixation attacks
-                return redirect()->intended('/')->with('success', 'User Login Successfully');
+             
+                    return redirect()->intended('/')->with('success', 'User Login Successfully');
+                 
             } else {
                 return redirect('/login-register')->with('fail', 'Invalid credentials. Please try again.');
             }
@@ -100,4 +102,12 @@ class UserController extends Controller
             return back()->with('fail', 'Comment Deletion failed: Review not found');
         }
     }
+
+
+
+
+
+
+
+
 }

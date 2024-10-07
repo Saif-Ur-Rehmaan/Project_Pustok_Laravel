@@ -18,7 +18,7 @@
                 <div class="col-lg-7">
                     <div class="product-details-info pl-lg--30 ">
                         <p class="tag-block">Tags:
-                            @foreach (json_decode($Book->tags) as $tag)
+                            @foreach ($Book->tags as $tag)
                                 <a href="{{ URL('search') }}" class="ClickAble">{{ $tag }}</a>,
                             @endforeach
                         </p>

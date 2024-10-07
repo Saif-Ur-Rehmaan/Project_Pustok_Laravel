@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/s', function () {
-   
+
    return session()->all();
 });
 Route::view('/cart', 'cart');
@@ -39,7 +40,7 @@ Route::controller(AppController::class)->group(function () {
 
    Route::get('/', 'Index');
    Route::get('index', 'Index');
-   
+
    Route::view('/shop-grid', 'shop-grid')->name('shop');
    Route::get('/product-details/{id}', 'ProductDetails');
    Route::get('/search/{Query?}', 'Search')->name('search');
@@ -52,7 +53,7 @@ Route::controller(AppController::class)->group(function () {
 });
 
 
-// user  Authentication
+// --------------------------------  USER -------------------------------------------
 Route::controller(UserController::class)->group(function () {
    // only guest allowed
    Route::middleware('guest')->group(function () {
@@ -65,7 +66,7 @@ Route::controller(UserController::class)->group(function () {
    });
    Route::middleware('auth')->group(function () {
       Route::view('/my-account', 'my-account');
-    
+
       Route::get('/checkout', function () {
          if (!session()->has('cart')) {
             return redirect('/shop-grid')->with('fail', 'No Items Were In Cart You Must Add Some Items In Cart Before Checkout');
@@ -78,7 +79,7 @@ Route::controller(UserController::class)->group(function () {
          if (!session('Details')) {
             return redirect('/shop-grid')->with('fail', 'Add Some Items to cart And Checkout First');
          }
-     
+
          return view('order-completed', ['Details' => session('Details')]);
       });
 
@@ -89,3 +90,5 @@ Route::controller(UserController::class)->group(function () {
       Route::get('/DeleteReview/{EncryptedId}', 'DeleteReview');
    });
 });
+
+ 

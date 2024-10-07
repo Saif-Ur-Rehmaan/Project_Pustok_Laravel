@@ -16,5 +16,8 @@ class UserAddress extends Model
         'address',
         'contactNumber',
     ];
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 
 }

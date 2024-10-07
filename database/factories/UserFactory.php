@@ -18,7 +18,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'role_id' => $this->faker->numberBetween(1, 2), // Example range for role_id
+            'role_id' => 1, // Example range for role_id
             'image' => $this->faker->imageUrl(200, 200, 'people', true, 'Faker'), // Generates a random image URL
             'displayName' => $this->faker->userName(),
             'firstName' => $this->faker->firstName(),
