@@ -13,7 +13,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Tables; 
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -59,15 +59,21 @@ class BookResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('author_id')
-                    ->numeric()
+
+                // Inside your Table Column definition
+                Tables\Columns\ImageColumn::make('image')
+                    ->circular()
+                    ->url(fn ($record) => url('storage/userimages/' . $record->image))
+                    ->extraAttributes(['style' => 'height: 2.5rem; width: 2.5rem;'])
+                    ->label('User Image'),
+                
+                Tables\Columns\TextColumn::make('author.displayName')->toggleable()->toggledHiddenByDefault()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('subcategory_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('subCategory.name')->toggleable()->toggledHiddenByDefault()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('title')->toggleable()
                     ->searchable(),
-                Tables\Columns\IconColumn::make('isFeatured')
+                Tables\Columns\IconColumn::make('isFeatured')->toggleable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('brand')
                     ->searchable(),
@@ -77,11 +83,10 @@ class BookResource extends Resource
                 Tables\Columns\TextColumn::make('priceInUSD')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('discountPercent')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('discountPercent'),
                 Tables\Columns\TextColumn::make('manufacturer')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('color')
+                Tables\Columns\ColorColumn::make('color')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('RewardPoints')
                     ->numeric()
