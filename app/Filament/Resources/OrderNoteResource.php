@@ -35,8 +35,7 @@ class OrderNoteResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                TextColumn::make('OrderCode')->getStateUsing(fn($rec)=>UserOrder::where('orderNote_id',$rec->id)->first()?UserOrder::where('orderNote_id',$rec->id)->first()->Code:'Code Not Found'),
+            ->columns([ 
                 TextColumn::make('Note'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -54,8 +53,7 @@ class OrderNoteResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->actions([ 
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -75,8 +73,7 @@ class OrderNoteResource extends Resource
     {
         return [
             'index' => Pages\ListOrderNotes::route('/'),
-            'create' => Pages\CreateOrderNote::route('/create'),
-            'edit' => Pages\EditOrderNote::route('/{record}/edit'),
+          
         ];
     }
 }
