@@ -30,6 +30,9 @@ class UserOrder extends Model
     function book() {
         return $this->belongsTo(Book::class);
     }
+    function user() {
+        return $this->belongsTo(User::class);
+    }
     function orderNotes() {
         return $this->hasMany(OrderNote::class,'orderNote_id');
     }

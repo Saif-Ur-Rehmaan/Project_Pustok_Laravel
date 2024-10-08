@@ -20,7 +20,10 @@ class WishlistResource extends Resource
     protected static ?string $model = Wishlist::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    public  static function getNavigationLabel(): string
+    {
+        return "Wishlists";
+    }
     public static function form(Form $form): Form
     {
         return $form

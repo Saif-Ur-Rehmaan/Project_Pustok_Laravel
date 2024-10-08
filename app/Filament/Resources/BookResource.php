@@ -8,12 +8,14 @@ use App\Models\Book;
 use App\Models\BookSubCategory;
 use App\Models\User;
 use App\Models\UserRole;
+use Exception;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
-use Filament\Tables; 
+use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -66,7 +68,7 @@ class BookResource extends Resource
                     ->url(fn ($record) => url('storage/userimages/' . $record->image))
                     ->extraAttributes(['style' => 'height: 2.5rem; width: 2.5rem;'])
                     ->label('User Image'),
-                
+
                 Tables\Columns\TextColumn::make('author.displayName')->toggleable()->toggledHiddenByDefault()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('subCategory.name')->toggleable()->toggledHiddenByDefault()
@@ -109,11 +111,59 @@ class BookResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()->action(function ($record,$action){
+                    try {
+                        $record->delete();
+
+                        Notification::make()
+                            ->title('Deletion Successful')
+                            ->body('The record has been deleted successfully.')
+                            ->success()
+                            ->send();
+                    } catch (Exception $e) {
+                        if ($e->getCode() == 23000) { // SQLSTATE code for integrity constraint violation
+                            Notification::make()
+                                ->title('Deletion Request Denied')
+                                ->body('Unable to delete the record due to a foreign key constraint violation. To Delete Book You Have To Delete Orders Of This books First')
+                                ->danger()
+                                ->send();
+                        } else {
+                            Notification::make()
+                                ->title('Deletion Request Denied')
+                                ->body('Unable to delete the record due to a database error: ' . $e->getCode())
+                                ->danger()
+                                ->send();
+                        }
+                    }
+                }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()->action(function ($record,$action){
+                        try {
+                            $record->delete();
+    
+                            Notification::make()
+                                ->title('Deletion Successful')
+                                ->body('The record has been deleted successfully.')
+                                ->success()
+                                ->send();
+                        } catch (Exception $e) {
+                            if ($e->getCode() == 23000) { // SQLSTATE code for integrity constraint violation
+                                Notification::make()
+                                    ->title('Deletion Request Denied')
+                                    ->body('Unable to delete the record due to a foreign key constraint violation. To Delete Book You Have To Delete Orders Of This books First')
+                                    ->danger()
+                                    ->send();
+                            } else {
+                                Notification::make()
+                                    ->title('Deletion Request Denied')
+                                    ->body('Unable to delete the record due to a database error: ' . $e->getCode())
+                                    ->danger()
+                                    ->send();
+                            }
+                        }
+                    }),
                 ]),
             ]);
     }

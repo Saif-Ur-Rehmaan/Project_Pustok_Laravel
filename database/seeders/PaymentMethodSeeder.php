@@ -17,9 +17,6 @@ class PaymentMethodSeeder extends Seeder
             'name'=>'Cash On Delivery',
             'status'=>'Allowed'
         ]);
-        PaymentMethod::create([
-            'name'=>'Paypal',
-            'status'=>'Allowed'
-        ]);
+       
     }
 }

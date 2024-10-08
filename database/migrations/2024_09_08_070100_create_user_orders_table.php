@@ -20,13 +20,13 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->unsignedBigInteger("book_id")->nullable()->comment("every order must be completed before deleting thats why this column is restricts the deleting action of book");
+            $table->unsignedBigInteger("book_id")->comment("every order must be completed before deleting thats why this column is restricts the deleting action of book");
             $table->foreign("book_id")
                 ->references('id')
                 ->on('books')
                 ->onDelete('restrict');
 
-            $table->unsignedBigInteger("orderNote_id");
+            $table->unsignedBigInteger("orderNote_id")->nullable();
             $table->foreign("orderNote_id")
                 ->references('id')
                 ->on('order_notes')

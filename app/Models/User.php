@@ -91,4 +91,8 @@ class User  extends Authenticatable implements HasAvatar,HasName,FilamentUser
     {
         return $this->hasMany(UserAddress::class, 'user_id');
     }
+    public function orders()
+    {
+        return $this->hasMany(UserOrder::class, 'user_id');
+    }
 }

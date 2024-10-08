@@ -19,7 +19,10 @@ class UserAddressResource extends Resource
     protected static ?string $model = UserAddress::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    public  static function getNavigationLabel(): string
+    {
+        return "Addresses";
+    }
     public static function form(Form $form): Form
     {
         return $form

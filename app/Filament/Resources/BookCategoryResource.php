@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserRoleResource\Pages;
-use App\Filament\Resources\UserRoleResource\RelationManagers;
-use App\Models\UserRole;
+use App\Filament\Resources\BookCategoryResource\Pages;
+use App\Filament\Resources\BookCategoryResource\RelationManagers;
+use App\Models\BookCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,23 +13,24 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UserRoleResource extends Resource
+class BookCategoryResource extends Resource
 {
-    protected static ?string $model = UserRole::class;
+
+    protected static ?string $model = BookCategory::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     public  static function getNavigationLabel(): string
     {
-        return "Roles";
+        return "Categories";
     }
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->unique('user_roles','name')
+                    ->maxLength(255)->unique(),
+                Forms\Components\Toggle::make('isFeatured')
                     ->required(),
             ]);
     }
@@ -38,22 +39,22 @@ class UserRoleResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\IconColumn::make('isFeatured')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable() ,
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
-                    ->sortable() 
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -72,9 +73,9 @@ class UserRoleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUserRoles::route('/'),
-            'create' => Pages\CreateUserRole::route('/create'),
-            'edit' => Pages\EditUserRole::route('/{record}/edit'),
+            'index' => Pages\ListBookCategories::route('/'),
+            'create' => Pages\CreateBookCategory::route('/create'),
+            'edit' => Pages\EditBookCategory::route('/{record}/edit'),
         ];
     }
 }

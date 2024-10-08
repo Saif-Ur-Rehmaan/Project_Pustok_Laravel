@@ -31,6 +31,6 @@ class OrderPayment extends Model
   
     public function paymentMethod()
     {
-        return $this->belongsTo(UserOrder::class, 'payment_method_id');
+        return $this->belongsTo(PaymentMethod::class, 'payment_method_id');
     }
 }
