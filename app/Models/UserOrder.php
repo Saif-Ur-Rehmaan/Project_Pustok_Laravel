@@ -27,13 +27,14 @@ class UserOrder extends Model
         "contactNumber",
     ];
     
-    function book() {
+    public function book() {
         return $this->belongsTo(Book::class);
     }
-    function user() {
+    public function user() {
         return $this->belongsTo(User::class);
     }
-    function orderNotes() {
-        return $this->hasMany(OrderNote::class,'orderNote_id');
+    public function orderNotes()
+    {
+        return $this->hasMany(OrderNote::class, 'orderNote_id');
     }
 }

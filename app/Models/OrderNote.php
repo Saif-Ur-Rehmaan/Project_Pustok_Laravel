@@ -11,7 +11,8 @@ class OrderNote extends Model
     protected $fillable=[
         'Note'
     ];
-    public function Order(){
-        return $this->belongsTo(UserOrder::class,'orderNote_id');
+    public function userOrder()
+    {
+        return $this->belongsToMany(UserOrder::class, 'orderNote_id');
     }
 }

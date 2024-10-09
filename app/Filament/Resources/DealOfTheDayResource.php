@@ -2,23 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OrderNoteResource\Pages;
-use App\Filament\Resources\OrderNoteResource\RelationManagers;
-use App\Models\OrderNote;
-use App\Models\UserOrder; 
+use App\Filament\Resources\DealOfTheDayResource\Pages;
+use App\Filament\Resources\DealOfTheDayResource\RelationManagers;
+use App\Models\Book;
+use App\Models\DealOfTheDay;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\Action ;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class OrderNoteResource extends Resource
+class DealOfTheDayResource extends Resource
 {
-    protected static ?string $model = OrderNote::class;
+    protected static ?string $model = DealOfTheDay::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,30 +26,24 @@ class OrderNoteResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Textarea::make('Note')
-                    ->required()
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
+                Forms\Components\Select::make('book_id')
+                    ->required()->options(Book::all()->pluck('title','id'))
+                    ->searchable(),
+                Forms\Components\DateTimePicker::make('expireDate')->afterOrEqual(Carbon::now()->day())->default(Carbon::now()->addDay()),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([ 
-                TextColumn::make('id') ,
-                TextColumn::make('Code')->getStateUsing(function($record){
-
-                    $code=UserOrder::where('orderNote_id',$record->id)->first();
-                    $code=$code?$code->Code:'';
-                    return $code;
-
-                })->placeholder('No Code Found') ,   
-                TextColumn::make('Note'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+            ->columns([
+                
+                Tables\Columns\TextColumn::make('book.title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('expireDate')
+                    ->badge()->label('Expire Date And Time')
+                    ->dateTime()->color(fn($record)=>  Carbon::parse($record->expireDate)->isPast()?'danger':'success')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -62,13 +56,14 @@ class OrderNoteResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([ 
+            ->actions([
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])->defaultSort('expireDate');
     }
 
     public static function getRelations(): array
@@ -81,8 +76,9 @@ class OrderNoteResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOrderNotes::route('/'),
-          
+            'index' => Pages\ListDealOfTheDays::route('/'),
+            'create' => Pages\CreateDealOfTheDay::route('/create'),
+            'edit' => Pages\EditDealOfTheDay::route('/{record}/edit'),
         ];
     }
 }

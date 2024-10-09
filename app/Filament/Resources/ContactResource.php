@@ -2,54 +2,46 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OrderNoteResource\Pages;
-use App\Filament\Resources\OrderNoteResource\RelationManagers;
-use App\Models\OrderNote;
-use App\Models\UserOrder; 
+use App\Filament\Resources\ContactResource\Pages;
+use App\Filament\Resources\ContactResource\RelationManagers;
+use App\Models\Contact;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\Action ;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class OrderNoteResource extends Resource
+class ContactResource extends Resource
 {
-    protected static ?string $model = OrderNote::class;
+    protected static ?string $model = Contact::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationLabel():string{
+        return "Inbox ";
+    }
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Textarea::make('Note')
-                    ->required()
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
+                //
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([ 
-                TextColumn::make('id') ,
-                TextColumn::make('Code')->getStateUsing(function($record){
-
-                    $code=UserOrder::where('orderNote_id',$record->id)->first();
-                    $code=$code?$code->Code:'';
-                    return $code;
-
-                })->placeholder('No Code Found') ,   
-                TextColumn::make('Note'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+            ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')->copyable()->tooltip('Click TO copy Email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phoneNumber')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('message')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -62,7 +54,8 @@ class OrderNoteResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([ 
+            ->actions([
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -81,7 +74,7 @@ class OrderNoteResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOrderNotes::route('/'),
+            'index' => Pages\ListContacts::route('/'),
           
         ];
     }
