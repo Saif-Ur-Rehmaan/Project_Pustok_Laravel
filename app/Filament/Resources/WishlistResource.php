@@ -18,12 +18,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class WishlistResource extends Resource
 {
     protected static ?string $model = Wishlist::class;
+    protected static ?string $navigationGroup = 'User';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    public  static function getNavigationLabel(): string
-    {
-        return "Wishlists";
-    }
+    protected static ?string $navigationIcon = 'heroicon-o-sparkles';
+    protected static ?string $navigationLabel =  "Wishlists";
+     
     public static function form(Form $form): Form
     {
         return $form

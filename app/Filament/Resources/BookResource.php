@@ -23,8 +23,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class BookResource extends Resource
 {
     protected static ?string $model = Book::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Book';
+ 
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
     public static function form(Form $form): Form
     {

@@ -19,8 +19,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class OrderNoteResource extends Resource
 {
     protected static ?string $model = OrderNote::class;
+    protected static ?string $navigationGroup = 'Orders';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-pencil-square';
 
     public static function form(Form $form): Form
     {

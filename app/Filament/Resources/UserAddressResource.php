@@ -17,12 +17,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class UserAddressResource extends Resource
 {
     protected static ?string $model = UserAddress::class;
+    protected static ?string $navigationGroup = 'User';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    public  static function getNavigationLabel(): string
-    {
-        return "Addresses";
-    }
+    protected static ?string $navigationIcon = 'heroicon-o-map-pin';
+    protected static ?string $navigationLabel = "Addresses";
+ 
     public static function form(Form $form): Form
     {
         return $form

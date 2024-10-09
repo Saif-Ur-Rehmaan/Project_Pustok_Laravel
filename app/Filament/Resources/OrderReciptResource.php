@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Storage;
 class OrderReciptResource extends Resource
 {
     protected static ?string $model = OrderRecipt::class;
+    protected static ?string $navigationGroup = 'Orders';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-receipt-refund';
 
     public static function form(Form $form): Form
     {

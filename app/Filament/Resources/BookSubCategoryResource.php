@@ -19,14 +19,13 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class BookSubCategoryResource extends Resource
 {
     protected static ?string $model = BookSubCategory::class;
+    protected static ?string $navigationGroup = 'Book';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
   
   
-    public  static function getNavigationLabel(): string
-    {
-        return "Sub Categories";
-    }
+    protected static ?string $navigationLabel = "Sub Categories";
+ 
     public static function form(Form $form): Form
     {
         return $form

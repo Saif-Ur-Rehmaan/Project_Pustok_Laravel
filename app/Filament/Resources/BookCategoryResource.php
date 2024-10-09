@@ -17,13 +17,11 @@ class BookCategoryResource extends Resource
 {
 
     protected static ?string $model = BookCategory::class;
+    protected static ?string $navigationGroup = 'Book';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    public  static function getNavigationLabel(): string
-    {
-        return "Categories";
-    }
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
+    protected static ?string $navigationLabel = "Categories";
+ 
     public static function form(Form $form): Form
     {
         return $form

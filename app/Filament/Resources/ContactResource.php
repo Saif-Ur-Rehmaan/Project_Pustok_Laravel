@@ -17,11 +17,10 @@ class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-inbox';
 
-    public static function getNavigationLabel():string{
-        return "Inbox ";
-    }
+   protected static ?string $navigationLabel = "Inbox ";
+ 
     public static function form(Form $form): Form
     {
         return $form

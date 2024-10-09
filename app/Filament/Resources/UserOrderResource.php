@@ -21,12 +21,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class UserOrderResource extends Resource
 {
     protected static ?string $model = UserOrder::class;
+    protected static ?string $navigationGroup = 'Orders';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    public  static function getNavigationLabel(): string
-    {
-        return "Orders";
-    }
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
+    protected static ?string $navigationLabel =  "Orders";
+     
     public static function form(Form $form): Form
     {
         return $form
