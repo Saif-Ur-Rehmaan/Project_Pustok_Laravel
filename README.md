@@ -51,7 +51,7 @@ To clone this repository, follow these steps:
    ```bash
    php artisan migrate
    ```
-
+    this migration will create 2 roles 'user' and 'admin' and register an admin with email  'admin@pustok.com' and password 'admin@pustok'
 7. **Start the Development Server**:
    Finally, you can start the development server:
    ```bash
