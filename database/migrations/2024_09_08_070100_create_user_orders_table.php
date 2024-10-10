@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -48,6 +51,18 @@ return new class extends Migration
             $table->string("contactNumber");
             $table->timestamps();
         });
+        UserRole::create([
+            'name'=>'user'
+        ]);
+        UserRole::create([
+            'name'=>'admin'
+        ]);
+        User::create([
+            'role_id' => 2,
+            'name' => 'user',
+            'email' => 'admin@pustok.com',
+            'password' => bcrypt('admin@pustok'),
+        ]);
     }
 
     /**

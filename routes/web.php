@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\UserController;
+use App\Models\UserRole;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,7 +59,10 @@ Route::controller(UserController::class)->group(function () {
    // only guest allowed
    Route::middleware('guest')->group(function () {
       // login or register page
-      Route::view('/login-register', 'login-register')->name('login');
+      Route::get('/login-register', function () {
+         $count = UserRole::all()->where('name', 'admin')->count();
+         return view('login-register', compact('count'));
+      })->name('login');
       // register
       Route::post('/register', 'RegisterUser')->name('users.register');
       // login

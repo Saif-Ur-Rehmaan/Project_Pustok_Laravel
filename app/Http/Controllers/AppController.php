@@ -74,38 +74,38 @@ class AppController extends Controller
                 'books.availability'
             )
             ->orderBy('Quantity', 'desc')
-            ->get()
-        ;
+            ->get();
         $Deals = DealOfTheDay::with('Book')
             ->where('expireDate', '>', Carbon::now())
             ->get()
-            ->unique('book_id')
-        ;
-            
+            ->unique('book_id');
+        $Author = null;
+        $BestSellerBooks = [];
+        
         if ($MostSelling->first()) {
-            $Author = User::find( $MostSelling->first()->author_id);
+            dd($MostSelling->first());
+            $Author = User::find($MostSelling->first()->author_id);
             $BestSellerBooks = Book::where('author_id', $MostSelling->first()->author_id)->limit(4)->get();
-        } else {
-            $BestSellerBooks = null;
         } 
-        $FeaturedCatsWithBooks=null;
+
+
+        $FeaturedCatsWithBooks = null;
         //parent categories where isFeatured=true
-        $FeaturedCats=BookCategory::all()->where('isFeatured',true);
+        $FeaturedCats = BookCategory::all()->where('isFeatured', true);
         foreach ($FeaturedCats as  $Cat) {
             //getting subcats of that parent cat
-            $subCatIds_ofFeaturedCategories=BookSubCategory::all()->where('category_id',$Cat->id)->pluck('id');
+            $subCatIds_ofFeaturedCategories = BookSubCategory::all()->where('category_id', $Cat->id)->pluck('id');
             //pushing books (having  subcategories's parent category isFeatured) and parent Cat Name
-            $books=Book::all()->whereIn('subcategory_id',$subCatIds_ofFeaturedCategories);
-            if ($books->count()>5) {
-                    $FeaturedCatsWithBooks[]=[
-                        'ParentCatName'=>$Cat->name,
-                        'Books'=>$books,
-                    ];
+            $books = Book::all()->whereIn('subcategory_id', $subCatIds_ofFeaturedCategories);
+            if ($books->count() > 5) {
+                $FeaturedCatsWithBooks[] = [
+                    'ParentCatName' => $Cat->name,
+                    'Books' => $books,
+                ];
             }
-            
         }
- 
-           
+
+
 
         $Data = [
             'Section_FNM' => [
@@ -117,10 +117,10 @@ class AppController extends Controller
             ],
             'DealOfTheDay' => $Deals,
             'BestSeller' => [
-                'books'=>$BestSellerBooks,
-                'author'=>$Author
+                'books' => $BestSellerBooks,
+                'author' => $Author
             ],
-            'FeaturedCatsWithBooks'=>$FeaturedCatsWithBooks
+            'FeaturedCatsWithBooks' => $FeaturedCatsWithBooks
 
         ];
         return view('Index', compact('Data'));
@@ -130,16 +130,20 @@ class AppController extends Controller
 
     function ProductDetails($EncryptedBookId)
     {
-        $Id = Crypt::decrypt($EncryptedBookId);
-        $Book = Book::find((int)$Id);
-        if (empty($Book)) {
-            return redirect('/shop-grid')->with('fail', 'No Book Found Of this type');
-            die();
+        try {
+            $Id = Crypt::decrypt($EncryptedBookId);
+            $Book = Book::find((int)$Id);
+            if (empty($Book)) {
+                return redirect('/shop-grid')->with('fail', 'No Book Found Of this type');
+                die();
+            }
+            $RelatedBooks = Book::with('author')->where('subcategory_id', $Book->subcategory_id)->where('books.id', '!=', $Id)->get();
+            $Reviews = Review::with('user')->where('book_id', $Id)->get();
+    
+            return view('product-details', compact(['Book', 'RelatedBooks', 'Reviews']));
+        } catch (Exception $e) {
+            return redirect('/shop-grid')->with('fail', 'No Book Found  ');
         }
-        $RelatedBooks = Book::with('author')->where('subcategory_id', $Book->subcategory_id)->where('books.id', '!=', $Id)->get();
-        $Reviews = Review::with('user')->where('book_id', $Id)->get();
-
-        return view('product-details', compact(['Book', 'RelatedBooks', 'Reviews']));
     }
 
     function Search($Query = "")

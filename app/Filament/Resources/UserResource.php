@@ -47,7 +47,7 @@ class UserResource extends Resource
                     ->directory('UserProfilePics'),
 
                 Section::make('Basic Information About User')->schema([
-                    Select::make('role_id')
+                    Select::make('role_id')->label('User Role')
                         ->options(UserRole::all()->pluck('name', 'id'))
                         ->required(),
                     TextInput::make('displayName')->required()

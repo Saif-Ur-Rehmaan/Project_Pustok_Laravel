@@ -25,13 +25,27 @@ class UserController extends Controller
         ]);
 
         try {
-            $role_id = UserRole::all()->where('name', 'user')->select("id")->first()["id"]; //selecting id of record where role is user
+
+            dd($request->all());
+
+            if ($role->count() != 0) {
+                $role_id = $role->select("id")->first()["id"];
+            } else {
+
+                UserRole::create([
+                    'name' => 'user',
+                ]);
+
+                $role = UserRole::all()->where('name', 'user');
+
+                $role_id = $role->select("id")->first()["id"];
+            }
             $uploadedImg = $ValidCredentials['ProfilePic'];
 
-            $imagePath = 'storage/'.$request->file('ProfilePic')->store('UserProfilePics', 'public');
+            $imagePath = '//storage/' . $request->file('ProfilePic')->store('UserProfilePics', 'public');
             User::create([
                 'role_id' => $role_id,
-                'image' => env('APP_URL').$imagePath,
+                'image' => env('APP_URL') . $imagePath,
                 'displayName' => $ValidCredentials['name'],
                 'email' => $ValidCredentials['email'],
                 'password' => $ValidCredentials['password'],
@@ -42,7 +56,7 @@ class UserController extends Controller
             ]);
             return redirect('/login-register')->with('success', 'User Registered Successfully .Now you have to Login');
         } catch (Exception $ex) {
-            return redirect('/login-register')->with('fail', 'An Error Occur While Registering Please try again later');
+            return redirect('/login-register')->with('fail', 'An Error Occur While Registering Please try again later' . $ex->getMessage());
         }
     }
 
@@ -56,9 +70,8 @@ class UserController extends Controller
         try {
             if (Auth::attempt(['email' => $VD['LoginEmail'], 'password' => $VD['LoginPassword']])) {
                 $req->session()->regenerate(); //prevent from fixation attacks
-             
-                    return redirect()->intended('/')->with('success', 'User Login Successfully');
-                 
+
+                return redirect()->intended('/')->with('success', 'User Login Successfully');
             } else {
                 return redirect('/login-register')->with('fail', 'Invalid credentials. Please try again.');
             }
@@ -78,36 +91,28 @@ class UserController extends Controller
         $req->validate([
             "message" => 'required',
             "bookId" => 'required|numeric|exists:books,id',
-            "reviewStar" => 'required|numeric|in:1,2,3,4,5' 
+            "reviewStar" => 'required|numeric|in:1,2,3,4,5'
         ]);
         Review::create([
-            'user_id'=>Auth::user()->id,
-            'book_id'=>$req["bookId"],
-            'reviewStars'=>$req["reviewStar"],
-            'comment'=>$req["message"],
-            
+            'user_id' => Auth::user()->id,
+            'book_id' => $req["bookId"],
+            'reviewStars' => $req["reviewStar"],
+            'comment' => $req["message"],
+
         ]);
-        return back()->with('success','Review Added Successfully');
-     
+        return back()->with('success', 'Review Added Successfully');
     }
-    function DeleteReview($EncryptedId) {
-        $ID = Crypt::decrypt($EncryptedId); 
+    function DeleteReview($EncryptedId)
+    {
+        $ID = Crypt::decrypt($EncryptedId);
         if (!is_numeric($ID)) {
             return back()->with('fail', 'Comment Deletion failed: Invalid ID');
-        } 
-        $deleted = Review::destroy($ID);  
+        }
+        $deleted = Review::destroy($ID);
         if ($deleted) {
             return back()->with('success', 'Comment Deleted Successfully');
         } else {
             return back()->with('fail', 'Comment Deletion failed: Review not found');
         }
     }
-
-
-
-
-
-
-
-
 }

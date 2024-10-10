@@ -31,7 +31,7 @@ class BookResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('image')->label('Book Image')->required()->image()->columnSpanFull()->directory('BookImages')->columnSpanFull(),
+                FileUpload::make('image')->label('Book Image')->required()->image()->columnSpanFull()->directory('BookImages')->imageResizeTargetWidth(150)->columnSpanFull(),
                 Section::make('About Author And Book Category')->schema([
                     Forms\Components\Select::make('author_id')->label('Author')->required()->options(User::all()->where('role_id', '3')->pluck('displayName', 'id')), //3 = writer
                     Forms\Components\Select::make('subcategory_id')->label('Sub Category')->required()->options(BookSubCategory::all()->pluck('name', 'id')),

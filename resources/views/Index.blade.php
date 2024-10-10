@@ -189,7 +189,7 @@
                                             </div>
                                             <div class="product-card--body">
                                                 <div class="card-image">
-                                                    <img src="{{ URL($book->image) }}" alt="">
+                                                    <img src="{{ Storage::url($book->image) }}" width="150" alt="">
                                                     <div class="hover-contents">
                                                         <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
                                                             class="hover-image">

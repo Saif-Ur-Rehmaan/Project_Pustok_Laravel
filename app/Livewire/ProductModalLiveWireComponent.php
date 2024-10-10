@@ -15,10 +15,9 @@ class ProductModalLiveWireComponent extends Component
 
     public function render()
     {
+        $Book = null;
         if ($this->ProductId) {
             $Book = Book::find($this->ProductId);
-        } else {
-            $Book = Book::all()->first();
         }
 
         return view('livewire.product-modal-live-wire-component', compact('Book'));
@@ -29,7 +28,7 @@ class ProductModalLiveWireComponent extends Component
     public function CloseProductModal()
     {
         $this->Loading = true;
-        }
+    }
 
 
 

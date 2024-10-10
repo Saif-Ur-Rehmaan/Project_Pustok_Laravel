@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();  // Primary key 'id'
             $table->unsignedBigInteger('role_id')->nullable();  
 
-            $table->text('image')->nullable();
-            $table->string('displayName')->nullable();
+            $table->text('image')->default(asset('/image/default/user.png'));
+            $table->string('displayName')->default('Anonymous');
             $table->string('firstName')->nullable();
             $table->string('lastName')->nullable();
             

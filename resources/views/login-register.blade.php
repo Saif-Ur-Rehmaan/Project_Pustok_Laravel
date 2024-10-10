@@ -49,7 +49,10 @@
                                     @error('password_confirmation')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                    @if ($count == 0)
+                                        <p>Change the role to admin to be able to manage the website from DB</p>
+                                    @endif
+                                </div> 
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-outlined">Register</button>
                                 </div>
