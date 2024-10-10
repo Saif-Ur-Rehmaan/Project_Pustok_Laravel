@@ -17,6 +17,7 @@ class UserRoleResource extends Resource
 {
     protected static ?string $model = UserRole::class;
     protected static ?string $navigationGroup = 'User';
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
     protected static ?string $navigationLabel =  "Roles";

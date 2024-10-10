@@ -20,6 +20,7 @@ class OrderNoteResource extends Resource
 {
     protected static ?string $model = OrderNote::class;
     protected static ?string $navigationGroup = 'Orders';
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $navigationIcon = 'heroicon-o-pencil-square';
 

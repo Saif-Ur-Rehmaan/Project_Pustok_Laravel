@@ -20,6 +20,7 @@ class BookSubCategoryResource extends Resource
 {
     protected static ?string $model = BookSubCategory::class;
     protected static ?string $navigationGroup = 'Book';
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
   

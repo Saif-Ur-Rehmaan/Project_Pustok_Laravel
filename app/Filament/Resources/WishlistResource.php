@@ -19,7 +19,7 @@ class WishlistResource extends Resource
 {
     protected static ?string $model = Wishlist::class;
     protected static ?string $navigationGroup = 'User';
-
+    protected static ?int $navigationSort = 5;
     protected static ?string $navigationIcon = 'heroicon-o-sparkles';
     protected static ?string $navigationLabel =  "Wishlists";
      

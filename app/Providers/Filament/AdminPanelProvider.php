@@ -32,6 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('image/logo.png'))
             ->favicon(asset('image/favicon.ico'))
             ->colors([   
+                
                 'primary' => Color::Green, 
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

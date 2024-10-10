@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\UserResource\RelationManagers; 
 use App\Models\BookSubCategory;
 use App\Models\User;
 use App\Models\UserOrder;
@@ -30,9 +30,11 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
     protected static ?string $navigationGroup = 'User';
- 
+    protected static ?int $navigationSort = 1;
+
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
+
 
     public static function form(Form $form): Form
     {
@@ -85,6 +87,8 @@ class UserResource extends Resource
                     ->color(fn($state) => match ($state) {
                         'user' => 'success',
                         'admin' => 'warning',
+                        'writer' => 'info',
+                        default => 'gray',
                     }),
                 Tables\Columns\TextColumn::make('displayName')
                     ->searchable()
@@ -127,7 +131,7 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()->action(function ($record,$action){
+                Tables\Actions\DeleteAction::make()->action(function ($record, $action) {
                     try {
                         $record->delete();
 
@@ -161,7 +165,7 @@ class UserResource extends Resource
             ]);
     }
 
-   
+  
     public static function getRelations(): array
     {
         return [

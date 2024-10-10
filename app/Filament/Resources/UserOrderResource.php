@@ -22,6 +22,7 @@ class UserOrderResource extends Resource
 {
     protected static ?string $model = UserOrder::class;
     protected static ?string $navigationGroup = 'Orders';
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
     protected static ?string $navigationLabel =  "Orders";

@@ -18,6 +18,7 @@ class UserAddressResource extends Resource
 {
     protected static ?string $model = UserAddress::class;
     protected static ?string $navigationGroup = 'User';
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationIcon = 'heroicon-o-map-pin';
     protected static ?string $navigationLabel = "Addresses";

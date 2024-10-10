@@ -20,6 +20,7 @@ class OrderPaymentResource extends Resource
 {
     protected static ?string $model = OrderPayment::class;
     protected static ?string $navigationGroup = 'Orders';
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 

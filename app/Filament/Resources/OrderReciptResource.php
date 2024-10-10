@@ -18,6 +18,7 @@ class OrderReciptResource extends Resource
 {
     protected static ?string $model = OrderRecipt::class;
     protected static ?string $navigationGroup = 'Orders';
+    protected static ?int $navigationSort = 5;
 
     protected static ?string $navigationIcon = 'heroicon-o-receipt-refund';
 
