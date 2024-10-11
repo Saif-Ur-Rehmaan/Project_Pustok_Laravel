@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -37,7 +39,18 @@ return new class extends Migration
                   ->on('user_roles')
                   ->onDelete('cascade'); // Define behavior on delete
         });
-
+        UserRole::create([
+            'name'=>'user'
+        ]);
+        UserRole::create([
+            'name'=>'admin'
+        ]);
+        User::create([
+            'role_id' => 2,
+            'name' => 'admin',
+            'email' => 'admin@pustok.com',
+            'password' => bcrypt('admin@pustok'),
+        ]);
     }
 
     /**

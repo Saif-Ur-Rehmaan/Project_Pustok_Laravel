@@ -32,7 +32,7 @@
                                                     class="far fa-trash-alt"></i></a>
                                         </td>
                                         <td class="pro-thumbnail"><a href="cart#"><img
-                                                    src="{{ URL($item['book']->image) }}" alt="Product"></a>
+                                                    src="{{ Storage::url($item['book']->image) }}" alt="Product"></a>
                                         </td>
                                         <td class="pro-title"><a href="cart#">{{ $item['book']->title }}</a></td>
                                         <td class="pro-price">
@@ -127,11 +127,11 @@
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
-                                            <img src="{{ URL($book->image) }}" alt="">
+                                            <img src="{{ Storage::url($book->image) }}" alt="">
                                             <div class="hover-contents">
                                                 <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
                                                     class="hover-image">
-                                                    <img src="{{ URL($book->image) }}" alt="">
+                                                    <img src="{{ Storage::url($book->image) }}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
                                                     <a wire:click='AddToCart({{ $book->id }})' class="single-btn">

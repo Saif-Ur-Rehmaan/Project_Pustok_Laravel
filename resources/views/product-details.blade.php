@@ -8,7 +8,7 @@
                     <!-- Product Details Slider Big Image-->
                     <div class="product-details-slider sb-slick-slider arrow-type-two">
                         <div class="single-slide">
-                            <img src="{{ URL($Book->image) }}" alt="">
+                            <img src="{{ Storage::url($Book->image) }}" alt="">
                         </div>
 
                     </div>
@@ -131,7 +131,7 @@
                             @forelse ($Reviews as $review)
                                 <div class="review-comment mb--20">
                                     <div class="avatar">
-                                        <img src="{{ URL($review->user->image) }}" width="60" height="60"
+                                        <img src="{{ Storage::url($review->user->image) }}" width="60" height="60"
                                             class="rounded-circle" alt="">
                                     </div>
                                     <div class="text">
@@ -278,11 +278,11 @@
                                 </div>
                                 <div class="product-card--body">
                                     <div class="card-image">
-                                        <img src="{{ URL($book->image) }}" alt="">
+                                        <img src="{{ Storage::url($book->image) }}" alt="">
                                         <div class="hover-contents">
                                             <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
                                                 class="hover-image">
-                                                <img src="{{ URL($book->image) }}" alt="">
+                                                <img src="{{ Storage::url($book->image) }}" alt="">
                                             </a>
                                             <div class="hover-btns">
                                                 <a class="AddToCartBtn single-btn" data-id="{{ $book->id }}">

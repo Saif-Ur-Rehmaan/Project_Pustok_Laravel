@@ -54,7 +54,7 @@ class CheckoutLiveWireComponent extends Component
         $PaymentMethods = PaymentMethod::all()->where('status', 'Allowed');
         $this->PaymentMethods = $PaymentMethods;
         if ($PaymentMethods) {
-            $this->SelectedPaymenyMethod = $PaymentMethods[0]->name;
+            $this->SelectedPaymenyMethod = $PaymentMethods->first()?$PaymentMethods->first()->name:'No Payment Method Available';
         }
     }
     public function fetchOrderSummary()
@@ -145,7 +145,7 @@ class CheckoutLiveWireComponent extends Component
         //set Those Details in db And redirect to /order-completed
         $PaymentMethod = PaymentMethod::all()->where('name', $this->SelectedPaymenyMethod)->where('status', 'Allowed')->first();
         if (!$PaymentMethod) {
-            return redirect("/checkout")->with('fail', 'Selected Payment Method Not Available');
+            return redirect("/checkout")->with('fail', 'Selected Payment \''.$this->SelectedPaymenyMethod.'\' Method Not Available');
         }
         //check Payment method is COD Or online 
         if ($this->SelectedPaymenyMethod == "Cash On Delivery") {

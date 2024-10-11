@@ -58,7 +58,7 @@
 <body>
     <div id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1000; width: auto;"></div>
     
-    <div class="site-wrapper" id="top"> 
+    <div class="site-wrapper " id="top"> 
         <x-NavBar></x-NavBar>
         @session('success')
             <div class="alert alert-success" role="alert">

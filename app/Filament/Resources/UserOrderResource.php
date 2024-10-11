@@ -163,7 +163,7 @@ class UserOrderResource extends Resource
                 TextColumn::make('Code')
                     ->label('Order Code')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()->copyable()->tooltip('Copy Order Code'),
 
                 // Quantity column
                 ColumnGroup::make('Accounts')->columns([
@@ -180,6 +180,7 @@ class UserOrderResource extends Resource
                         ->sortable()->toggleable(),
                 ])->wrapHeader()->alignCenter(),
                 ColumnGroup::make('Shipping Info')->columns([
+
                     // First name column
                     TextColumn::make('firstName')
                         ->label('First Name')->toggleable()
@@ -227,7 +228,7 @@ class UserOrderResource extends Resource
                         ->sortable()
                         ->searchable(),
                 ])->alignCenter(),
-            ])
+            ]) 
             ->filters([
                 // Add any filters you need here
             ])

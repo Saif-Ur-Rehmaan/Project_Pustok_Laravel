@@ -29,7 +29,7 @@ class PaymentMethodResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->unique()
+                TextInput::make('name')
                     ->label('Payment Method Name')
                     ->required(),
 

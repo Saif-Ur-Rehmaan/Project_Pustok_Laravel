@@ -82,8 +82,7 @@ class AppController extends Controller
         $Author = null;
         $BestSellerBooks = [];
         
-        if ($MostSelling->first()) {
-            dd($MostSelling->first());
+        if ($MostSelling->first()) { 
             $Author = User::find($MostSelling->first()->author_id);
             $BestSellerBooks = Book::where('author_id', $MostSelling->first()->author_id)->limit(4)->get();
         } 

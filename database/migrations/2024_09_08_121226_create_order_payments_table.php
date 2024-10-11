@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('payment_method_id'); // Payment method (e.g., Credit Card, PayPal, COD)
             $table->decimal('amount', 10, 2); // Payment amount
             $table->string('currency', 3)->default('USD'); // Currency code (e.g., USD, EUR)
-            $table->string('payment_status')->default('pending'); // Payment status (e.g., pending, completed, failed)
+            $table->enum('payment_status', ['pending', 'completed', 'failed'])->default('pending'); // Payment status (e.g., pending, completed, failed)
             $table->string('transaction_id')->nullable(); // Transaction ID for online payments
             $table->json('payment_details')->nullable(); // Store additional payment details (e.g., response from payment gateway)
             $table->timestamp('paid_at')->nullable(); // Timestamp when payment was completed

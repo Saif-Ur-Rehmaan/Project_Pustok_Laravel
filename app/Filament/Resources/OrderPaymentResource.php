@@ -41,8 +41,13 @@ class OrderPaymentResource extends Resource
                         ->required()
                         ->maxLength(3)
                         ->default('USD'),
-                    Forms\Components\TextInput::make('payment_status')
+                    Forms\Components\Select::make('payment_status')
                         ->required()
+                        ->options([
+                            'pending' => 'Pending',
+                            'completed' => 'Completed',
+                            'failed' => 'Failed',
+                        ])
                         ->maxLength(255)
                         ->default('pending'),
                 ])->collapsible(),
@@ -70,7 +75,13 @@ class OrderPaymentResource extends Resource
                 Tables\Columns\TextColumn::make('currency')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('payment_status')
-                    ->searchable(),
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'completed' => 'success',
+                        'failed' => 'danger',
+                        default => ''
+                    }),
                 Tables\Columns\TextColumn::make('transaction_id')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('paid_at')

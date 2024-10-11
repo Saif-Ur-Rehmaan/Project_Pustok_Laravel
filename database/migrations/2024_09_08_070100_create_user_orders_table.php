@@ -51,18 +51,7 @@ return new class extends Migration
             $table->string("contactNumber");
             $table->timestamps();
         });
-        UserRole::create([
-            'name'=>'user'
-        ]);
-        UserRole::create([
-            'name'=>'admin'
-        ]);
-        User::create([
-            'role_id' => 2,
-            'name' => 'user',
-            'email' => 'admin@pustok.com',
-            'password' => bcrypt('admin@pustok'),
-        ]);
+       
     }
 
     /**

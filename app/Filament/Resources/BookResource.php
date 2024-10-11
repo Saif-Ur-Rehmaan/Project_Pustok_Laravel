@@ -31,7 +31,7 @@ class BookResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('image')->label('Book Image')->required()->image()->columnSpanFull()->directory('BookImages')->imageResizeTargetWidth(150)->columnSpanFull(),
+                FileUpload::make('image')->label('Book Image')->required()->image()->columnSpanFull()->directory('BookImages')->columnSpanFull(),
                 Section::make('About Author And Book Category')->schema([
                     Forms\Components\Select::make('author_id')->label('Author')->required()->options(User::all()->where('role_id', '3')->pluck('displayName', 'id')), //3 = writer
                     Forms\Components\Select::make('subcategory_id')->label('Sub Category')->required()->options(BookSubCategory::all()->pluck('name', 'id')),
@@ -47,7 +47,7 @@ class BookResource extends Resource
                     Forms\Components\ColorPicker::make('color')->columnSpan(1)->required(),
                     Forms\Components\TextInput::make('extax')->numeric()->required(),
                     Forms\Components\TextInput::make('priceInUSD')->numeric()->required(),
-                    Forms\Components\TextInput::make('discountPercent')->required(),
+                    Forms\Components\TextInput::make('discountPercent')->required()->maxValue(100)->numeric(),
                     Forms\Components\TagsInput::make('tags')->columnSpanFull()->placeholder('Enter tag Name and hit enter '),
                 ])->columnSpan(1)->columns(2),
                 Section::make('Book Description And Summary')->schema([

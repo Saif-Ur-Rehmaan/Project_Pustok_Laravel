@@ -1,41 +1,41 @@
-<div class="page-section inner-page-sec-padding">
+<div class="page-section inner-page-sec-padding ">
     <div wire:loading>
         <x-Loader></x-Loader>
     </div>
     @if ($OpenAddressModal)
-        <div class="container-fluid position-absolute w-100 h-100 bg-dark" style="z-index: 999 ;">
+        <div class="container-fluid position-absolute w-100 h-100 bg-light" style="z-index: 999;">
             <div class="row justify-content-center">
                 <form wire:submit.prevent='AddNewAddress' class="col-6">
-                    <h1 class="text-center text-white mt-5">Add New Address</h1>
+                    <h1 class="text-center text-success mt-5">Add New Address</h1>
                 
                     <div class="form-group">
-                        <label for="title"><p class="text-white m-0">Title</p></label>
+                        <label for="title"><p class="text-success m-0">Title</p></label>
                         <input type="text" class="form-control" id="title" name="title" wire:model.debounce.500ms='newAddress.title' placeholder="Home, Office, etc." wire:model="title">
                     </div>
                 
                     <div class="form-group">
-                        <label for="address"><p class="text-white m-0">Address</p></label>
+                        <label for="address"><p class="text-success m-0">Address</p></label>
                         <input type="text" class="form-control" id="address" name="address" wire:model.debounce.500ms='newAddress.address' placeholder="Enter your address" wire:model="address">
                     </div>
                 
                     <div class="form-group">
-                        <label for="city"><p class="text-white m-0">City</p></label>
+                        <label for="city"><p class="text-success m-0">City</p></label>
                         <input type="text" class="form-control" id="city" name="city" wire:model.debounce.500ms='newAddress.city' placeholder="Enter your city" wire:model="city">
                     </div>
                 
                     <div class="form-group">
-                        <label for="contact_number"><p class="text-white m-0">Contact Number</p></label>
+                        <label for="contact_number"><p class="text-success m-0">Contact Number</p></label>
                         <input type="text" class="form-control" id="contact_number" name="contact_number" wire:model.debounce.500ms='newAddress.contact_number' placeholder="Enter your contact number" wire:model="contact_number">
                     </div>
                 
-                    <button type="submit" class="btn btn-primary mt-3">Add Address</button>
+                    <button type="submit" class="btn btn-success mt-3">Add Address</button>
                 </form>
                 
             </div>
         </div>
         
     @endif
-    <div class="container">
+    <div class="container position-relative">
         <div class="row">
             <div class="col-12">
                 <div class="row">

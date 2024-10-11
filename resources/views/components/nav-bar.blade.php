@@ -111,7 +111,7 @@
                                     <a href="{{ URL('login-register') }}" class="font-weight-bold">Login</a> <br>
                                     <span>or</span><a href="{{ URL('login-register') }}">Register</a>
                                 @else
-                                    <img src="{{ URL(Auth::user()->image?Auth::user()->image:asset('/image/default/user.png')) }}" width="40" height="40"
+                                    <img src="{{ Storage::url(Auth::user()->image?Auth::user()->image:' ') }}" width="40" height="40"
                                         class="rounded-circle" alt="">
                                     <a href="/my-account" class="fw-bold fs-6 text-success text-decoration-underline">My
                                         Account</a>

@@ -126,275 +126,277 @@
         </div>
     </section>
     <!--================================= Home Slider Tab ===================================== -->
-    <section class="section-padding">
-        <h2 class="sr-only">Home Tab Slider Section</h2>
-        <div class="container">
-            <div class="sb-custom-tab">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    @if (count($Data['Section_FNM']['Featured']) > 0)
-                        <li class="nav-item">
-                            <a class="nav-link active" id="shop-tab" data-bs-toggle="tab" href="index#shop" role="tab"
-                                aria-controls="shop" aria-selected="true">
-                                Featured Products
-                            </a>
-                            <span class="arrow-icon"></span>
-                        </li>
-                    @endif
-                    @if (count($Data['Section_FNM']['NewArrival']) > 0)
-                        <li class="nav-item">
-                            <a class="nav-link" id="men-tab" data-bs-toggle="tab" href="index#men" role="tab"
-                                aria-controls="men" aria-selected="true">
-                                New Arrivals
-                            </a>
-                            <span class="arrow-icon"></span>
-                        </li>
-                    @endif
-                    @if (count($Data['Section_FNM']['MostSelling']) > 0)
-                        <li class="nav-item">
-                            <a class="nav-link" id="woman-tab" data-bs-toggle="tab" href="index#woman" role="tab"
-                                aria-controls="woman" aria-selected="false">
-                                Most Selling Products
-                            </a>
-                            <span class="arrow-icon"></span>
-                        </li>
-                    @endif
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    @if (count($Data['Section_FNM']['Featured']) > 0)
-                        <div class="tab-pane show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
-                            <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
-                                data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow": 5,
-                                            "rows":2,
-                                            "dots":true
-                                        }'
-                                data-slick-responsive='[
-                                            {"breakpoint":1200, "settings": {"slidesToShow": 3} },
-                                            {"breakpoint":768, "settings": {"slidesToShow": 2} },
-                                            {"breakpoint":480, "settings": {"slidesToShow": 1} },
-                                            {"breakpoint":320, "settings": {"slidesToShow": 1} }
-                                        ]'>
-                                @foreach ($Data['Section_FNM']['Featured'] as $book)
-                                    <div class="single-slide">
-                                        <div class="product-card">
-                                            <div class="product-header">
-                                                <a class="author">
-                                                    {{ $book->author->displayName }}
-                                                </a>
-                                                <h3><a style="height: 40px;"
-                                                        href="{{ URL('product-details', Crypt::encrypt($book->id)) }}">{{ $book->title }}</a>
-                                                </h3>
-                                            </div>
-                                            <div class="product-card--body">
-                                                <div class="card-image">
-                                                    <img src="{{ Storage::url($book->image) }}" width="150" alt="">
-                                                    <div class="hover-contents">
-                                                        <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
-                                                            class="hover-image">
-                                                            <img src="{{ URL($book->image) }}" alt="">
-                                                        </a>
-                                                        <div class="hover-btns">
-                                                            <a class="AddToCartBtn single-btn"
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-shopping-basket"></i>
+    @if (count($Data['Section_FNM']['Featured']) > 0 || count($Data['Section_FNM']['NewArrival']) > 0 || count($Data['Section_FNM']['MostSelling']) > 0)
+        <section class="section-padding">
+            <h2 class="sr-only">Home Tab Slider Section</h2>
+            <div class="container">
+                <div class="sb-custom-tab">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        @if (count($Data['Section_FNM']['Featured']) > 0)
+                            <li class="nav-item">
+                                <a class="nav-link active" id="shop-tab" data-bs-toggle="tab" href="index#shop" role="tab"
+                                    aria-controls="shop" aria-selected="true">
+                                    Featured Products
+                                </a>
+                                <span class="arrow-icon"></span>
+                            </li>
+                        @endif
+                        @if (count($Data['Section_FNM']['NewArrival']) > 0)
+                            <li class="nav-item">
+                                <a class="nav-link" id="men-tab" data-bs-toggle="tab" href="index#men" role="tab"
+                                    aria-controls="men" aria-selected="true">
+                                    New Arrivals
+                                </a>
+                                <span class="arrow-icon"></span>
+                            </li>
+                        @endif
+                        @if (count($Data['Section_FNM']['MostSelling']) > 0)
+                            <li class="nav-item">
+                                <a class="nav-link" id="woman-tab" data-bs-toggle="tab" href="index#woman" role="tab"
+                                    aria-controls="woman" aria-selected="false">
+                                    Most Selling Products
+                                </a>
+                                <span class="arrow-icon"></span>
+                            </li>
+                        @endif
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        @if (count($Data['Section_FNM']['Featured']) > 0)
+                            <div class="tab-pane show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
+                                <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
+                                    data-slick-setting='{
+                                                "autoplay": true,
+                                                "autoplaySpeed": 8000,
+                                                "slidesToShow": 5,
+                                                "rows":2,
+                                                "dots":true
+                                            }'
+                                    data-slick-responsive='[
+                                                {"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                                                {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                                {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                                {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                                            ]'>
+                                    @foreach ($Data['Section_FNM']['Featured'] as $book)
+                                        <div class="single-slide">
+                                            <div class="product-card">
+                                                <div class="product-header">
+                                                    <a class="author">
+                                                        {{ $book->author->displayName }}
+                                                    </a>
+                                                    <h3><a style="height: 40px;"
+                                                            href="{{ URL('product-details', Crypt::encrypt($book->id)) }}">{{ $book->title }}</a>
+                                                    </h3>
+                                                </div>
+                                                <div class="product-card--body">
+                                                    <div class="card-image">
+                                                        <img src="{{ Storage::url($book->image) }}"  alt="">
+                                                        <div class="hover-contents">
+                                                            <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
+                                                                class="hover-image">
+                                                                <img src="{{ Storage::url($book->image) }}" alt="">
                                                             </a>
-                                                            <a class="single-btn ManageWishlistBtn {{ Auth::check() &&$book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $book->id)->isNotEmpty()? 'bg-success': '' }}"
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-heart"></i>
-                                                            </a>
-                                                            <a href="compare" class="single-btn">
-                                                                <i class="fas fa-random"></i>
-                                                            </a>
+                                                            <div class="hover-btns">
+                                                                <a class="AddToCartBtn single-btn"
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-shopping-basket"></i>
+                                                                </a>
+                                                                <a class="single-btn ManageWishlistBtn {{ Auth::check() &&$book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $book->id)->isNotEmpty()? 'bg-success': '' }}"
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-heart"></i>
+                                                                </a>
+                                                                <a href="compare" class="single-btn">
+                                                                    <i class="fas fa-random"></i>
+                                                                </a>
 
-                                                            <a data-bs-toggle="modal" data-bs-target="#quickModal"
-                                                                class="single-btn quickViewBtn"
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-eye"></i>
-                                                            </a>
+                                                                <a data-bs-toggle="modal" data-bs-target="#quickModal"
+                                                                    class="single-btn quickViewBtn"
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="price-block">
-                                                    @if ($book->discountPercent != 0)
-                                                        <!-- After Discount Price in USD -->
-                                                        <span class="price">
-                                                            ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
-                                                        <!-- Before Discount Price in USD -->
-                                                        <del class="price-old">${{ $book->priceInUSD }}</del>
-                                                        <!-- Discount Percentage -->
-                                                        <span class="price-discount">{{ $book->discountPercent }}%</span>
-                                                    @else
-                                                        <!-- Regular Price if no Discount -->
-                                                        <span class="price">${{ $book->priceInUSD }}</span>
-                                                    @endif
+                                                    <div class="price-block">
+                                                        @if ($book->discountPercent != 0)
+                                                            <!-- After Discount Price in USD -->
+                                                            <span class="price">
+                                                                ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
+                                                            <!-- Before Discount Price in USD -->
+                                                            <del class="price-old">${{ $book->priceInUSD }}</del>
+                                                            <!-- Discount Percentage -->
+                                                            <span class="price-discount">{{ $book->discountPercent }}%</span>
+                                                        @else
+                                                            <!-- Regular Price if no Discount -->
+                                                            <span class="price">${{ $book->priceInUSD }}</span>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
-                    @endif
-                    @if (count($Data['Section_FNM']['NewArrival']) > 0)
-                        <div class="tab-pane" id="men" role="tabpanel" aria-labelledby="men-tab">
-                            <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
-                                data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow": 5,
-                                            "rows":2,
-                                            "dots":true
-                                        }'
-                                data-slick-responsive='[
-                                            {"breakpoint":1200, "settings": {"slidesToShow": 3} },
-                                            {"breakpoint":768, "settings": {"slidesToShow": 2} },
-                                            {"breakpoint":480, "settings": {"slidesToShow": 1} },
-                                            {"breakpoint":320, "settings": {"slidesToShow": 1} }
-                                        ]'>
-                                @foreach ($Data['Section_FNM']['NewArrival'] as $book)
-                                    <div class="single-slide">
-                                        <div class="product-card">
-                                            <div class="product-header">
-                                                <a class="author">
-                                                    {{ $book->author->displayName }}
-                                                </a>
-                                                <h3><a style="height: 40px;"
-                                                        href="{{ URL('product-details', Crypt::encrypt($book->id)) }}">{{ $book->title }}</a>
-                                                </h3>
-                                            </div>
-                                            <div class="product-card--body">
-                                                <div class="card-image">
-                                                    <img src="{{ URL($book->image) }}" alt="">
-                                                    <div class="hover-contents">
-                                                        <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
-                                                            class="hover-image">
-                                                            <img src="{{ URL($book->image) }}" alt="">
-                                                        </a>
-                                                        <div class="hover-btns">
-                                                            <a class="AddToCartBtn single-btn"
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-shopping-basket"></i>
+                        @endif
+                        @if (count($Data['Section_FNM']['NewArrival']) > 0)
+                            <div class="tab-pane" id="men" role="tabpanel" aria-labelledby="men-tab">
+                                <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
+                                    data-slick-setting='{
+                                                "autoplay": true,
+                                                "autoplaySpeed": 8000,
+                                                "slidesToShow": 5,
+                                                "rows":2,
+                                                "dots":true
+                                            }'
+                                    data-slick-responsive='[
+                                                {"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                                                {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                                {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                                {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                                            ]'>
+                                    @foreach ($Data['Section_FNM']['NewArrival'] as $book)
+                                        <div class="single-slide">
+                                            <div class="product-card">
+                                                <div class="product-header">
+                                                    <a class="author">
+                                                        {{ $book->author->displayName }}
+                                                    </a>
+                                                    <h3><a style="height: 40px;"
+                                                            href="{{ URL('product-details', Crypt::encrypt($book->id)) }}">{{ $book->title }}</a>
+                                                    </h3>
+                                                </div>
+                                                <div class="product-card--body">
+                                                    <div class="card-image">
+                                                        <img src="{{ Storage::url($book->image) }}" alt="">
+                                                        <div class="hover-contents">
+                                                            <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
+                                                                class="hover-image">
+                                                                <img src="{{ Storage::url($book->image) }}" alt="">
                                                             </a>
-                                                            <a class="single-btn ManageWishlistBtn {{ Auth::check() &&$book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $book->id)->isNotEmpty()? 'bg-success': '' }}"
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-heart"></i>
-                                                            </a>
-                                                            <a href="compare" class="single-btn">
-                                                                <i class="fas fa-random"></i>
-                                                            </a>
+                                                            <div class="hover-btns">
+                                                                <a class="AddToCartBtn single-btn"
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-shopping-basket"></i>
+                                                                </a>
+                                                                <a class="single-btn ManageWishlistBtn {{ Auth::check() &&$book->wishlists->where('user_id', Auth::user()->id)->where('book_id', $book->id)->isNotEmpty()? 'bg-success': '' }}"
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-heart"></i>
+                                                                </a>
+                                                                <a href="compare" class="single-btn">
+                                                                    <i class="fas fa-random"></i>
+                                                                </a>
 
-                                                            <a data-bs-toggle="modal" data-bs-target="#quickModal"
-                                                                class="single-btn quickViewBtn"
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-eye"></i>
-                                                            </a>
+                                                                <a data-bs-toggle="modal" data-bs-target="#quickModal"
+                                                                    class="single-btn quickViewBtn"
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="price-block">
-                                                    @if ($book->discountPercent != 0)
-                                                        <!-- After Discount Price in USD -->
-                                                        <span class="price">
-                                                            ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
-                                                        <!-- Before Discount Price in USD -->
-                                                        <del class="price-old">${{ $book->priceInUSD }}</del>
-                                                        <!-- Discount Percentage -->
-                                                        <span class="price-discount">{{ $book->discountPercent }}%</span>
-                                                    @else
-                                                        <!-- Regular Price if no Discount -->
-                                                        <span class="price">${{ $book->priceInUSD }}</span>
-                                                    @endif
+                                                    <div class="price-block">
+                                                        @if ($book->discountPercent != 0)
+                                                            <!-- After Discount Price in USD -->
+                                                            <span class="price">
+                                                                ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
+                                                            <!-- Before Discount Price in USD -->
+                                                            <del class="price-old">${{ $book->priceInUSD }}</del>
+                                                            <!-- Discount Percentage -->
+                                                            <span class="price-discount">{{ $book->discountPercent }}%</span>
+                                                        @else
+                                                            <!-- Regular Price if no Discount -->
+                                                            <span class="price">${{ $book->priceInUSD }}</span>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
-                    @endif
-                    @if (count($Data['Section_FNM']['MostSelling']) > 0)
-                        <div class="tab-pane" id="woman" role="tabpanel" aria-labelledby="woman-tab">
-                            <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
-                                data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow": 5,
-                                            "rows":2,
-                                            "dots":true
-                                        }'
-                                data-slick-responsive='[
-                                            {"breakpoint":1200, "settings": {"slidesToShow": 3} },
-                                            {"breakpoint":768, "settings": {"slidesToShow": 2} },
-                                            {"breakpoint":480, "settings": {"slidesToShow": 1} },
-                                            {"breakpoint":320, "settings": {"slidesToShow": 1} }
-                                        ]'>
-                                @foreach ($Data['Section_FNM']['MostSelling'] as $book)
-                                    <div class="single-slide">
-                                        <div class="product-card">
-                                            <div class="product-header">
-                                                <a class="author">
-                                                    {{ $book->author }}
-                                                </a>
-                                                <h3><a style="height: 40px;"
-                                                        href="{{ URL('product-details', Crypt::encrypt($book->id)) }}">{{ $book->title }}</a>
-                                                </h3>
-                                            </div>
-                                            <div class="product-card--body">
-                                                <div class="card-image">
-                                                    <img src="{{ URL($book->image) }}" alt="">
-                                                    <div class="hover-contents">
-                                                        <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
-                                                            class="hover-image">
-                                                            <img src="{{ URL($book->image) }}" alt="">
-                                                        </a>
-                                                        <div class="hover-btns">
-                                                            <a class="AddToCartBtn single-btn"
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-shopping-basket"></i>
+                        @endif
+                        @if (count($Data['Section_FNM']['MostSelling']) > 0)
+                            <div class="tab-pane" id="woman" role="tabpanel" aria-labelledby="woman-tab">
+                                <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
+                                    data-slick-setting='{
+                                                "autoplay": true,
+                                                "autoplaySpeed": 8000,
+                                                "slidesToShow": 5,
+                                                "rows":2,
+                                                "dots":true
+                                            }'
+                                    data-slick-responsive='[
+                                                {"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                                                {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                                {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                                {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                                            ]'>
+                                    @foreach ($Data['Section_FNM']['MostSelling'] as $book)
+                                        <div class="single-slide">
+                                            <div class="product-card">
+                                                <div class="product-header">
+                                                    <a class="author">
+                                                        {{ $book->author }}
+                                                    </a>
+                                                    <h3><a style="height: 40px;"
+                                                            href="{{ URL('product-details', Crypt::encrypt($book->id)) }}">{{ $book->title }}</a>
+                                                    </h3>
+                                                </div>
+                                                <div class="product-card--body">
+                                                    <div class="card-image">
+                                                        <img src="{{ Storage::url($book->image) }}" alt="">
+                                                        <div class="hover-contents">
+                                                            <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}"
+                                                                class="hover-image">
+                                                                <img src="{{ Storage::url($book->image) }}" alt="">
                                                             </a>
-                                                            <a class="single-btn ManageWishlistBtn "
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-heart"></i>
-                                                            </a>
-                                                            <a href="compare" class="single-btn">
-                                                                <i class="fas fa-random"></i>
-                                                            </a>
+                                                            <div class="hover-btns">
+                                                                <a class="AddToCartBtn single-btn"
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-shopping-basket"></i>
+                                                                </a>
+                                                                <a class="single-btn ManageWishlistBtn "
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-heart"></i>
+                                                                </a>
+                                                                <a href="compare" class="single-btn">
+                                                                    <i class="fas fa-random"></i>
+                                                                </a>
 
-                                                            <a data-bs-toggle="modal" data-bs-target="#quickModal"
-                                                                class="single-btn quickViewBtn"
-                                                                data-id="{{ $book->id }}">
-                                                                <i class="fas fa-eye"></i>
-                                                            </a>
+                                                                <a data-bs-toggle="modal" data-bs-target="#quickModal"
+                                                                    class="single-btn quickViewBtn"
+                                                                    data-id="{{ $book->id }}">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="price-block">
-                                                    @if ($book->discountPercent != 0)
-                                                        <!-- After Discount Price in USD -->
-                                                        <span class="price">
-                                                            ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
-                                                        <!-- Before Discount Price in USD -->
-                                                        <del class="price-old">${{ $book->priceInUSD }}</del>
-                                                        <!-- Discount Percentage -->
-                                                        <span class="price-discount">{{ $book->discountPercent }}%</span>
-                                                    @else
-                                                        <!-- Regular Price if no Discount -->
-                                                        <span class="price">${{ $book->priceInUSD }}</span>
-                                                    @endif
+                                                    <div class="price-block">
+                                                        @if ($book->discountPercent != 0)
+                                                            <!-- After Discount Price in USD -->
+                                                            <span class="price">
+                                                                ${{ number_format($book->priceInUSD * (1 - $book->discountPercent / 100), 2) }}</span>
+                                                            <!-- Before Discount Price in USD -->
+                                                            <del class="price-old">${{ $book->priceInUSD }}</del>
+                                                            <!-- Discount Percentage -->
+                                                            <span class="price-discount">{{ $book->discountPercent }}%</span>
+                                                        @else
+                                                            <!-- Regular Price if no Discount -->
+                                                            <span class="price">${{ $book->priceInUSD }}</span>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>        
+    @endif
 
     <!--================================= Deal of the day ===================================== -->
 
@@ -433,11 +435,11 @@
                                 </div>
                                 <div class="product-card--body">
                                     <div class="card-image">
-                                        <img src="{{ URL($deal->book->image) }}" alt="{{ $deal->book->title }}">
+                                        <img src="{{ Storage::url($deal->book->image) }}" alt="{{ $deal->book->title }}">
                                         <div class="hover-contents">
                                             <a href="{{ URL('product-details', $deal->book->id) }}" class="hover-image"
                                                 style="height: 40px;">
-                                                <img src="{{ URL($deal->book->image) }}" alt="{{ $deal->book->title }}">
+                                                <img src="{{ Storage::url($deal->book->image) }}" alt="{{ $deal->book->title }}">
                                             </a>
                                             <div class="hover-btns">
                                                 <a class="AddToCartBtn single-btn" data-id="{{ $deal->book->id }}">
@@ -502,7 +504,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-5 col-md-6">
                             <div class="author-image">
-                                <img src="{{ URL($author->image) }}" alt="">
+                                <img src="{{ Storage::url($author->image) }}" alt="">
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-6">
@@ -525,7 +527,7 @@
                                     <div class="single-slide">
                                         <div class="product-card card-style-list">
                                             <div class="card-image">
-                                                <img src="{{ URL($book->image) }}" style="min-width: 100px;"
+                                                <img src="{{ Storage::url($book->image) }}" style="min-width: 100px;"
                                                     alt="">
                                             </div>
                                             <div class="product-card--body">
@@ -596,7 +598,7 @@
                                 <div class="single-slide">
                                     <div class="product-card card-style-list">
                                         <div class="card-image">
-                                            <img src="{{ URL($book->image) }}" style="min-width: 155px;" alt="">
+                                            <img src="{{ Storage::url($book->image) }}" style="min-width: 155px;" alt="">
                                         </div>
                                         <div
                                             class="product-card--body  d-flex align-items-center flex-column justify-content-center">
@@ -663,10 +665,10 @@
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
-                                                <img src="{{ URL($book->image) }}" alt="">
+                                                <img src="{{ Storage::url($book->image) }}" alt="">
                                                 <div class="hover-contents">
                                                     <a href="{{ URL('product-details', Crypt::encrypt($book->id)) }}" class="hover-image">
-                                                        <img src="{{ URL($book->image) }}" alt="">
+                                                        <img src="{{ Storage::url($book->image) }}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
                                                         <a class="AddToCartBtn single-btn" data-id="{{ $book->id }}">

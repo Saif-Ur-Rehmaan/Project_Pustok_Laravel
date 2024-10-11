@@ -44,7 +44,7 @@ class CouponResource extends Resource
                 ->label('Discount Type')
                 ->options([
                     'fixed' => 'Fixed Amount',
-                    'discount' => 'Discount Percentage',
+                    'percent' => 'Discount Percentage',
                 ])
                 ->required(),
                 

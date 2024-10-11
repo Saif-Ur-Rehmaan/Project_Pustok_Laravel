@@ -20,7 +20,7 @@
             @forelse ($Books as $item)
                 <div class="cart-product">
                     <a href="{{ URL('product-details', Crypt::encrypt($item['book']->id)) }}" class="image">
-                        <img src="{{ URL($item['book']->image) }}" alt="{{ $item['book']->title }}">
+                        <img src="{{ Storage::url($item['book']->image) }}" alt="{{ $item['book']->title }}">
                     </a>
                     <div class="content">
                         <h3 class="title"><a

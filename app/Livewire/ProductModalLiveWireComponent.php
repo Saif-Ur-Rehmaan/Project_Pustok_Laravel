@@ -9,7 +9,7 @@ use Livewire\Component;
 class ProductModalLiveWireComponent extends Component
 {
 
-    public $ProductId = 1;
+    public $ProductId = null;
     public $Loading = true;
 
 

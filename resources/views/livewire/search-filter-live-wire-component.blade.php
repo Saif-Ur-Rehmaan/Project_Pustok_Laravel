@@ -145,11 +145,11 @@
                         <div class="product-card--body">
                             <div class="card-image">
 
-                                <img src="{{ URL($Book->image) }}" alt="">
+                                <img src="{{ Storage::url($Book->image) }}" alt="">
                                 <div class="hover-contents">
                                     <a href="{{ URL('product-details', Crypt::encrypt($Book->id)) }}"
                                         class="hover-image">
-                                        <img src="{{ URL($Book->image) }}" alt="">
+                                        <img src="{{ Storage::url($Book->image) }}" alt="">
                                     </a>
                                     <div class="hover-btns">
                                         <a  wire:click='AddToCart({{ $Book->id }})' class="single-btn">
@@ -188,7 +188,7 @@
                     </div>
                     <div class="product-list-content">
                         <div class="card-image">
-                            <img src="{{ URL($Book->image) }}" alt="">
+                            <img src="{{ Storage::url($Book->image) }}" alt="">
                         </div>
                         <div class="product-card--body">
                             <div class="product-header">

@@ -25,9 +25,8 @@ class UserController extends Controller
         ]);
 
         try {
-
-            dd($request->all());
-
+            $role = UserRole::all()->where('name', 'user');
+         
             if ($role->count() != 0) {
                 $role_id = $role->select("id")->first()["id"];
             } else {
@@ -36,7 +35,7 @@ class UserController extends Controller
                     'name' => 'user',
                 ]);
 
-                $role = UserRole::all()->where('name', 'user');
+              
 
                 $role_id = $role->select("id")->first()["id"];
             }

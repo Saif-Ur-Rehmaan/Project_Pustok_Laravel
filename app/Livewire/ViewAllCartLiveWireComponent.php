@@ -108,14 +108,14 @@ class ViewAllCartLiveWireComponent extends Component
         $CouponFromDB = Coupon::where('code', $coupon)->first();
         if ($CouponFromDB) {
             //check if its expired or not
-            if ($CouponFromDB->expiry_date && !Carbon::parse($CouponFromDB->expiry_date)->isPast()) {
+            if (!$CouponFromDB->expiry_date || !Carbon::parse($CouponFromDB->expiry_date)->isPast()) {
                 session()->put('coupon', [
                     'applied' => true,
                     'coupon' => $CouponFromDB
                 ]);
-                return redirect('/cart')->with('success', "Token Applied");
+                return redirect('/checkout')->with('success', "Token Applied");
             } else {
-                return redirect('/cart')->with('fail', "Token expired");
+                return redirect('/checkout')->with('fail', "Token expired");
             }
         }
         return redirect('/cart')->with('fail', "invalid token");

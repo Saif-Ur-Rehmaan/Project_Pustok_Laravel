@@ -60,7 +60,7 @@
                                 <option>Japan</option>
                             </select> --}}
                         </div>
-                        
+
                         <div class="col-md-6 col-12 mb--20">
                             <label>Phone no*</label>
                             <input type="text" wire:model='ShippingDetails.PhoneNumber' placeholder="Phone number">
@@ -114,35 +114,51 @@
                     <!-- Cart Total -->
                     <div class="col-12">
                         <div class="checkout-cart-total">
-                            <h2 class="checkout-title">YOUR ORDER</h2>
-                            <h4>Product <span>Total</span></h4>
-                            <ul>
-                                @foreach ($ProductList as $item)
-                                    <li>
-                                        <span class="left">{{ $item['title'] }} X {{ $item['quantity'] }}</span>
-                                        <span
-                                            class="right">${{ number_format($item['TotalPriceOfThisBook'], 2) }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                            <p>Sub Total <span>${{ number_format($SubTotal, 2) }}</span></p>
-                            <p>Shipping Fee <span>${{ number_format($shippingFee, 2) }}</span></p>
-                            <p>Coupon Discount <span>${{ number_format($couponDiscount, 2) }}</span></p>
-                            <h4>Grand Total <span>${{ number_format($grandTotal, 2) }}</span></h4>
-                            <div class="method-notice mt--25">
-                                <select wire:model='SelectedPaymenyMethod' id="">
-                                    @foreach ($PaymentMethods as $method)
-                                        <option value="{{$method->name}}" {{  $SelectedPaymenyMethod==$method->name?'selected':''}}>{{$method->name}}</option>
-                                    @endforeach 
-                                </select> 
-                              
-                            </div>
-                            <div class="term-block">
-                                <input type="checkbox" id="accept_terms2">
-                                <label for="accept_terms2">I’ve read and accept the terms &
-                                    conditions</label>
-                            </div>
-                            <button class="place-order w-100" wire:click='PlaceOrder'>Place order</button>
+                            @if ($PaymentMethods->count() > 0)
+
+                                <h2 class="checkout-title">YOUR ORDER</h2>
+                                <h4>Product <span>Total</span></h4>
+                                <ul>
+                                    @foreach ($ProductList as $item)
+                                        <li>
+                                            <span class="left">{{ $item['title'] }} X {{ $item['quantity'] }}</span>
+                                            <span
+                                                class="right">${{ number_format($item['TotalPriceOfThisBook'], 2) }}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <p>Sub Total <span>${{ number_format($SubTotal, 2) }}</span></p>
+                                <p>Shipping Fee <span>${{ number_format($shippingFee, 2) }}</span></p>
+                                <p>Coupon Discount <span>${{ number_format($couponDiscount, 2) }}</span></p>
+                                <h4>Grand Total <span>${{ number_format($grandTotal, 2) }}</span></h4>
+                                @if ($PaymentMethods->count() > 0)
+                                    <div class="method-notice mt--25">
+                                        <select wire:model='SelectedPaymenyMethod' id="">
+                                            @foreach ($PaymentMethods as $method)
+                                                <option value="{{ $method->name }}"
+                                                    {{ $SelectedPaymenyMethod == $method->name ? 'selected' : '' }}>
+                                                    {{ $method->name }}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+                                @endif
+                                <div class="term-block">
+                                    <input type="checkbox" id="accept_terms2">
+                                    <label for="accept_terms2">I’ve read and accept the terms &
+                                        conditions</label>
+                                </div>
+                                <button class="place-order w-100" wire:click='PlaceOrder'>Place order</button>
+                            @else
+                                <div class="alert alert-info" role="alert">
+                                    <h4 class="alert-heading">No Payment Methods Available</h4>
+                                    <p>We apologize, but we currently don't have any payment methods available. As a
+                                        result, we cannot process your order at this time.</p>
+                                    <hr>
+                                    <p class="mb-0">Please try again later. We're working on resolving this issue as
+                                        quickly as possible.</p>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
